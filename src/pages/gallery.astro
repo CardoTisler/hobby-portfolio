@@ -12,12 +12,12 @@ const sortedProjects = sortProjectsByDate(allProjects);
 <Layout title="Gallery | Cardo Tisler">
   <CategoryHeader
     title="Gallery"
-    description="A complete collection of all projects across woodworking, renovation, and garden work."
+    description="A complete collection of all projects. Woodworking, renovation, and garden work all in one place."
     projectCount={sortedProjects.length}
   />
 
-  <section class="pb-24 px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
+  <section class="pb-20 px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
       <ProjectGrid
         projects={sortedProjects}
         emptyMessage="Projects coming soon. Check back later!"

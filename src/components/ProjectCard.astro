@@ -11,68 +11,62 @@ interface Props {
 }
 
 const { title, category, thumbnail, slug, index = 0 } = Astro.props;
+
+const categoryIcons: Record<string, string> = {
+  Woodworking: '🪵',
+  Renovation: '🏠',
+  Garden: '🌱',
+  Other: '✨',
+};
 ---
 
 <a
   href={`/project/${slug}`}
-  class="group relative block animate-scale-in"
-  style={`animation-delay: ${index * 100}ms`}
+  class="group block animate-scale-in"
+  style={`animation-delay: ${index * 80}ms`}
 >
-  <!-- Main card -->
-  <article class="relative overflow-hidden bg-charcoal hover-lift">
+  <article class="relative overflow-hidden bg-cream border border-sand rounded-2xl hover-grow">
     <!-- Image container -->
-    <div class="relative aspect-[4/3] overflow-hidden">
+    <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
       <Image
         src={thumbnail}
         alt={title}
         width={600}
         height={450}
-        class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
 
-      <!-- Image overlay gradient -->
-      <div class="absolute inset-0 bg-gradient-to-t from-coal/90 via-coal/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+      <!-- Soft overlay on hover -->
+      <div class="absolute inset-0 bg-gradient-to-t from-walnut/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       <!-- Category badge -->
       <div class="absolute top-4 left-4">
-        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-coal/80 backdrop-blur-sm text-brass text-xs font-medium tracking-widest uppercase">
-          <span class="w-1.5 h-1.5 bg-brass rounded-full"></span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-parchment/95 backdrop-blur-sm text-forest text-xs font-medium rounded-full shadow-sm">
+          <span>{categoryIcons[category] || '✨'}</span>
           {category}
         </span>
       </div>
+    </div>
 
-      <!-- Hover reveal content -->
-      <div class="absolute inset-x-0 bottom-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-        <div class="flex items-end justify-between gap-4">
-          <div>
-            <h3 class="font-display text-2xl text-cream leading-tight">
-              {title}
-            </h3>
-            <p class="mt-2 text-dust text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-              View project details
-            </p>
-          </div>
-
-          <!-- Arrow icon -->
-          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center border border-stone/30 group-hover:border-brass group-hover:bg-brass transition-all duration-300">
-            <svg
-              class="w-5 h-5 text-stone group-hover:text-coal transition-colors duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </div>
-        </div>
+    <!-- Content -->
+    <div class="p-5">
+      <h3 class="font-display text-xl text-walnut group-hover:text-forest transition-colors duration-300">
+        {title}
+      </h3>
+      <div class="mt-3 flex items-center gap-2 text-clay group-hover:text-bark transition-colors duration-300">
+        <span class="text-sm">View project</span>
+        <svg
+          class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
       </div>
     </div>
 
-    <!-- Bottom accent line -->
-    <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-brass group-hover:w-full transition-all duration-500"></div>
+    <!-- Bottom accent -->
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-forest via-moss to-forest scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl"></div>
   </article>
-
-  <!-- Frame corners -->
-  <div class="absolute -top-1 -left-1 w-4 h-4 border-l-2 border-t-2 border-stone/0 group-hover:border-brass/50 transition-colors duration-300"></div>
-  <div class="absolute -bottom-1 -right-1 w-4 h-4 border-r-2 border-b-2 border-stone/0 group-hover:border-brass/50 transition-colors duration-300"></div>
 </a>

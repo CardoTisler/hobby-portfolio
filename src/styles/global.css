@@ -1,26 +1,28 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Deep workshop palette */
-  --color-coal: #0f0e0d;
-  --color-charcoal: #1a1918;
-  --color-slate: #2a2827;
-  --color-stone: #3d3a38;
-  --color-ash: #6b6560;
-  --color-dust: #9c9590;
-  --color-cream: #f5f2ed;
+  /* Warm natural palette */
+  --color-parchment: #faf6f0;
+  --color-cream: #f5efe6;
+  --color-sand: #e8dfd3;
+  --color-clay: #c4b5a5;
+  --color-bark: #6b5b4f;
+  --color-walnut: #4a3f35;
+  --color-charcoal: #2d2621;
 
-  /* Warm brass accent */
-  --color-brass: #c9a227;
-  --color-brass-light: #ddb832;
-  --color-brass-glow: #c9a22740;
+  /* Natural accents */
+  --color-forest: #4a6741;
+  --color-moss: #6b8c5a;
+  --color-terracotta: #c67d4e;
+  --color-copper: #b87333;
 
   /* Typography */
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-display: 'Libre Baskerville', Georgia, serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
 
-  /* Spacing rhythm */
-  --spacing-section: 8rem;
+  /* Organic radius */
+  --radius-soft: 0.75rem;
+  --radius-round: 1.5rem;
 }
 
 /* Base styles */
@@ -29,51 +31,52 @@ html {
 }
 
 body {
-  background-color: var(--color-coal);
-  color: var(--color-cream);
+  background-color: var(--color-parchment);
+  color: var(--color-walnut);
   font-family: var(--font-body);
 }
 
-/* Noise texture overlay */
+/* Paper texture overlay */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  opacity: 0.025;
   pointer-events: none;
   z-index: 1000;
 }
 
 /* Selection styling */
 ::selection {
-  background-color: var(--color-brass);
-  color: var(--color-coal);
+  background-color: var(--color-moss);
+  color: var(--color-parchment);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-charcoal);
+  background: var(--color-cream);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-stone);
-  border-radius: 4px;
+  background: var(--color-clay);
+  border-radius: 5px;
+  border: 2px solid var(--color-cream);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-ash);
+  background: var(--color-bark);
 }
 
 /* Animation keyframes */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -89,7 +92,7 @@ body::before {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.97);
   }
   to {
     opacity: 1;
@@ -100,7 +103,7 @@ body::before {
 @keyframes slideRight {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-15px);
   }
   to {
     opacity: 1;
@@ -108,29 +111,29 @@ body::before {
   }
 }
 
-@keyframes expandWidth {
-  from { width: 0; }
-  to { width: 100%; }
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
 }
 
 /* Utility animation classes */
 .animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
   opacity: 0;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: scaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
 }
 
 .animate-slide-right {
-  animation: slideRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
 }
 
@@ -142,51 +145,44 @@ body::before {
 .delay-500 { animation-delay: 500ms; }
 .delay-600 { animation-delay: 600ms; }
 
-/* Hover lift effect */
-.hover-lift {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Organic hover effect */
+.hover-grow {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+.hover-grow:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 32px -8px rgba(74, 63, 53, 0.15);
 }
 
-/* Text gradient for headings */
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-dust) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Brass underline accent */
-.brass-underline {
+/* Hand-drawn underline effect */
+.hand-underline {
   position: relative;
-  display: inline-block;
+  display: inline;
 }
 
-.brass-underline::after {
+.hand-underline::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-brass) 0%, transparent 100%);
+  height: 3px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M0,3 Q25,0 50,3 T100,3' fill='none' stroke='%234a6741' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+  background-size: 100px 6px;
 }
 
-/* Frame border effect */
-.frame-border {
-  position: relative;
+/* Leaf decoration */
+.leaf-accent::before {
+  content: '🌿';
+  margin-right: 0.5rem;
+  font-size: 0.9em;
 }
 
-.frame-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(135deg, var(--color-stone) 0%, transparent 50%, var(--color-stone) 100%);
-  z-index: -1;
-  opacity: 0.5;
+/* Warm card style */
+.card-warm {
+  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-parchment) 100%);
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-soft);
 }

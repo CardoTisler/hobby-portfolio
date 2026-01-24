@@ -15,95 +15,93 @@ const socialLinks = [
 ];
 ---
 
-<footer class="relative mt-auto">
-  <!-- Top border with gradient -->
-  <div class="h-px bg-gradient-to-r from-transparent via-stone/50 to-transparent"></div>
-
-  <div class="bg-charcoal/50">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-      <div class="grid md:grid-cols-12 gap-12 md:gap-8">
-        <!-- Brand column -->
-        <div class="md:col-span-5">
-          <a href="/" class="inline-block">
-            <span class="font-display text-3xl text-cream">Cardo Tisler</span>
-          </a>
-          <p class="mt-4 text-dust font-light leading-relaxed max-w-sm">
-            Craftsman & builder based in Estonia. Transforming ideas into
-            tangible creations through woodworking, renovation, and design.
-          </p>
-
-          <!-- Social links -->
-          <div class="flex items-center gap-4 mt-6">
-            {socialLinks.map((link) => (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group w-10 h-10 flex items-center justify-center border border-stone/30 hover:border-brass hover:bg-brass/10 transition-all duration-300"
-                aria-label={link.name}
-              >
-                <svg
-                  class="w-4 h-4 text-ash group-hover:text-brass transition-colors duration-300"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d={link.icon} />
-                </svg>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <!-- Quick links -->
-        <div class="md:col-span-3 md:col-start-7">
-          <h4 class="text-sm font-medium tracking-widest uppercase text-ash mb-6">
-            Explore
-          </h4>
-          <ul class="space-y-3">
-            {[
-              { label: 'All Projects', href: '/gallery' },
-              { label: 'Woodworking', href: '/woodworking' },
-              { label: 'Renovation', href: '/renovation' },
-              { label: 'Garden', href: '/garden' },
-            ].map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="group inline-flex items-center gap-2 text-dust hover:text-cream transition-colors duration-300"
-                >
-                  <span class="w-0 group-hover:w-4 h-px bg-brass transition-all duration-300"></span>
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="md:col-span-3">
-          <h4 class="text-sm font-medium tracking-widest uppercase text-ash mb-6">
-            Get in Touch
-          </h4>
-          <a
-            href="mailto:hello@cardotisler.ee"
-            class="text-dust hover:text-brass transition-colors duration-300"
-          >
-            hello@cardotisler.ee
-          </a>
-        </div>
-      </div>
-
-      <!-- Bottom bar -->
-      <div class="mt-16 pt-8 border-t border-stone/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-ash text-sm">
-          &copy; {currentYear} Cardo Tisler. Crafted with care.
+<footer class="mt-auto bg-cream border-t border-sand">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-12 gap-12 md:gap-8">
+      <!-- Brand column -->
+      <div class="md:col-span-5">
+        <a href="/" class="inline-flex items-center gap-2 mb-4">
+          <span class="text-forest text-2xl">&#9752;</span>
+          <span class="font-display text-2xl text-walnut">Cardo Tisler</span>
+        </a>
+        <p class="text-bark font-light leading-relaxed max-w-sm">
+          Craftsman & builder based in Estonia. Creating with purpose,
+          building with passion. Every project is a new adventure.
         </p>
 
-        <div class="flex items-center gap-3 text-ash text-sm">
-          <span class="w-2 h-2 bg-brass/50 rounded-full"></span>
-          <span>Estonia</span>
+        <!-- Social links -->
+        <div class="flex items-center gap-3 mt-6">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 flex items-center justify-center bg-parchment border border-sand rounded-full hover:border-forest hover:bg-forest/5 transition-all duration-300"
+              aria-label={link.name}
+            >
+              <svg
+                class="w-4 h-4 text-bark"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d={link.icon} />
+              </svg>
+            </a>
+          ))}
         </div>
       </div>
+
+      <!-- Quick links -->
+      <div class="md:col-span-3 md:col-start-7">
+        <h4 class="text-sm font-semibold tracking-wider uppercase text-clay mb-5">
+          Explore
+        </h4>
+        <ul class="space-y-3">
+          {[
+            { label: 'All Projects', href: '/gallery' },
+            { label: 'Woodworking', href: '/woodworking' },
+            { label: 'Renovation', href: '/renovation' },
+            { label: 'Garden', href: '/garden' },
+          ].map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-bark hover:text-forest transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="md:col-span-3">
+        <h4 class="text-sm font-semibold tracking-wider uppercase text-clay mb-5">
+          Say Hello
+        </h4>
+        <a
+          href="mailto:hello@cardotisler.ee"
+          class="text-bark hover:text-forest transition-colors duration-300"
+        >
+          hello@cardotisler.ee
+        </a>
+        <p class="mt-4 text-clay text-sm">
+          Based in Estonia 🇪🇪
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-sand flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-clay text-sm">
+        &copy; {currentYear} Cardo Tisler. Made with care.
+      </p>
+
+      <p class="text-clay text-sm flex items-center gap-2">
+        <span class="text-forest">&#9752;</span>
+        <span>Crafted by hand</span>
+      </p>
     </div>
   </div>
 </footer>

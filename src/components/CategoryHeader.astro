@@ -3,42 +3,56 @@ interface Props {
   title: string;
   description: string;
   projectCount: number;
+  icon?: string;
 }
 
-const { title, description, projectCount } = Astro.props;
+const { title, description, projectCount, icon = '🌿' } = Astro.props;
+
+const categoryIcons: Record<string, string> = {
+  Woodworking: '🪵',
+  Renovation: '🏠',
+  Garden: '🌱',
+  Gallery: '✨',
+};
+
+const displayIcon = categoryIcons[title] || icon;
 ---
 
-<div class="pt-32 pb-16 px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-      <div class="animate-fade-up">
-        <a
-          href="/"
-          class="inline-flex items-center gap-2 text-ash hover:text-cream transition-colors duration-300 mb-6"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          <span class="text-sm">Back home</span>
-        </a>
+<div class="pt-28 pb-12 px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto">
+    <!-- Back link -->
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 text-clay hover:text-forest transition-colors duration-300 mb-8 animate-fade-in"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      <span class="text-sm">Back home</span>
+    </a>
 
-        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-cream mb-4">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <div class="animate-fade-up">
+        <!-- Icon badge -->
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-cream border border-sand rounded-full text-sm mb-4">
+          <span class="text-lg">{displayIcon}</span>
+          <span class="text-bark font-medium">{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span>
+        </span>
+
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-walnut mb-3">
           {title}
         </h1>
-        <p class="text-dust text-lg font-light max-w-xl">
+        <p class="text-bark text-lg font-light max-w-xl">
           {description}
         </p>
       </div>
-
-      <div class="animate-fade-up delay-200 flex items-center gap-4 lg:pb-4">
-        <span class="font-display text-5xl text-brass">{projectCount}</span>
-        <span class="text-ash text-sm tracking-wide uppercase">
-          {projectCount === 1 ? 'Project' : 'Projects'}
-        </span>
-      </div>
     </div>
 
-    <!-- Decorative line -->
-    <div class="mt-12 h-px bg-gradient-to-r from-brass via-stone/30 to-transparent"></div>
+    <!-- Decorative divider -->
+    <div class="mt-10 flex items-center gap-4">
+      <div class="flex-1 h-px bg-gradient-to-r from-sand via-clay/30 to-transparent"></div>
+      <span class="text-clay">{displayIcon}</span>
+      <div class="flex-1 h-px bg-gradient-to-l from-sand via-clay/30 to-transparent"></div>
+    </div>
   </div>
 </div>

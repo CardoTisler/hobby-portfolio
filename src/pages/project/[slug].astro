@@ -14,22 +14,28 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-// Get related projects from same category
 const allProjects = await getCollection('projects');
 const relatedProjects = allProjects
   .filter((p) => p.data.category === project.data.category && p.id !== project.id)
   .slice(0, 2);
+
+const categoryIcons: Record<string, string> = {
+  Woodworking: '🪵',
+  Renovation: '🏠',
+  Garden: '🌱',
+  Other: '✨',
+};
 ---
 
 <Layout title={`${project.data.title} | Cardo Tisler`}>
-  <article class="pt-32 pb-24">
-    <!-- Hero section -->
-    <div class="px-6 lg:px-8 mb-12">
-      <div class="max-w-7xl mx-auto">
+  <article class="pt-28 pb-20">
+    <!-- Header -->
+    <div class="px-6 lg:px-8 mb-10">
+      <div class="max-w-6xl mx-auto">
         <!-- Back link -->
         <a
           href="/"
-          class="inline-flex items-center gap-2 text-ash hover:text-cream transition-colors duration-300 mb-8 animate-fade-in"
+          class="inline-flex items-center gap-2 text-clay hover:text-forest transition-colors duration-300 mb-8 animate-fade-in"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -37,42 +43,36 @@ const relatedProjects = allProjects
           <span class="text-sm">Back to projects</span>
         </a>
 
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
-          <div class="lg:col-span-8 animate-fade-up">
-            <!-- Category badge -->
-            <a
-              href={`/${project.data.category.toLowerCase()}`}
-              class="inline-flex items-center gap-2 text-brass text-sm font-medium tracking-[0.2em] uppercase mb-4 hover:text-brass-light transition-colors"
-            >
-              <span class="w-8 h-px bg-brass"></span>
-              {project.data.category}
-            </a>
+        <div class="animate-fade-up">
+          <!-- Category badge -->
+          <a
+            href={`/${project.data.category.toLowerCase()}`}
+            class="inline-flex items-center gap-2 px-4 py-2 bg-cream border border-sand rounded-full text-sm mb-4 hover:border-forest transition-colors"
+          >
+            <span>{categoryIcons[project.data.category] || '✨'}</span>
+            <span class="text-bark font-medium">{project.data.category}</span>
+          </a>
 
-            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-cream leading-[0.95]">
-              {project.data.title}
-            </h1>
-          </div>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-walnut mb-4">
+            {project.data.title}
+          </h1>
 
-          <div class="lg:col-span-4 lg:flex lg:items-end animate-fade-up delay-200">
-            {project.data.date && (
-              <div class="flex items-center gap-4">
-                <span class="font-display text-4xl text-brass">
-                  {project.data.date.toLocaleDateString('en-US', { year: 'numeric' })}
-                </span>
-                <span class="text-ash text-sm tracking-wide uppercase">
-                  {project.data.date.toLocaleDateString('en-US', { month: 'long' })}
-                </span>
-              </div>
-            )}
-          </div>
+          {project.data.date && (
+            <p class="text-clay">
+              Completed in {project.data.date.toLocaleDateString('en-US', {
+                month: 'long',
+                year: 'numeric',
+              })}
+            </p>
+          )}
         </div>
       </div>
     </div>
 
     <!-- Main image -->
-    <div class="px-6 lg:px-8 mb-16">
-      <div class="max-w-7xl mx-auto">
-        <div class="relative animate-scale-in delay-300">
+    <div class="px-6 lg:px-8 mb-12">
+      <div class="max-w-6xl mx-auto">
+        <div class="relative rounded-2xl overflow-hidden animate-scale-in delay-200">
           <Image
             src={project.data.thumbnail}
             alt={project.data.title}
@@ -80,39 +80,34 @@ const relatedProjects = allProjects
             height={900}
             class="w-full aspect-[16/10] object-cover"
           />
-
-          <!-- Frame corners -->
-          <div class="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-brass/50"></div>
-          <div class="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-brass/50"></div>
         </div>
       </div>
     </div>
 
     <!-- Content -->
     <div class="px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
+      <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-12 gap-12">
           <!-- Main content -->
           <div class="lg:col-span-8">
-            <div class="prose prose-lg prose-invert prose-p:text-dust prose-p:font-light prose-p:leading-relaxed prose-headings:font-display prose-headings:text-cream prose-a:text-brass prose-a:no-underline hover:prose-a:text-brass-light max-w-none">
+            <div class="prose prose-lg prose-walnut prose-p:text-bark prose-p:font-light prose-p:leading-relaxed prose-headings:font-display prose-headings:text-walnut prose-a:text-forest prose-a:no-underline hover:prose-a:underline max-w-none">
               <Content />
             </div>
 
             <!-- Additional images -->
             {project.data.images && project.data.images.length > 0 && (
-              <div class="mt-16">
-                <h3 class="font-display text-2xl text-cream mb-8">Project Gallery</h3>
-                <div class="grid sm:grid-cols-2 gap-6">
+              <div class="mt-12">
+                <h3 class="font-display text-2xl text-walnut mb-6">More Photos</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
                   {project.data.images.map((image, index) => (
-                    <div class="relative group">
+                    <div class="rounded-xl overflow-hidden">
                       <Image
                         src={image}
                         alt={`${project.data.title} - Image ${index + 1}`}
                         width={600}
                         height={450}
-                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        class="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500"
                       />
-                      <div class="absolute inset-0 bg-brass/0 group-hover:bg-brass/5 transition-colors duration-300"></div>
                     </div>
                   ))}
                 </div>
@@ -122,22 +117,25 @@ const relatedProjects = allProjects
 
           <!-- Sidebar -->
           <aside class="lg:col-span-4">
-            <div class="sticky top-32 space-y-8">
+            <div class="sticky top-28 space-y-6">
               <!-- Project details card -->
-              <div class="p-6 bg-charcoal/50 border border-stone/20">
-                <h3 class="text-sm font-medium tracking-widest uppercase text-ash mb-6">
+              <div class="p-6 bg-cream rounded-2xl border border-sand">
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-clay mb-5">
                   Project Details
                 </h3>
 
                 <dl class="space-y-4">
-                  <div class="flex justify-between items-center py-3 border-b border-stone/20">
-                    <dt class="text-ash">Category</dt>
-                    <dd class="text-cream">{project.data.category}</dd>
+                  <div class="flex justify-between items-center py-3 border-b border-sand">
+                    <dt class="text-clay">Category</dt>
+                    <dd class="text-walnut font-medium flex items-center gap-2">
+                      <span>{categoryIcons[project.data.category]}</span>
+                      {project.data.category}
+                    </dd>
                   </div>
                   {project.data.date && (
-                    <div class="flex justify-between items-center py-3 border-b border-stone/20">
-                      <dt class="text-ash">Completed</dt>
-                      <dd class="text-cream">
+                    <div class="flex justify-between items-center py-3 border-b border-sand">
+                      <dt class="text-clay">Completed</dt>
+                      <dd class="text-walnut font-medium">
                         {project.data.date.toLocaleDateString('en-US', {
                           month: 'short',
                           year: 'numeric',
@@ -150,28 +148,28 @@ const relatedProjects = allProjects
 
               <!-- Related projects -->
               {relatedProjects.length > 0 && (
-                <div>
-                  <h3 class="text-sm font-medium tracking-widest uppercase text-ash mb-6">
+                <div class="p-6 bg-cream rounded-2xl border border-sand">
+                  <h3 class="text-sm font-semibold tracking-wider uppercase text-clay mb-5">
                     Related Projects
                   </h3>
                   <div class="space-y-4">
                     {relatedProjects.map((related) => (
                       <a
                         href={`/project/${related.id}`}
-                        class="group flex items-center gap-4 p-3 -mx-3 hover:bg-charcoal/50 transition-colors duration-300"
+                        class="group flex items-center gap-4 p-2 -m-2 rounded-xl hover:bg-parchment transition-colors duration-300"
                       >
                         <Image
                           src={related.data.thumbnail}
                           alt={related.data.title}
                           width={80}
                           height={60}
-                          class="w-20 h-15 object-cover"
+                          class="w-16 h-12 object-cover rounded-lg"
                         />
                         <div>
-                          <h4 class="text-cream group-hover:text-brass transition-colors duration-300">
+                          <h4 class="text-walnut font-medium group-hover:text-forest transition-colors duration-300">
                             {related.data.title}
                           </h4>
-                          <span class="text-ash text-sm">{related.data.category}</span>
+                          <span class="text-clay text-sm">{related.data.category}</span>
                         </div>
                       </a>
                     ))}

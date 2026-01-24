@@ -13,29 +13,28 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
   <Hero />
 
   <!-- Recent Work Section -->
-  <section class="py-24 px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
+  <section id="recent-work" class="py-20 px-6 lg:px-8 bg-cream/50">
+    <div class="max-w-6xl mx-auto">
       <!-- Section header -->
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-        <div>
-          <span class="inline-flex items-center gap-3 text-brass text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            <span class="w-8 h-px bg-brass"></span>
-            Portfolio
+        <div class="animate-fade-up">
+          <span class="inline-flex items-center gap-2 text-forest text-sm font-medium mb-3">
+            <span>&#9752;</span>
+            Recent creations
           </span>
-          <h2 class="font-display text-4xl sm:text-5xl text-cream">
-            Recent Work
+          <h2 class="font-display text-3xl sm:text-4xl text-walnut">
+            Latest Projects
           </h2>
         </div>
 
         {allProjects.length > 6 && (
           <a
             href="/gallery"
-            class="group inline-flex items-center gap-3 text-dust hover:text-cream transition-colors duration-300"
+            class="group inline-flex items-center gap-2 px-5 py-2.5 bg-parchment border border-sand rounded-full text-bark hover:border-forest hover:text-forest transition-all duration-300"
           >
-            <span class="font-medium">View all projects</span>
-            <span class="w-8 group-hover:w-12 h-px bg-stone group-hover:bg-brass transition-all duration-300"></span>
+            <span class="font-medium">View all</span>
             <svg
-              class="w-4 h-4 text-stone group-hover:text-brass transition-colors duration-300"
+              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -54,45 +53,51 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
   </section>
 
   <!-- About teaser section -->
-  <section class="py-24 px-6 lg:px-8 bg-charcoal/30">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <span class="inline-flex items-center gap-3 text-brass text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            <span class="w-8 h-px bg-brass"></span>
-            About
+  <section class="py-20 px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="animate-fade-up">
+          <span class="inline-flex items-center gap-2 text-forest text-sm font-medium mb-3">
+            <span>&#9752;</span>
+            About the maker
           </span>
-          <h2 class="font-display text-4xl sm:text-5xl text-cream mb-6">
+          <h2 class="font-display text-3xl sm:text-4xl text-walnut mb-6">
             Built by hand,<br />
-            <span class="text-dust">crafted with care</span>
+            <span class="text-terracotta">grown with love</span>
           </h2>
-          <p class="text-dust text-lg font-light leading-relaxed mb-8">
-            Every project begins with an idea and ends with something tangible.
-            Whether it's custom furniture, a room transformation, or a garden
-            feature, I approach each build with the same dedication to quality
-            and attention to detail.
+          <p class="text-bark text-lg font-light leading-relaxed mb-8">
+            Every project begins with an idea and ends with something you can touch,
+            use, and enjoy for years to come. I believe in honest craftsmanship,
+            quality materials, and the satisfaction of building something real.
           </p>
-          <div class="flex flex-wrap gap-8">
-            <div>
-              <span class="block font-display text-4xl text-brass">{allProjects.length}+</span>
-              <span class="text-ash text-sm tracking-wide uppercase">Projects</span>
+          <div class="flex flex-wrap gap-6">
+            <div class="text-center">
+              <span class="block font-display text-4xl text-forest">{allProjects.length}+</span>
+              <span class="text-clay text-sm">Projects</span>
             </div>
-            <div>
-              <span class="block font-display text-4xl text-brass">3</span>
-              <span class="text-ash text-sm tracking-wide uppercase">Categories</span>
+            <div class="text-center">
+              <span class="block font-display text-4xl text-forest">3</span>
+              <span class="text-clay text-sm">Categories</span>
+            </div>
+            <div class="text-center">
+              <span class="block font-display text-4xl text-forest">100%</span>
+              <span class="text-clay text-sm">Handmade</span>
             </div>
           </div>
         </div>
 
-        <!-- Decorative element -->
-        <div class="hidden lg:block relative">
-          <div class="aspect-square max-w-md ml-auto">
-            <div class="absolute inset-0 border border-stone/20"></div>
-            <div class="absolute inset-4 border border-brass/30"></div>
-            <div class="absolute inset-8 bg-gradient-to-br from-brass/5 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <span class="font-display text-8xl text-stone/20">CT</span>
+        <!-- Decorative illustration -->
+        <div class="hidden lg:flex justify-center">
+          <div class="relative">
+            <div class="w-72 h-72 bg-cream rounded-full border-2 border-sand flex items-center justify-center">
+              <div class="w-56 h-56 bg-parchment rounded-full border border-clay/30 flex items-center justify-center">
+                <span class="text-8xl">🌿</span>
+              </div>
             </div>
+            <!-- Floating elements -->
+            <div class="absolute -top-4 -right-4 w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center text-2xl">🪵</div>
+            <div class="absolute -bottom-2 -left-6 w-14 h-14 bg-terracotta/10 rounded-full flex items-center justify-center text-2xl">🏠</div>
+            <div class="absolute top-1/2 -right-8 w-12 h-12 bg-moss/10 rounded-full flex items-center justify-center text-xl">🌱</div>
           </div>
         </div>
       </div>
