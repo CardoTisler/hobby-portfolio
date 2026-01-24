@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Forge & Timber palette - oiled walnut warmth */
-  --color-charwood: #3d3024;
-  --color-timber: #4a3c30;
-  --color-walnut: #5c4a3a;
-  --color-driftwood: #6e5c4a;
+  /* Forge & Timber palette - dark oiled walnut */
+  --color-charwood: #1f1914;
+  --color-timber: #2a221c;
+  --color-walnut: #3a302a;
+  --color-driftwood: #4a403a;
 
   /* Warm metallics */
   --color-copper: #b87333;
@@ -35,13 +35,13 @@ body {
   line-height: 1.7;
 }
 
-/* Wood grain texture - subtle */
+/* Wood grain texture */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.06;
   pointer-events: none;
   z-index: 1000;
 }
