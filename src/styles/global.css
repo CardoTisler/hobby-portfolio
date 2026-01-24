@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Forge & Timber palette - dark workshop warmth */
-  --color-charwood: #2a231e;
-  --color-timber: #362e28;
-  --color-walnut: #4a403a;
-  --color-driftwood: #5c524a;
+  /* Forge & Timber palette - oiled walnut warmth */
+  --color-charwood: #3d3024;
+  --color-timber: #4a3c30;
+  --color-walnut: #5c4a3a;
+  --color-driftwood: #6e5c4a;
 
   /* Warm metallics */
   --color-copper: #b87333;
