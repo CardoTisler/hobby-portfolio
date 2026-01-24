@@ -1,82 +1,71 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Warm natural palette */
-  --color-parchment: #faf6f0;
-  --color-cream: #f5efe6;
-  --color-sand: #e8dfd3;
-  --color-clay: #c4b5a5;
-  --color-bark: #6b5b4f;
-  --color-walnut: #4a3f35;
-  --color-charcoal: #2d2621;
+  /* Wabi-sabi palette - muted, natural, aged */
+  --color-rice: #faf9f6;
+  --color-paper: #f4f1eb;
+  --color-stone: #e8e4dc;
+  --color-clay: #d4cfc4;
+  --color-drift: #a39e93;
+  --color-ink: #4a4640;
+  --color-charcoal: #2c2a27;
 
-  /* Natural accents */
-  --color-forest: #4a6741;
-  --color-moss: #6b8c5a;
-  --color-terracotta: #c67d4e;
-  --color-copper: #b87333;
+  /* Subtle accents */
+  --color-moss: #7d8c75;
+  --color-rust: #a68a6d;
+  --color-sage: #9caa9c;
 
   /* Typography */
-  --font-display: 'Libre Baskerville', Georgia, serif;
-  --font-body: 'Source Sans 3', system-ui, sans-serif;
-
-  /* Organic radius */
-  --radius-soft: 0.75rem;
-  --radius-round: 1.5rem;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
 }
 
-/* Base styles */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-parchment);
-  color: var(--color-walnut);
+  background-color: var(--color-rice);
+  color: var(--color-ink);
   font-family: var(--font-body);
+  font-weight: 400;
 }
 
-/* Paper texture overlay */
+/* Subtle handmade paper texture */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  opacity: 0.015;
   pointer-events: none;
   z-index: 1000;
 }
 
-/* Selection styling */
 ::selection {
   background-color: var(--color-moss);
-  color: var(--color-parchment);
+  color: var(--color-rice);
 }
 
-/* Custom scrollbar */
+/* Minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-cream);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-clay);
-  border-radius: 5px;
-  border: 2px solid var(--color-cream);
+  border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-bark);
-}
-
-/* Animation keyframes */
+/* Animations - gentle and slow */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -92,7 +81,7 @@ body::before {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.97);
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -100,44 +89,21 @@ body::before {
   }
 }
 
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes wiggle {
-  0%, 100% { transform: rotate(-1deg); }
-  50% { transform: rotate(1deg); }
-}
-
-/* Utility animation classes */
 .animate-fade-up {
-  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   opacity: 0;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
   opacity: 0;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: scaleIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   opacity: 0;
 }
 
-.animate-slide-right {
-  animation: slideRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  opacity: 0;
-}
-
-/* Stagger delays */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
@@ -145,44 +111,35 @@ body::before {
 .delay-500 { animation-delay: 500ms; }
 .delay-600 { animation-delay: 600ms; }
 
-/* Organic hover effect */
-.hover-grow {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+/* Gentle hover */
+.hover-subtle {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.hover-grow:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 12px 32px -8px rgba(74, 63, 53, 0.15);
+.hover-subtle:hover {
+  transform: translateY(-2px);
 }
 
-/* Hand-drawn underline effect */
-.hand-underline {
+/* Ink brush underline */
+.ink-underline {
   position: relative;
   display: inline;
 }
 
-.hand-underline::after {
+.ink-underline::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M0,3 Q25,0 50,3 T100,3' fill='none' stroke='%234a6741' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
-  background-size: 100px 6px;
+  height: 1px;
+  background: var(--color-drift);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Leaf decoration */
-.leaf-accent::before {
-  content: '🌿';
-  margin-right: 0.5rem;
-  font-size: 0.9em;
-}
-
-/* Warm card style */
-.card-warm {
-  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-parchment) 100%);
-  border: 1px solid var(--color-sand);
-  border-radius: var(--radius-soft);
+.ink-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }

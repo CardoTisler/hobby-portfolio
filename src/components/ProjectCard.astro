@@ -11,62 +11,33 @@ interface Props {
 }
 
 const { title, category, thumbnail, slug, index = 0 } = Astro.props;
-
-const categoryIcons: Record<string, string> = {
-  Woodworking: '🪵',
-  Renovation: '🏠',
-  Garden: '🌱',
-  Other: '✨',
-};
 ---
 
 <a
   href={`/project/${slug}`}
   class="group block animate-scale-in"
-  style={`animation-delay: ${index * 80}ms`}
+  style={`animation-delay: ${index * 100}ms`}
 >
-  <article class="relative overflow-hidden bg-cream border border-sand rounded-2xl hover-grow">
-    <!-- Image container -->
-    <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+  <article class="hover-subtle">
+    <!-- Image - clean, no borders -->
+    <div class="aspect-[4/3] overflow-hidden bg-stone">
       <Image
         src={thumbnail}
         alt={title}
         width={600}
         height={450}
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        class="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:opacity-90"
       />
-
-      <!-- Soft overlay on hover -->
-      <div class="absolute inset-0 bg-gradient-to-t from-walnut/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-      <!-- Category badge -->
-      <div class="absolute top-4 left-4">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-parchment/95 backdrop-blur-sm text-forest text-xs font-medium rounded-full shadow-sm">
-          <span>{categoryIcons[category] || '✨'}</span>
-          {category}
-        </span>
-      </div>
     </div>
 
-    <!-- Content -->
-    <div class="p-5">
-      <h3 class="font-display text-xl text-walnut group-hover:text-forest transition-colors duration-300">
+    <!-- Minimal text below -->
+    <div class="mt-6">
+      <span class="text-drift text-xs tracking-widest uppercase">
+        {category}
+      </span>
+      <h3 class="mt-2 font-display text-xl text-ink group-hover:text-charcoal transition-colors duration-500">
         {title}
       </h3>
-      <div class="mt-3 flex items-center gap-2 text-clay group-hover:text-bark transition-colors duration-300">
-        <span class="text-sm">View project</span>
-        <svg
-          class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </div>
     </div>
-
-    <!-- Bottom accent -->
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-forest via-moss to-forest scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl"></div>
   </article>
 </a>

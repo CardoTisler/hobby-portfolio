@@ -9,96 +9,52 @@ const allProjects = await getCollection('projects');
 const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
 ---
 
-<Layout title="Cardo Tisler | Craftsman & Builder">
+<Layout title="Cardo Tisler">
   <Hero />
 
-  <!-- Recent Work Section -->
-  <section id="recent-work" class="py-20 px-6 lg:px-8 bg-cream/50">
+  <!-- Recent Work -->
+  <section class="py-24 px-8 lg:px-12">
     <div class="max-w-6xl mx-auto">
-      <!-- Section header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+      <!-- Section header - minimal -->
+      <div class="flex items-end justify-between mb-16">
         <div class="animate-fade-up">
-          <span class="inline-flex items-center gap-2 text-forest text-sm font-medium mb-3">
-            <span>&#9752;</span>
-            Recent creations
-          </span>
-          <h2 class="font-display text-3xl sm:text-4xl text-walnut">
-            Latest Projects
+          <h2 class="font-display text-3xl text-charcoal">
+            Recent work
           </h2>
         </div>
 
         {allProjects.length > 6 && (
           <a
             href="/gallery"
-            class="group inline-flex items-center gap-2 px-5 py-2.5 bg-parchment border border-sand rounded-full text-bark hover:border-forest hover:text-forest transition-all duration-300"
+            class="animate-fade-up delay-100 inline-flex items-center gap-3 text-drift hover:text-ink transition-colors duration-300"
           >
-            <span class="font-medium">View all</span>
-            <svg
-              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <span class="text-sm">View all</span>
+            <span class="w-8 h-px bg-clay"></span>
           </a>
         )}
       </div>
 
       <ProjectGrid
         projects={recentProjects}
-        emptyMessage="Projects coming soon. Check back later!"
+        emptyMessage="Projects coming soon."
       />
     </div>
   </section>
 
-  <!-- About teaser section -->
-  <section class="py-20 px-6 lg:px-8">
+  <!-- Simple about section -->
+  <section class="py-24 px-8 lg:px-12 border-t border-stone">
     <div class="max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="animate-fade-up">
-          <span class="inline-flex items-center gap-2 text-forest text-sm font-medium mb-3">
-            <span>&#9752;</span>
-            About the maker
-          </span>
-          <h2 class="font-display text-3xl sm:text-4xl text-walnut mb-6">
-            Built by hand,<br />
-            <span class="text-terracotta">grown with love</span>
-          </h2>
-          <p class="text-bark text-lg font-light leading-relaxed mb-8">
-            Every project begins with an idea and ends with something you can touch,
-            use, and enjoy for years to come. I believe in honest craftsmanship,
-            quality materials, and the satisfaction of building something real.
-          </p>
-          <div class="flex flex-wrap gap-6">
-            <div class="text-center">
-              <span class="block font-display text-4xl text-forest">{allProjects.length}+</span>
-              <span class="text-clay text-sm">Projects</span>
-            </div>
-            <div class="text-center">
-              <span class="block font-display text-4xl text-forest">3</span>
-              <span class="text-clay text-sm">Categories</span>
-            </div>
-            <div class="text-center">
-              <span class="block font-display text-4xl text-forest">100%</span>
-              <span class="text-clay text-sm">Handmade</span>
-            </div>
-          </div>
-        </div>
+      <div class="max-w-2xl">
+        <p class="animate-fade-up font-display text-3xl sm:text-4xl text-charcoal leading-relaxed">
+          Every project is an exercise in patience.
+          In understanding the material.
+          In finding beauty in simplicity.
+        </p>
 
-        <!-- Decorative illustration -->
-        <div class="hidden lg:flex justify-center">
-          <div class="relative">
-            <div class="w-72 h-72 bg-cream rounded-full border-2 border-sand flex items-center justify-center">
-              <div class="w-56 h-56 bg-parchment rounded-full border border-clay/30 flex items-center justify-center">
-                <span class="text-8xl">🌿</span>
-              </div>
-            </div>
-            <!-- Floating elements -->
-            <div class="absolute -top-4 -right-4 w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center text-2xl">🪵</div>
-            <div class="absolute -bottom-2 -left-6 w-14 h-14 bg-terracotta/10 rounded-full flex items-center justify-center text-2xl">🏠</div>
-            <div class="absolute top-1/2 -right-8 w-12 h-12 bg-moss/10 rounded-full flex items-center justify-center text-xl">🌱</div>
-          </div>
+        <div class="animate-fade-up delay-200 mt-12 flex items-center gap-8 text-drift">
+          <span>{allProjects.length} projects</span>
+          <span class="w-px h-4 bg-clay"></span>
+          <span>Estonia</span>
         </div>
       </div>
     </div>

@@ -1,43 +1,35 @@
 ---
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/woodworking', label: 'Woodworking' },
   { href: '/renovation', label: 'Renovation' },
   { href: '/garden', label: 'Garden' },
-  { href: '/gallery', label: 'Gallery' },
+  { href: '/gallery', label: 'All Work' },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50">
-  <!-- Warm gradient background -->
-  <div class="absolute inset-0 bg-gradient-to-b from-parchment via-parchment/98 to-parchment/0 pointer-events-none"></div>
-
-  <nav class="relative max-w-6xl mx-auto px-6 lg:px-8">
+<header class="fixed top-0 left-0 right-0 z-50 bg-rice/80 backdrop-blur-sm">
+  <nav class="max-w-6xl mx-auto px-8 lg:px-12">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a
-        href="/"
-        class="group flex items-center gap-2 animate-fade-in"
-      >
-        <span class="text-forest text-xl">&#9752;</span>
-        <span class="font-display text-xl text-walnut tracking-tight">
+      <!-- Logo - simple, understated -->
+      <a href="/" class="animate-fade-in">
+        <span class="font-display text-2xl text-charcoal tracking-wide">
           Cardo Tisler
         </span>
       </a>
 
-      <!-- Desktop navigation -->
-      <ul class="hidden md:flex items-center gap-2">
+      <!-- Desktop navigation - minimal -->
+      <ul class="hidden md:flex items-center gap-12">
         {navLinks.map((link, index) => (
-          <li class="animate-fade-in" style={`animation-delay: ${(index + 1) * 80}ms`}>
+          <li class="animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
             <a
               href={link.href}
               class:list={[
-                'relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300',
+                'ink-underline text-sm tracking-wide transition-colors duration-500',
                 currentPath === link.href
-                  ? 'bg-forest text-parchment'
-                  : 'text-bark hover:bg-sand/50',
+                  ? 'text-charcoal'
+                  : 'text-drift hover:text-ink',
               ]}
             >
               {link.label}
@@ -49,30 +41,30 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden relative w-10 h-10 flex items-center justify-center text-walnut rounded-full hover:bg-sand/50 transition-colors"
+        class="md:hidden p-2 text-ink"
         aria-label="Toggle menu"
       >
-        <div class="relative w-5 h-4 flex flex-col justify-between" id="hamburger">
-          <span class="w-full h-0.5 bg-current rounded-full transition-transform duration-300 origin-center"></span>
-          <span class="w-full h-0.5 bg-current rounded-full transition-opacity duration-300"></span>
-          <span class="w-full h-0.5 bg-current rounded-full transition-transform duration-300 origin-center"></span>
+        <div class="w-6 h-5 flex flex-col justify-between" id="hamburger">
+          <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
+          <span class="w-full h-px bg-current transition-all duration-300"></span>
+          <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
         </div>
       </button>
     </div>
 
     <!-- Mobile navigation -->
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="py-4 border-t border-sand">
-        <ul class="space-y-1">
+      <div class="py-8 border-t border-stone">
+        <ul class="space-y-6">
           {navLinks.map((link) => (
             <li>
               <a
                 href={link.href}
                 class:list={[
-                  'block py-3 px-4 rounded-lg text-base font-medium transition-all duration-300',
+                  'block text-lg font-display tracking-wide transition-colors duration-300',
                   currentPath === link.href
-                    ? 'bg-forest text-parchment'
-                    : 'text-bark hover:bg-sand/50',
+                    ? 'text-charcoal'
+                    : 'text-drift hover:text-ink',
                 ]}
               >
                 {link.label}
@@ -97,9 +89,9 @@ const currentPath = Astro.url.pathname;
 
     const spans = hamburger?.querySelectorAll('span');
     if (spans && isOpen) {
-      spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+      spans[0].style.transform = 'translateY(8px) rotate(45deg)';
       spans[1].style.opacity = '0';
-      spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
     } else if (spans) {
       spans[0].style.transform = '';
       spans[1].style.opacity = '1';

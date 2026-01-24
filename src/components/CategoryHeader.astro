@@ -3,56 +3,36 @@ interface Props {
   title: string;
   description: string;
   projectCount: number;
-  icon?: string;
 }
 
-const { title, description, projectCount, icon = '🌿' } = Astro.props;
-
-const categoryIcons: Record<string, string> = {
-  Woodworking: '🪵',
-  Renovation: '🏠',
-  Garden: '🌱',
-  Gallery: '✨',
-};
-
-const displayIcon = categoryIcons[title] || icon;
+const { title, description, projectCount } = Astro.props;
 ---
 
-<div class="pt-28 pb-12 px-6 lg:px-8">
+<div class="pt-32 pb-16 px-8 lg:px-12">
   <div class="max-w-6xl mx-auto">
     <!-- Back link -->
     <a
       href="/"
-      class="inline-flex items-center gap-2 text-clay hover:text-forest transition-colors duration-300 mb-8 animate-fade-in"
+      class="inline-flex items-center gap-3 text-drift hover:text-ink transition-colors duration-300 mb-12 animate-fade-in"
     >
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-      <span class="text-sm">Back home</span>
+      <span class="w-6 h-px bg-clay"></span>
+      <span class="text-sm tracking-wide">Back</span>
     </a>
 
-    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-      <div class="animate-fade-up">
-        <!-- Icon badge -->
-        <span class="inline-flex items-center gap-2 px-4 py-2 bg-cream border border-sand rounded-full text-sm mb-4">
-          <span class="text-lg">{displayIcon}</span>
-          <span class="text-bark font-medium">{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span>
-        </span>
+    <div class="animate-fade-up">
+      <h1 class="font-display text-5xl sm:text-6xl text-charcoal tracking-tight">
+        {title}
+      </h1>
+      <p class="mt-6 text-drift text-lg font-light max-w-xl">
+        {description}
+      </p>
 
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-walnut mb-3">
-          {title}
-        </h1>
-        <p class="text-bark text-lg font-light max-w-xl">
-          {description}
-        </p>
+      <div class="mt-8 flex items-center gap-4">
+        <span class="text-drift text-sm">{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span>
       </div>
     </div>
 
-    <!-- Decorative divider -->
-    <div class="mt-10 flex items-center gap-4">
-      <div class="flex-1 h-px bg-gradient-to-r from-sand via-clay/30 to-transparent"></div>
-      <span class="text-clay">{displayIcon}</span>
-      <div class="flex-1 h-px bg-gradient-to-l from-sand via-clay/30 to-transparent"></div>
-    </div>
+    <!-- Simple line -->
+    <div class="mt-16 w-24 h-px bg-clay"></div>
   </div>
 </div>

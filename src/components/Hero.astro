@@ -1,100 +1,42 @@
 ---
-const categories = [
-  { name: 'Woodworking', href: '/woodworking', icon: '🪵' },
-  { name: 'Renovation', href: '/renovation', icon: '🏠' },
-  { name: 'Garden', href: '/garden', icon: '🌱' },
-];
+
 ---
 
-<section class="relative min-h-[85vh] flex items-center pt-20">
-  <!-- Decorative background -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- Soft organic shapes -->
-    <div class="absolute top-20 right-10 w-64 h-64 bg-moss/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 left-10 w-80 h-80 bg-terracotta/5 rounded-full blur-3xl"></div>
-
-    <!-- Hand-drawn style border -->
-    <svg class="absolute top-32 left-8 w-32 h-32 text-sand/50" viewBox="0 0 100 100" fill="none">
-      <path d="M10,50 Q10,10 50,10 Q90,10 90,50 Q90,90 50,90 Q10,90 10,50" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-    </svg>
-  </div>
-
-  <div class="relative max-w-6xl mx-auto px-6 lg:px-8 py-16 w-full">
+<section class="min-h-[90vh] flex items-center pt-20">
+  <div class="max-w-6xl mx-auto px-8 lg:px-12 py-24 w-full">
     <div class="max-w-3xl">
-      <!-- Greeting -->
-      <div class="animate-fade-up mb-6">
-        <span class="inline-flex items-center gap-2 px-4 py-2 bg-cream rounded-full text-forest text-sm font-medium">
-          <span>&#9752;</span>
-          Welcome to my workshop
+      <!-- Simple, meditative headline -->
+      <h1 class="animate-fade-up">
+        <span class="block font-display text-5xl sm:text-6xl lg:text-7xl text-charcoal leading-[1.1] tracking-tight">
+          Building with
         </span>
-      </div>
-
-      <!-- Main headline -->
-      <h1 class="animate-fade-up delay-100 mb-6">
-        <span class="block font-display text-4xl sm:text-5xl lg:text-6xl text-walnut leading-tight">
-          I like to build
-        </span>
-        <span class="block font-display text-4xl sm:text-5xl lg:text-6xl leading-tight mt-1">
-          <span class="text-forest italic">beautiful</span>
-          <span class="text-terracotta"> things</span>
+        <span class="block font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.1] tracking-tight mt-2">
+          <em class="text-drift">intention</em>
         </span>
       </h1>
 
-      <!-- Description -->
-      <p class="animate-fade-up delay-200 text-bark text-lg lg:text-xl font-light max-w-xl leading-relaxed mb-10">
-        From hand-crafted furniture to home renovations and garden projects.
-        Every piece tells a story of patience, skill, and love for the craft.
+      <!-- Minimal description -->
+      <p class="animate-fade-up delay-200 mt-12 text-drift text-lg lg:text-xl font-light leading-relaxed max-w-lg">
+        Woodworking, renovation, and garden projects.
+        Each piece crafted with patience and care.
       </p>
 
-      <!-- CTA Buttons -->
-      <div class="animate-fade-up delay-300 flex flex-wrap gap-4 mb-16">
+      <!-- Simple link -->
+      <div class="animate-fade-up delay-300 mt-16">
         <a
           href="/gallery"
-          class="group inline-flex items-center gap-3 px-6 py-3 bg-forest text-parchment font-medium rounded-full transition-all duration-300 hover:bg-walnut hover:shadow-lg"
+          class="inline-flex items-center gap-4 text-ink hover:text-charcoal transition-colors duration-500 group"
         >
-          <span>Explore Projects</span>
-          <svg
-            class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          <span class="text-sm tracking-widest uppercase">View work</span>
+          <span class="w-12 h-px bg-clay group-hover:w-20 group-hover:bg-ink transition-all duration-500"></span>
         </a>
-        <a
-          href="#recent-work"
-          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-sand text-bark font-medium rounded-full transition-all duration-300 hover:border-clay hover:bg-sand/30"
-        >
-          See Recent Work
-        </a>
-      </div>
-
-      <!-- Category pills -->
-      <div class="animate-fade-up delay-400">
-        <p class="text-clay text-sm font-medium uppercase tracking-wider mb-4">Browse by category</p>
-        <div class="flex flex-wrap gap-3">
-          {categories.map((cat, index) => (
-            <a
-              href={cat.href}
-              class="group inline-flex items-center gap-2 px-5 py-3 bg-cream border border-sand rounded-xl transition-all duration-300 hover:border-forest hover:shadow-md animate-slide-right"
-              style={`animation-delay: ${400 + index * 80}ms`}
-            >
-              <span class="text-lg">{cat.icon}</span>
-              <span class="text-bark font-medium group-hover:text-forest transition-colors">{cat.name}</span>
-            </a>
-          ))}
-        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Scroll hint -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in delay-600">
-    <div class="flex flex-col items-center gap-2 text-clay">
-      <div class="w-6 h-10 border-2 border-clay rounded-full flex justify-center pt-2">
-        <div class="w-1.5 h-1.5 bg-clay rounded-full animate-bounce"></div>
-      </div>
+    <!-- Subtle decorative element -->
+    <div class="animate-fade-in delay-500 mt-32 flex items-center gap-8">
+      <div class="w-px h-16 bg-stone"></div>
+      <span class="text-drift text-sm tracking-widest">Est. 2024</span>
     </div>
   </div>
 </section>

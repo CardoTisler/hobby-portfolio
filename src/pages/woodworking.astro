@@ -9,18 +9,18 @@ const projects = await getCollection('projects', ({ data }) => data.category ===
 const sortedProjects = sortProjectsByDate(projects);
 ---
 
-<Layout title="Woodworking | Cardo Tisler">
+<Layout title="Woodworking — Cardo Tisler">
   <CategoryHeader
     title="Woodworking"
-    description="Custom furniture, shelving, and wooden creations. Each piece designed and built from scratch with care."
+    description="Furniture and wooden objects. Each piece shaped by hand, finished with care."
     projectCount={sortedProjects.length}
   />
 
-  <section class="pb-20 px-6 lg:px-8">
+  <section class="pb-24 px-8 lg:px-12">
     <div class="max-w-6xl mx-auto">
       <ProjectGrid
         projects={sortedProjects}
-        emptyMessage="Woodworking projects coming soon."
+        emptyMessage="Coming soon."
       />
     </div>
   </section>
