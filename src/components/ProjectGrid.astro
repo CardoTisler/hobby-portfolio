@@ -11,7 +11,7 @@ const { projects, emptyMessage = 'No projects yet.' } = Astro.props;
 ---
 
 {projects.length > 0 ? (
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {projects.map((project, index) => (
       <ProjectCard
         title={project.data.title}
@@ -23,7 +23,9 @@ const { projects, emptyMessage = 'No projects yet.' } = Astro.props;
     ))}
   </div>
 ) : (
-  <div class="py-24 text-center">
-    <p class="text-drift font-light">{emptyMessage}</p>
+  <div class="blueprint-box p-12 text-center bg-aged/30">
+    <div class="tech-label mb-4">Status</div>
+    <p class="text-faded font-display text-xl italic">{emptyMessage}</p>
+    <div class="stamp text-sepia border-sepia mt-6 inline-block">Pending</div>
   </div>
 )}

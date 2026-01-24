@@ -1,38 +1,43 @@
 ---
 const navLinks = [
-  { href: '/woodworking', label: 'Woodworking' },
-  { href: '/renovation', label: 'Renovation' },
-  { href: '/garden', label: 'Garden' },
-  { href: '/gallery', label: 'All Work' },
+  { href: '/woodworking', label: 'WOOD', code: '01' },
+  { href: '/renovation', label: 'RENO', code: '02' },
+  { href: '/garden', label: 'GRDN', code: '03' },
+  { href: '/gallery', label: 'ALL', code: '00' },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-rice/80 backdrop-blur-sm">
+<header class="fixed top-0 left-0 right-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-light-ink/30">
   <nav class="max-w-6xl mx-auto px-8 lg:px-12">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo - simple, understated -->
-      <a href="/" class="animate-fade-in">
-        <span class="font-display text-2xl text-charcoal tracking-wide">
-          Cardo Tisler
-        </span>
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo - technical drawing style -->
+      <a href="/" class="animate-fade-in group">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 border border-rust rotate-45"></span>
+          <span class="font-display text-xl text-navy tracking-wide">
+            Cardo Tisler
+          </span>
+        </div>
+        <div class="tech-label mt-0.5 ml-5">Craftsman &bull; Estonia</div>
       </a>
 
-      <!-- Desktop navigation - minimal -->
-      <ul class="hidden md:flex items-center gap-12">
+      <!-- Desktop navigation - blueprint tabs -->
+      <ul class="hidden md:flex items-center gap-1">
         {navLinks.map((link, index) => (
           <li class="animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
             <a
               href={link.href}
               class:list={[
-                'ink-underline text-sm tracking-wide transition-colors duration-500',
+                'relative px-4 py-2 flex items-center gap-2 transition-all duration-300',
                 currentPath === link.href
-                  ? 'text-charcoal'
-                  : 'text-drift hover:text-ink',
+                  ? 'bg-navy text-paper'
+                  : 'text-ink hover:bg-aged hover:text-navy',
               ]}
             >
-              {link.label}
+              <span class="text-[10px] font-label opacity-60">{link.code}</span>
+              <span class="text-xs font-label font-medium tracking-widest">{link.label}</span>
             </a>
           </li>
         ))}
@@ -41,33 +46,34 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-ink"
+        class="md:hidden p-2 text-navy"
         aria-label="Toggle menu"
       >
         <div class="w-6 h-5 flex flex-col justify-between" id="hamburger">
-          <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
-          <span class="w-full h-px bg-current transition-all duration-300"></span>
-          <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
+          <span class="w-full h-0.5 bg-current transition-all duration-300 origin-center"></span>
+          <span class="w-full h-0.5 bg-current transition-all duration-300"></span>
+          <span class="w-full h-0.5 bg-current transition-all duration-300 origin-center"></span>
         </div>
       </button>
     </div>
 
     <!-- Mobile navigation -->
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="py-8 border-t border-stone">
-        <ul class="space-y-6">
+      <div class="py-6 border-t border-light-ink/30">
+        <ul class="space-y-1">
           {navLinks.map((link) => (
             <li>
               <a
                 href={link.href}
                 class:list={[
-                  'block text-lg font-display tracking-wide transition-colors duration-300',
+                  'flex items-center gap-4 px-4 py-3 transition-colors duration-300',
                   currentPath === link.href
-                    ? 'text-charcoal'
-                    : 'text-drift hover:text-ink',
+                    ? 'bg-navy text-paper'
+                    : 'text-ink hover:bg-aged',
                 ]}
               >
-                {link.label}
+                <span class="text-xs font-label opacity-60">{link.code}</span>
+                <span class="font-label tracking-widest">{link.label}</span>
               </a>
             </li>
           ))}
@@ -89,9 +95,9 @@ const currentPath = Astro.url.pathname;
 
     const spans = hamburger?.querySelectorAll('span');
     if (spans && isOpen) {
-      spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+      spans[0].style.transform = 'translateY(9px) rotate(45deg)';
       spans[1].style.opacity = '0';
-      spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+      spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
     } else if (spans) {
       spans[0].style.transform = '';
       spans[1].style.opacity = '1';

@@ -11,33 +11,56 @@ interface Props {
 }
 
 const { title, category, thumbnail, slug, index = 0 } = Astro.props;
+
+// Generate a "drawing number"
+const drawingNum = String(index + 1).padStart(3, '0');
 ---
 
 <a
   href={`/project/${slug}`}
-  class="group block animate-scale-in"
-  style={`animation-delay: ${index * 100}ms`}
+  class="group block animate-fade-up"
+  style={`animation-delay: ${index * 80}ms`}
 >
-  <article class="hover-subtle">
-    <!-- Image - clean, no borders -->
-    <div class="aspect-[4/3] overflow-hidden bg-stone">
-      <Image
-        src={thumbnail}
-        alt={title}
-        width={600}
-        height={450}
-        class="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:opacity-90"
-      />
+  <article class="blueprint-box bg-aged/30 hover:bg-aged/60 transition-colors duration-300">
+    <!-- Drawing header -->
+    <div class="px-4 py-2 border-b border-light-ink/50 flex items-center justify-between">
+      <span class="tech-label">{category}</span>
+      <span class="text-[10px] font-body text-light-ink">DWG-{drawingNum}</span>
     </div>
 
-    <!-- Minimal text below -->
-    <div class="mt-6">
-      <span class="text-drift text-xs tracking-widest uppercase">
-        {category}
-      </span>
-      <h3 class="mt-2 font-display text-xl text-ink group-hover:text-charcoal transition-colors duration-500">
+    <!-- Image container with corner marks -->
+    <div class="relative p-4">
+      <div class="corner-marks">
+        <div class="aspect-[4/3] overflow-hidden border border-light-ink/30">
+          <Image
+            src={thumbnail}
+            alt={title}
+            width={600}
+            height={450}
+            class="w-full h-full object-cover transition-all duration-500 group-hover:scale-[1.02] grayscale-[20%] group-hover:grayscale-0"
+          />
+        </div>
+      </div>
+
+      <!-- Dimension lines (decorative) -->
+      <div class="absolute -bottom-1 left-4 right-4 flex items-center justify-center">
+        <div class="h-2 border-l border-light-ink"></div>
+        <div class="flex-1 border-t border-dashed border-light-ink"></div>
+        <div class="h-2 border-r border-light-ink"></div>
+      </div>
+    </div>
+
+    <!-- Title block -->
+    <div class="px-4 py-4 border-t border-light-ink/50">
+      <h3 class="font-display text-lg text-navy group-hover:text-ink transition-colors duration-300 leading-tight">
         {title}
       </h3>
+      <div class="mt-2 flex items-center gap-2 text-faded">
+        <span class="text-[10px] font-label tracking-wider">VIEW DETAILS</span>
+        <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
     </div>
   </article>
 </a>

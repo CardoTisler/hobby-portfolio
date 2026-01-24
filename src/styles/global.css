@@ -1,23 +1,27 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Wabi-sabi palette - muted, natural, aged */
-  --color-rice: #faf9f6;
-  --color-paper: #f4f1eb;
-  --color-stone: #e8e4dc;
-  --color-clay: #d4cfc4;
-  --color-drift: #a39e93;
-  --color-ink: #4a4640;
-  --color-charcoal: #2c2a27;
+  /* Aged paper and blueprint palette */
+  --color-paper: #f4f1e8;
+  --color-aged: #ebe6d9;
+  --color-parchment: #e0d9c8;
+  --color-sepia: #c4b89a;
 
-  /* Subtle accents */
-  --color-moss: #7d8c75;
-  --color-rust: #a68a6d;
-  --color-sage: #9caa9c;
+  /* Blueprint ink colors */
+  --color-navy: #1e3a5f;
+  --color-ink: #2c4a6e;
+  --color-faded: #4a6a8a;
+  --color-light-ink: #7a9aba;
+
+  /* Accent colors */
+  --color-rust: #8b4513;
+  --color-oxide: #a0522d;
+  --color-graphite: #3d3d3d;
 
   /* Typography */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-label: 'IBM Plex Sans Condensed', system-ui, sans-serif;
 }
 
 html {
@@ -25,47 +29,62 @@ html {
 }
 
 body {
-  background-color: var(--color-rice);
-  color: var(--color-ink);
+  background-color: var(--color-paper);
+  color: var(--color-navy);
   font-family: var(--font-body);
+  font-size: 14px;
   font-weight: 400;
 }
 
-/* Subtle handmade paper texture */
+/* Grid paper texture */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
-  opacity: 0.015;
+  background-image:
+    linear-gradient(var(--color-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-ink) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 1000;
 }
 
+/* Aged paper noise overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 999;
+}
+
 ::selection {
-  background-color: var(--color-moss);
-  color: var(--color-rice);
+  background-color: var(--color-navy);
+  color: var(--color-paper);
 }
 
 /* Minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-aged);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-clay);
-  border-radius: 3px;
+  background: var(--color-sepia);
+  border: 2px solid var(--color-aged);
 }
 
-/* Animations - gentle and slow */
+/* Animations */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -78,29 +97,18 @@ body::before {
   to { opacity: 1; }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes drawLine {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
 }
 
 .animate-fade-up {
-  animation: fadeUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: fadeUp 0.6s ease-out forwards;
   opacity: 0;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: fadeIn 0.5s ease-out forwards;
   opacity: 0;
 }
 
@@ -109,37 +117,94 @@ body::before {
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
 
-/* Gentle hover */
-.hover-subtle {
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.hover-subtle:hover {
-  transform: translateY(-2px);
-}
-
-/* Ink brush underline */
-.ink-underline {
+/* Blueprint box */
+.blueprint-box {
+  border: 1px solid var(--color-light-ink);
   position: relative;
-  display: inline;
 }
 
-.ink-underline::after {
+.blueprint-box::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--color-drift);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px dashed var(--color-sepia);
+  pointer-events: none;
 }
 
-.ink-underline:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+/* Corner marks */
+.corner-marks {
+  position: relative;
+}
+
+.corner-marks::before,
+.corner-marks::after {
+  content: '+';
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--color-light-ink);
+}
+
+.corner-marks::before {
+  top: -12px;
+  left: -6px;
+}
+
+.corner-marks::after {
+  bottom: -12px;
+  right: -6px;
+}
+
+/* Stamp effect */
+.stamp {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border: 2px solid currentColor;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+/* Technical label */
+.tech-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-faded);
+}
+
+/* Annotation line */
+.annotation {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.annotation::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-light-ink);
+}
+
+.annotation::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(0.75em - 2px);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-rust);
 }

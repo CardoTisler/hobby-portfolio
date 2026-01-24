@@ -2,41 +2,78 @@
 
 ---
 
-<section class="min-h-[90vh] flex items-center pt-20">
+<section class="min-h-[90vh] flex items-center pt-20 relative">
+  <!-- Corner registration marks -->
+  <div class="absolute top-24 left-8 lg:left-12 text-light-ink text-xs font-body">+</div>
+  <div class="absolute top-24 right-8 lg:right-12 text-light-ink text-xs font-body">+</div>
+
   <div class="max-w-6xl mx-auto px-8 lg:px-12 py-24 w-full">
     <div class="max-w-3xl">
-      <!-- Simple, meditative headline -->
-      <h1 class="animate-fade-up">
-        <span class="block font-display text-5xl sm:text-6xl lg:text-7xl text-charcoal leading-[1.1] tracking-tight">
-          Building with
-        </span>
-        <span class="block font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.1] tracking-tight mt-2">
-          <em class="text-drift">intention</em>
-        </span>
-      </h1>
+      <!-- Technical drawing title block -->
+      <div class="animate-fade-up blueprint-box p-8 lg:p-12 bg-aged/50">
+        <!-- Drawing number -->
+        <div class="tech-label mb-8">DWG NO. CT-2024-001 &mdash; REV. A</div>
 
-      <!-- Minimal description -->
-      <p class="animate-fade-up delay-200 mt-12 text-drift text-lg lg:text-xl font-light leading-relaxed max-w-lg">
-        Woodworking, renovation, and garden projects.
-        Each piece crafted with patience and care.
-      </p>
+        <h1>
+          <span class="block font-display text-4xl sm:text-5xl lg:text-6xl text-navy leading-[1.1]">
+            Technical Drawings
+          </span>
+          <span class="block font-display text-4xl sm:text-5xl lg:text-6xl text-navy leading-[1.1] mt-2">
+            & <em class="text-ink">Documentation</em>
+          </span>
+        </h1>
 
-      <!-- Simple link -->
-      <div class="animate-fade-up delay-300 mt-16">
+        <!-- Description as annotation -->
+        <div class="annotation mt-10 text-faded leading-relaxed max-w-lg">
+          Woodworking, renovation, and garden projects.
+          Documented with precision. Built with care.
+        </div>
+
+        <!-- Scale indicator -->
+        <div class="mt-10 flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <div class="w-16 h-1 bg-navy"></div>
+            <div class="w-8 h-1 bg-light-ink"></div>
+            <div class="w-4 h-1 bg-sepia"></div>
+          </div>
+          <span class="tech-label">Scale: 1:1</span>
+        </div>
+      </div>
+
+      <!-- Action link -->
+      <div class="animate-fade-up delay-300 mt-12">
         <a
           href="/gallery"
-          class="inline-flex items-center gap-4 text-ink hover:text-charcoal transition-colors duration-500 group"
+          class="inline-flex items-center gap-4 px-6 py-3 border border-navy text-navy hover:bg-navy hover:text-paper transition-all duration-300 group"
         >
-          <span class="text-sm tracking-widest uppercase">View work</span>
-          <span class="w-12 h-px bg-clay group-hover:w-20 group-hover:bg-ink transition-all duration-500"></span>
+          <span class="text-xs font-label tracking-widest uppercase">View All Projects</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
         </a>
       </div>
     </div>
 
-    <!-- Subtle decorative element -->
-    <div class="animate-fade-in delay-500 mt-32 flex items-center gap-8">
-      <div class="w-px h-16 bg-stone"></div>
-      <span class="text-drift text-sm tracking-widest">Est. 2024</span>
+    <!-- Title block info -->
+    <div class="animate-fade-in delay-500 mt-20 border-t border-light-ink/30 pt-8">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs">
+        <div>
+          <div class="tech-label mb-1">Drawn By</div>
+          <div class="text-navy font-medium">Cardo Tisler</div>
+        </div>
+        <div>
+          <div class="tech-label mb-1">Location</div>
+          <div class="text-navy font-medium">Estonia</div>
+        </div>
+        <div>
+          <div class="tech-label mb-1">Date</div>
+          <div class="text-navy font-medium">2024</div>
+        </div>
+        <div>
+          <div class="tech-label mb-1">Status</div>
+          <div class="stamp text-rust border-rust">Active</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
