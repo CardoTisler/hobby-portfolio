@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  background-color: var(--color-charwood);
+  background-color: var(--color-timber);
   color: var(--color-ash);
   font-family: var(--font-body);
   font-size: 15px;
