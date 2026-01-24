@@ -13,24 +13,27 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
   <Hero />
 
   <!-- Recent Work -->
-  <section class="py-24 px-8 lg:px-12">
-    <div class="max-w-5xl mx-auto">
-      <!-- Section header - minimal with organic touch -->
-      <div class="flex items-end justify-between mb-16">
+  <section class="py-24 px-8 lg:px-12 bg-timber/20">
+    <div class="max-w-6xl mx-auto">
+      <!-- Section header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
         <div class="animate-fade-up">
-          <span class="natural-label block mb-3">Recent</span>
-          <h2 class="font-display text-3xl text-bark">
-            Selected work
+          <div class="flex items-center gap-3 mb-3">
+            <div class="rivet"></div>
+            <span class="workshop-label">Workshop</span>
+          </div>
+          <h2 class="font-display text-3xl text-bone tracking-wide">
+            Recent Work
           </h2>
         </div>
 
         {allProjects.length > 6 && (
           <a
             href="/gallery"
-            class="animate-fade-up delay-100 inline-flex items-center gap-4 text-stone hover:text-bark transition-colors duration-400 group"
+            class="animate-fade-up delay-100 inline-flex items-center gap-4 text-smoke hover:text-copper transition-colors duration-300 group"
           >
-            <span class="text-sm">View all</span>
-            <span class="w-8 h-px bg-clay group-hover:w-12 transition-all duration-300"></span>
+            <span class="text-sm tracking-wide">View all projects</span>
+            <span class="w-8 h-0.5 bg-copper group-hover:w-12 transition-all duration-300"></span>
           </a>
         )}
       </div>
@@ -42,36 +45,44 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
     </div>
   </section>
 
-  <!-- Philosophy section - wabi-sabi inspired -->
-  <section class="py-24 px-8 lg:px-12 bg-linen">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid lg:grid-cols-12 gap-16">
-        <!-- Quote area -->
-        <div class="lg:col-span-7">
-          <div class="animate-fade-up">
-            <p class="font-display text-3xl sm:text-4xl text-bark leading-relaxed">
-              Every project is an exercise in patience.
-              In understanding the material.
-              In finding beauty in the imperfect.
-            </p>
-          </div>
+  <!-- Philosophy section -->
+  <section class="py-24 px-8 lg:px-12 border-t border-walnut">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Quote -->
+        <div class="animate-fade-up">
+          <p class="font-display text-3xl sm:text-4xl text-bone leading-relaxed tracking-wide">
+            Every project begins at the workbench.
+            Shaped by hand. Tempered by patience.
+            Built to last generations.
+          </p>
 
-          <div class="animate-fade-up delay-200 mt-10 organic-line max-w-xs"></div>
+          <div class="mt-10 copper-line max-w-xs"></div>
         </div>
 
-        <!-- Stats - understated -->
-        <div class="lg:col-span-4 lg:col-start-9 animate-fade-up delay-300">
-          <div class="space-y-8">
-            <div>
-              <span class="font-display text-4xl text-bark">{allProjects.length}</span>
-              <p class="natural-label mt-2">Projects</p>
+        <!-- Stats panel -->
+        <div class="animate-fade-up delay-200">
+          <div class="hammered-border p-8 bg-timber/50">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="rivet"></div>
+              <div class="rivet"></div>
+              <div class="rivet"></div>
+              <span class="workshop-label ml-2">Workshop Stats</span>
             </div>
-            <div>
-              <span class="font-display text-4xl text-bark">3</span>
-              <p class="natural-label mt-2">Categories</p>
-            </div>
-            <div class="pt-4">
-              <div class="enso"></div>
+
+            <div class="grid grid-cols-2 gap-8">
+              <div>
+                <span class="font-display text-4xl text-copper">{allProjects.length}</span>
+                <p class="text-smoke text-sm mt-1">Projects</p>
+              </div>
+              <div>
+                <span class="font-display text-4xl text-copper">3</span>
+                <p class="text-smoke text-sm mt-1">Disciplines</p>
+              </div>
+              <div class="col-span-2">
+                <span class="font-display text-2xl text-bone">Estonia</span>
+                <p class="text-smoke text-sm mt-1">Workshop Location</p>
+              </div>
             </div>
           </div>
         </div>

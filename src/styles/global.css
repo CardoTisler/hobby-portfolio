@@ -1,25 +1,25 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Natural Stillness palette - warm earth meets zen calm */
-  --color-clay: #c4a882;
-  --color-sand: #e8e0d4;
-  --color-linen: #f5f2ed;
-  --color-cream: #faf8f5;
+  /* Forge & Timber palette - dark workshop warmth */
+  --color-charwood: #1a1612;
+  --color-timber: #2a2420;
+  --color-walnut: #3d3530;
+  --color-driftwood: #5c524a;
 
-  /* Muted organic tones */
-  --color-bark: #4a3f35;
-  --color-moss: #5c5a4e;
-  --color-stone: #7d7567;
-  --color-drift: #9e9485;
+  /* Warm metallics */
+  --color-copper: #b87333;
+  --color-brass: #d4a84b;
+  --color-ember: #e85d04;
 
-  /* Accent - weathered terracotta */
-  --color-terra: #a67c5b;
-  --color-rust: #8b6b4a;
+  /* Organic neutrals */
+  --color-smoke: #9a918a;
+  --color-ash: #c4bbb4;
+  --color-bone: #e8e2dc;
 
-  /* Typography - organic meets refined */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Karla', system-ui, sans-serif;
+  /* Typography */
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
 }
 
 html {
@@ -27,48 +27,53 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-bark);
+  background-color: var(--color-charwood);
+  color: var(--color-ash);
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
 }
 
-/* Subtle washi paper texture */
+/* Wood grain texture - subtle */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
   pointer-events: none;
   z-index: 1000;
 }
 
 ::selection {
-  background-color: var(--color-clay);
-  color: var(--color-cream);
+  background-color: var(--color-copper);
+  color: var(--color-charwood);
 }
 
 /* Minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-sand);
+  background: var(--color-timber);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-clay);
+  background: var(--color-walnut);
+  border: 2px solid var(--color-timber);
 }
 
-/* Animations - gentle, unhurried */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-copper);
+}
+
+/* Animations */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -81,18 +86,18 @@ body::before {
   to { opacity: 1; }
 }
 
-@keyframes breathe {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
+@keyframes emberGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 .animate-fade-up {
-  animation: fadeUp 0.8s ease-out forwards;
+  animation: fadeUp 0.7s ease-out forwards;
   opacity: 0;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
   opacity: 0;
 }
 
@@ -102,94 +107,117 @@ body::before {
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
-/* Organic divider - hand-drawn feel */
-.organic-line {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-clay) 15%,
-    var(--color-clay) 85%,
-    transparent 100%
-  );
-  opacity: 0.4;
-}
-
-/* Subtle card with natural shadow */
-.natural-card {
-  background: var(--color-cream);
-  box-shadow:
-    0 1px 2px rgba(74, 63, 53, 0.04),
-    0 4px 16px rgba(74, 63, 53, 0.06);
-  transition: box-shadow 0.5s ease, transform 0.5s ease;
-}
-
-.natural-card:hover {
-  box-shadow:
-    0 2px 4px rgba(74, 63, 53, 0.06),
-    0 8px 24px rgba(74, 63, 53, 0.1);
-  transform: translateY(-2px);
-}
-
-/* Imperfect circle - wabi-sabi touch */
-.enso {
-  width: 48px;
-  height: 48px;
-  border: 2px solid var(--color-clay);
-  border-radius: 50% 48% 52% 50% / 48% 50% 52% 50%;
-  opacity: 0.6;
-}
-
-/* Zen dot */
-.zen-dot {
-  width: 4px;
-  height: 4px;
-  background: var(--color-terra);
-  border-radius: 50%;
-}
-
-/* Organic underline on hover */
-.organic-underline {
+/* Forge glow effect */
+.forge-glow {
   position: relative;
 }
 
-.organic-underline::after {
+.forge-glow::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  inset: -1px;
+  background: linear-gradient(
+    135deg,
+    var(--color-ember) 0%,
+    var(--color-copper) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.forge-glow:hover::after {
+  opacity: 0.15;
+}
+
+/* Hammered metal border */
+.hammered-border {
+  border: 1px solid var(--color-walnut);
+  position: relative;
+}
+
+.hammered-border::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid var(--color-copper);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Copper accent line */
+.copper-line {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-copper) 0%,
+    var(--color-brass) 50%,
+    var(--color-copper) 100%
+  );
+}
+
+/* Timber card */
+.timber-card {
+  background: var(--color-timber);
+  border: 1px solid var(--color-walnut);
+  transition: all 0.4s ease;
+}
+
+.timber-card:hover {
+  border-color: var(--color-copper);
+  box-shadow:
+    0 4px 20px rgba(184, 115, 51, 0.15),
+    inset 0 1px 0 rgba(184, 115, 51, 0.1);
+}
+
+/* Forge brand mark */
+.forge-mark {
+  width: 12px;
+  height: 12px;
+  background: var(--color-ember);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: emberGlow 3s ease-in-out infinite;
+}
+
+/* Workshop label */
+.workshop-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-smoke);
+}
+
+/* Copper underline */
+.copper-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.copper-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
   left: 0;
   width: 0;
-  height: 1px;
-  background: var(--color-terra);
+  height: 2px;
+  background: var(--color-copper);
   transition: width 0.4s ease;
 }
 
-.organic-underline:hover::after {
+.copper-underline:hover::after {
   width: 100%;
 }
 
-/* Natural label */
-.natural-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-stone);
-}
-
-/* Asymmetric frame - imperfect border */
-.wabi-frame {
-  position: relative;
-}
-
-.wabi-frame::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: 8px;
-  bottom: 8px;
-  border: 1px solid var(--color-clay);
-  opacity: 0.3;
-  pointer-events: none;
+/* Rivet decoration */
+.rivet {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at 30% 30%, var(--color-brass), var(--color-copper));
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 }

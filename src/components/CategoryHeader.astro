@@ -8,34 +8,43 @@ interface Props {
 const { title, description, projectCount } = Astro.props;
 ---
 
-<div class="pt-32 pb-16 px-8 lg:px-12">
-  <div class="max-w-5xl mx-auto">
-    <!-- Back link - subtle -->
+<div class="pt-32 pb-16 px-8 lg:px-12 bg-timber/30">
+  <div class="max-w-6xl mx-auto">
+    <!-- Back link -->
     <a
       href="/"
-      class="inline-flex items-center gap-3 text-stone hover:text-bark transition-colors duration-300 mb-12 animate-fade-in group"
+      class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 animate-fade-in group"
     >
-      <span class="w-6 h-px bg-clay group-hover:w-10 transition-all duration-300"></span>
-      <span class="text-sm">Back</span>
+      <span class="w-6 h-0.5 bg-copper group-hover:w-10 transition-all duration-300"></span>
+      <span class="text-sm tracking-wide">Back</span>
     </a>
 
-    <!-- Title area - asymmetric -->
-    <div class="grid lg:grid-cols-12 gap-8 items-end">
-      <div class="lg:col-span-8 animate-fade-up">
-        <h1 class="font-display text-5xl sm:text-6xl text-bark tracking-tight">
-          {title}
-        </h1>
-        <p class="mt-6 text-drift leading-relaxed max-w-lg">
-          {description}
-        </p>
-      </div>
+    <!-- Title block -->
+    <div class="hammered-border p-8 bg-charwood animate-fade-up">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="forge-mark"></div>
+            <span class="workshop-label">{projectCount} {projectCount === 1 ? 'Project' : 'Projects'}</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl text-bone tracking-wider">
+            {title}
+          </h1>
+          <p class="mt-4 text-smoke max-w-lg leading-relaxed">
+            {description}
+          </p>
+        </div>
 
-      <div class="lg:col-span-4 lg:text-right animate-fade-up delay-200">
-        <span class="natural-label">{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span>
+        <!-- Decorative rivets -->
+        <div class="flex items-center gap-3">
+          <div class="rivet"></div>
+          <div class="rivet"></div>
+          <div class="rivet"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Organic divider -->
-    <div class="mt-12 organic-line"></div>
+    <!-- Copper line -->
+    <div class="mt-8 copper-line max-w-xs"></div>
   </div>
 </div>

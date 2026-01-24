@@ -2,31 +2,36 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mt-auto bg-linen">
-  <div class="max-w-5xl mx-auto px-8 lg:px-12 py-16">
-    <!-- Organic divider -->
-    <div class="organic-line mb-12"></div>
-
-    <div class="grid md:grid-cols-2 gap-12 items-end">
-      <!-- Left - identity -->
+<footer class="mt-auto bg-timber border-t border-walnut">
+  <div class="max-w-6xl mx-auto px-8 lg:px-12 py-16">
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Left - Brand -->
       <div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="zen-dot"></div>
-          <span class="font-display text-2xl text-bark">Cardo Tisler</span>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="forge-mark"></div>
+          <span class="font-display text-2xl text-bone tracking-wider">Cardo Tisler</span>
         </div>
-        <p class="text-drift leading-relaxed max-w-sm">
-          Craftsman based in Estonia.
-          Building with patience, finishing with care.
+        <p class="text-smoke leading-relaxed max-w-sm">
+          Craftsman based in Estonia. Building with intention,
+          finishing with care. Every project forged to last.
         </p>
+
+        <!-- Rivets decoration -->
+        <div class="flex items-center gap-3 mt-6">
+          <div class="rivet"></div>
+          <div class="rivet"></div>
+          <div class="rivet"></div>
+          <div class="w-16 h-0.5 bg-walnut"></div>
+        </div>
       </div>
 
-      <!-- Right - contact -->
+      <!-- Right - Contact -->
       <div class="md:text-right">
-        <p class="natural-label mb-4">Contact</p>
-        <div class="space-y-2">
+        <span class="workshop-label block mb-4">Contact</span>
+        <div class="space-y-3">
           <a
             href="mailto:hello@cardotisler.ee"
-            class="block text-stone hover:text-bark transition-colors duration-300"
+            class="block text-ash hover:text-copper transition-colors duration-300"
           >
             hello@cardotisler.ee
           </a>
@@ -34,7 +39,7 @@ const currentYear = new Date().getFullYear();
             href="https://github.com/CardoTisler"
             target="_blank"
             rel="noopener noreferrer"
-            class="block text-stone hover:text-bark transition-colors duration-300"
+            class="block text-ash hover:text-copper transition-colors duration-300"
           >
             GitHub
           </a>
@@ -42,13 +47,15 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- Bottom -->
-    <div class="mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="organic-line flex-1 hidden sm:block"></div>
-      <p class="text-drift text-sm px-6">
-        &copy; {currentYear}
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-walnut flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-smoke text-sm">
+        &copy; {currentYear} Cardo Tisler
       </p>
-      <div class="organic-line flex-1 hidden sm:block"></div>
+      <div class="copper-line w-24"></div>
+      <p class="text-smoke text-sm">
+        Estonia
+      </p>
     </div>
   </div>
 </footer>
