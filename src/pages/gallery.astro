@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import ProjectGrid from '@/components/ProjectGrid.astro';
+import { sortProjectsByDate } from '@/lib/utils';
+
+const allProjects = await getCollection('projects');
+const sortedProjects = sortProjectsByDate(allProjects);
+---
+
+<Layout title="Gallery | Cardo Tisler">
+  <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-3xl font-bold mb-8">All Projects</h1>
+      <ProjectGrid
+        projects={sortedProjects}
+        emptyMessage="No projects yet. Add your first project in src/content/projects/"
+      />
+    </div>
+  </section>
+</Layout>

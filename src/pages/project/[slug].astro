@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout title={`${project.data.title} | Cardo Tisler`}>
+  <article class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-gray-400 hover:text-gold transition-colors mb-8"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to projects
+      </a>
+
+      <span class="text-gold text-sm font-medium uppercase tracking-wider">
+        {project.data.category}
+      </span>
+      <h1 class="mt-2 text-3xl sm:text-4xl font-bold">{project.data.title}</h1>
+
+      {project.data.date && (
+        <p class="mt-2 text-gray-400">
+          {project.data.date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+          })}
+        </p>
+      )}
+
+      <div class="mt-8">
+        <Image
+          src={project.data.thumbnail}
+          alt={project.data.title}
+          width={1200}
+          height={800}
+          class="w-full rounded-lg"
+        />
+      </div>
+
+      {project.data.images && project.data.images.length > 0 && (
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {project.data.images.map((image, index) => (
+            <Image
+              src={image}
+              alt={`${project.data.title} - Image ${index + 1}`}
+              width={600}
+              height={400}
+              class="w-full rounded-lg"
+            />
+          ))}
+        </div>
+      )}
+
+      <div class="mt-8 prose prose-invert max-w-none">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>

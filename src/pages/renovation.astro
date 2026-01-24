@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import ProjectGrid from '@/components/ProjectGrid.astro';
+import { sortProjectsByDate } from '@/lib/utils';
+
+const projects = await getCollection('projects', ({ data }) => data.category === 'Renovation');
+const sortedProjects = sortProjectsByDate(projects);
+---
+
+<Layout title="Renovation | Cardo Tisler">
+  <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-3xl font-bold mb-2">Renovation</h1>
+      <p class="text-gray-400 mb-8">Home renovation and remodeling projects</p>
+      <ProjectGrid projects={sortedProjects} emptyMessage="No renovation projects yet." />
+    </div>
+  </section>
+</Layout>

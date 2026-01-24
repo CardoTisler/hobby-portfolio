@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  emptyMessage?: string;
+}
+
+const { projects, emptyMessage = 'No projects yet.' } = Astro.props;
+---
+
+{projects.length > 0 ? (
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {projects.map((project) => (
+      <ProjectCard
+        title={project.data.title}
+        category={project.data.category}
+        thumbnail={project.data.thumbnail}
+        slug={project.id}
+      />
+    ))}
+  </div>
+) : (
+  <p class="text-gray-400 text-center py-12">{emptyMessage}</p>
+)}

@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-dark: #1D1C1C;
+  --color-dark-light: #222222;
+  --color-gold: #EFBF04;
+  --font-sans: 'Karla', 'Poppins', 'DM Sans', sans-serif;
+}
