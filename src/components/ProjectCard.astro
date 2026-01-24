@@ -7,31 +7,72 @@ interface Props {
   category: string;
   thumbnail: ImageMetadata;
   slug: string;
+  index?: number;
 }
 
-const { title, category, thumbnail, slug } = Astro.props;
+const { title, category, thumbnail, slug, index = 0 } = Astro.props;
 ---
 
 <a
   href={`/project/${slug}`}
-  class="group block bg-dark-light rounded-lg overflow-hidden transition-transform hover:scale-[1.02]"
+  class="group relative block animate-scale-in"
+  style={`animation-delay: ${index * 100}ms`}
 >
-  <div class="aspect-[4/3] overflow-hidden">
-    <Image
-      src={thumbnail}
-      alt={title}
-      width={600}
-      height={450}
-      class="w-full h-full object-cover transition-transform group-hover:scale-105"
-    />
-  </div>
-  <div class="p-4">
-    <span class="text-gold text-xs font-medium uppercase tracking-wider">
-      {category}
-    </span>
-    <h3 class="mt-1 text-lg font-semibold group-hover:text-gold transition-colors">
-      {title}
-    </h3>
-    <p class="mt-2 text-sm text-gray-400">Click for more</p>
-  </div>
+  <!-- Main card -->
+  <article class="relative overflow-hidden bg-charcoal hover-lift">
+    <!-- Image container -->
+    <div class="relative aspect-[4/3] overflow-hidden">
+      <Image
+        src={thumbnail}
+        alt={title}
+        width={600}
+        height={450}
+        class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+      />
+
+      <!-- Image overlay gradient -->
+      <div class="absolute inset-0 bg-gradient-to-t from-coal/90 via-coal/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+      <!-- Category badge -->
+      <div class="absolute top-4 left-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-coal/80 backdrop-blur-sm text-brass text-xs font-medium tracking-widest uppercase">
+          <span class="w-1.5 h-1.5 bg-brass rounded-full"></span>
+          {category}
+        </span>
+      </div>
+
+      <!-- Hover reveal content -->
+      <div class="absolute inset-x-0 bottom-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h3 class="font-display text-2xl text-cream leading-tight">
+              {title}
+            </h3>
+            <p class="mt-2 text-dust text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              View project details
+            </p>
+          </div>
+
+          <!-- Arrow icon -->
+          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center border border-stone/30 group-hover:border-brass group-hover:bg-brass transition-all duration-300">
+            <svg
+              class="w-5 h-5 text-stone group-hover:text-coal transition-colors duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom accent line -->
+    <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-brass group-hover:w-full transition-all duration-500"></div>
+  </article>
+
+  <!-- Frame corners -->
+  <div class="absolute -top-1 -left-1 w-4 h-4 border-l-2 border-t-2 border-stone/0 group-hover:border-brass/50 transition-colors duration-300"></div>
+  <div class="absolute -bottom-1 -right-1 w-4 h-4 border-r-2 border-b-2 border-stone/0 group-hover:border-brass/50 transition-colors duration-300"></div>
 </a>

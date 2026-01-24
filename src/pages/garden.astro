@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
+import CategoryHeader from '@/components/CategoryHeader.astro';
 import ProjectGrid from '@/components/ProjectGrid.astro';
 import { sortProjectsByDate } from '@/lib/utils';
 
@@ -9,11 +10,18 @@ const sortedProjects = sortProjectsByDate(projects);
 ---
 
 <Layout title="Garden | Cardo Tisler">
-  <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+  <CategoryHeader
+    title="Garden"
+    description="Outdoor structures, raised beds, and landscape features. Bringing life to outdoor spaces."
+    projectCount={sortedProjects.length}
+  />
+
+  <section class="pb-24 px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <h1 class="text-3xl font-bold mb-2">Garden</h1>
-      <p class="text-gray-400 mb-8">Outdoor and garden projects</p>
-      <ProjectGrid projects={sortedProjects} emptyMessage="No garden projects yet." />
+      <ProjectGrid
+        projects={sortedProjects}
+        emptyMessage="Garden projects coming soon."
+      />
     </div>
   </section>
 </Layout>

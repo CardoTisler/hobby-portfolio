@@ -13,61 +13,174 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+
+// Get related projects from same category
+const allProjects = await getCollection('projects');
+const relatedProjects = allProjects
+  .filter((p) => p.data.category === project.data.category && p.id !== project.id)
+  .slice(0, 2);
 ---
 
 <Layout title={`${project.data.title} | Cardo Tisler`}>
-  <article class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto">
-      <a
-        href="/"
-        class="inline-flex items-center gap-2 text-gray-400 hover:text-gold transition-colors mb-8"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-        Back to projects
-      </a>
+  <article class="pt-32 pb-24">
+    <!-- Hero section -->
+    <div class="px-6 lg:px-8 mb-12">
+      <div class="max-w-7xl mx-auto">
+        <!-- Back link -->
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-ash hover:text-cream transition-colors duration-300 mb-8 animate-fade-in"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span class="text-sm">Back to projects</span>
+        </a>
 
-      <span class="text-gold text-sm font-medium uppercase tracking-wider">
-        {project.data.category}
-      </span>
-      <h1 class="mt-2 text-3xl sm:text-4xl font-bold">{project.data.title}</h1>
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          <div class="lg:col-span-8 animate-fade-up">
+            <!-- Category badge -->
+            <a
+              href={`/${project.data.category.toLowerCase()}`}
+              class="inline-flex items-center gap-2 text-brass text-sm font-medium tracking-[0.2em] uppercase mb-4 hover:text-brass-light transition-colors"
+            >
+              <span class="w-8 h-px bg-brass"></span>
+              {project.data.category}
+            </a>
 
-      {project.data.date && (
-        <p class="mt-2 text-gray-400">
-          {project.data.date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-          })}
-        </p>
-      )}
+            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-cream leading-[0.95]">
+              {project.data.title}
+            </h1>
+          </div>
 
-      <div class="mt-8">
-        <Image
-          src={project.data.thumbnail}
-          alt={project.data.title}
-          width={1200}
-          height={800}
-          class="w-full rounded-lg"
-        />
-      </div>
-
-      {project.data.images && project.data.images.length > 0 && (
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {project.data.images.map((image, index) => (
-            <Image
-              src={image}
-              alt={`${project.data.title} - Image ${index + 1}`}
-              width={600}
-              height={400}
-              class="w-full rounded-lg"
-            />
-          ))}
+          <div class="lg:col-span-4 lg:flex lg:items-end animate-fade-up delay-200">
+            {project.data.date && (
+              <div class="flex items-center gap-4">
+                <span class="font-display text-4xl text-brass">
+                  {project.data.date.toLocaleDateString('en-US', { year: 'numeric' })}
+                </span>
+                <span class="text-ash text-sm tracking-wide uppercase">
+                  {project.data.date.toLocaleDateString('en-US', { month: 'long' })}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
+    </div>
 
-      <div class="mt-8 prose prose-invert max-w-none">
-        <Content />
+    <!-- Main image -->
+    <div class="px-6 lg:px-8 mb-16">
+      <div class="max-w-7xl mx-auto">
+        <div class="relative animate-scale-in delay-300">
+          <Image
+            src={project.data.thumbnail}
+            alt={project.data.title}
+            width={1400}
+            height={900}
+            class="w-full aspect-[16/10] object-cover"
+          />
+
+          <!-- Frame corners -->
+          <div class="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-brass/50"></div>
+          <div class="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-brass/50"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-12">
+          <!-- Main content -->
+          <div class="lg:col-span-8">
+            <div class="prose prose-lg prose-invert prose-p:text-dust prose-p:font-light prose-p:leading-relaxed prose-headings:font-display prose-headings:text-cream prose-a:text-brass prose-a:no-underline hover:prose-a:text-brass-light max-w-none">
+              <Content />
+            </div>
+
+            <!-- Additional images -->
+            {project.data.images && project.data.images.length > 0 && (
+              <div class="mt-16">
+                <h3 class="font-display text-2xl text-cream mb-8">Project Gallery</h3>
+                <div class="grid sm:grid-cols-2 gap-6">
+                  {project.data.images.map((image, index) => (
+                    <div class="relative group">
+                      <Image
+                        src={image}
+                        alt={`${project.data.title} - Image ${index + 1}`}
+                        width={600}
+                        height={450}
+                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                      <div class="absolute inset-0 bg-brass/0 group-hover:bg-brass/5 transition-colors duration-300"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="lg:col-span-4">
+            <div class="sticky top-32 space-y-8">
+              <!-- Project details card -->
+              <div class="p-6 bg-charcoal/50 border border-stone/20">
+                <h3 class="text-sm font-medium tracking-widest uppercase text-ash mb-6">
+                  Project Details
+                </h3>
+
+                <dl class="space-y-4">
+                  <div class="flex justify-between items-center py-3 border-b border-stone/20">
+                    <dt class="text-ash">Category</dt>
+                    <dd class="text-cream">{project.data.category}</dd>
+                  </div>
+                  {project.data.date && (
+                    <div class="flex justify-between items-center py-3 border-b border-stone/20">
+                      <dt class="text-ash">Completed</dt>
+                      <dd class="text-cream">
+                        {project.data.date.toLocaleDateString('en-US', {
+                          month: 'short',
+                          year: 'numeric',
+                        })}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+
+              <!-- Related projects -->
+              {relatedProjects.length > 0 && (
+                <div>
+                  <h3 class="text-sm font-medium tracking-widest uppercase text-ash mb-6">
+                    Related Projects
+                  </h3>
+                  <div class="space-y-4">
+                    {relatedProjects.map((related) => (
+                      <a
+                        href={`/project/${related.id}`}
+                        class="group flex items-center gap-4 p-3 -mx-3 hover:bg-charcoal/50 transition-colors duration-300"
+                      >
+                        <Image
+                          src={related.data.thumbnail}
+                          alt={related.data.title}
+                          width={80}
+                          height={60}
+                          class="w-20 h-15 object-cover"
+                        />
+                        <div>
+                          <h4 class="text-cream group-hover:text-brass transition-colors duration-300">
+                            {related.data.title}
+                          </h4>
+                          <span class="text-ash text-sm">{related.data.category}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   </article>

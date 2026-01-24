@@ -10,25 +10,40 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-dark/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <a href="/" class="text-xl font-bold tracking-wide">
-        Cardo Tisler
+<header class="fixed top-0 left-0 right-0 z-50">
+  <!-- Gradient fade background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-coal via-coal/95 to-transparent pointer-events-none"></div>
+
+  <nav class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a
+        href="/"
+        class="group flex items-center gap-3 animate-fade-in"
+      >
+        <span class="font-display text-2xl text-cream tracking-tight">
+          Cardo Tisler
+        </span>
+        <span class="hidden sm:block w-8 h-px bg-gradient-to-r from-brass to-transparent group-hover:w-12 transition-all duration-500"></span>
       </a>
 
       <!-- Desktop navigation -->
-      <ul class="hidden md:flex items-center gap-8">
-        {navLinks.map((link) => (
-          <li>
+      <ul class="hidden md:flex items-center gap-1">
+        {navLinks.map((link, index) => (
+          <li class="animate-fade-in" style={`animation-delay: ${(index + 1) * 100}ms`}>
             <a
               href={link.href}
               class:list={[
-                'text-sm font-medium transition-colors hover:text-gold',
-                currentPath === link.href ? 'text-gold' : 'text-white',
+                'relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300',
+                currentPath === link.href
+                  ? 'text-brass'
+                  : 'text-dust hover:text-cream',
               ]}
             >
               {link.label}
+              {currentPath === link.href && (
+                <span class="absolute bottom-0 left-4 right-4 h-px bg-brass"></span>
+              )}
             </a>
           </li>
         ))}
@@ -37,49 +52,62 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2"
+        class="md:hidden relative w-10 h-10 flex items-center justify-center text-cream"
         aria-label="Toggle menu"
       >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
+        <div class="relative w-5 h-4 flex flex-col justify-between" id="hamburger">
+          <span class="w-full h-0.5 bg-current transition-transform duration-300 origin-center"></span>
+          <span class="w-full h-0.5 bg-current transition-opacity duration-300"></span>
+          <span class="w-full h-0.5 bg-current transition-transform duration-300 origin-center"></span>
+        </div>
       </button>
     </div>
 
     <!-- Mobile navigation -->
-    <ul id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
-      {navLinks.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            class:list={[
-              'block py-2 text-sm font-medium transition-colors hover:text-gold',
-              currentPath === link.href ? 'text-gold' : 'text-white',
-            ]}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="py-4 border-t border-stone/30">
+        <ul class="space-y-1">
+          {navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  'block py-3 px-2 text-lg font-light tracking-wide transition-colors duration-300 border-l-2',
+                  currentPath === link.href
+                    ? 'text-brass border-brass'
+                    : 'text-dust hover:text-cream border-transparent hover:border-stone',
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   </nav>
 </header>
 
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  let isOpen = false;
 
   btn?.addEventListener('click', () => {
+    isOpen = !isOpen;
     menu?.classList.toggle('hidden');
+
+    // Animate hamburger to X
+    const spans = hamburger?.querySelectorAll('span');
+    if (spans && isOpen) {
+      spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    } else if (spans) {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = '';
+    }
   });
 </script>
