@@ -44,49 +44,4 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
       />
     </div>
   </section>
-
-  <!-- Philosophy section -->
-  <section class="py-24 px-8 lg:px-12 border-t border-walnut">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Quote -->
-        <div class="animate-fade-up">
-          <p class="font-display text-3xl sm:text-4xl text-bone leading-relaxed tracking-wide">
-            Every project begins at the workbench.
-            Shaped by hand. Sanded smooth.
-            Built to last generations.
-          </p>
-
-          <div class="mt-10 copper-line max-w-xs"></div>
-        </div>
-
-        <!-- Stats panel -->
-        <div class="animate-fade-up delay-200">
-          <div class="hammered-border p-8 bg-timber/50">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="rivet"></div>
-              <div class="rivet"></div>
-              <div class="rivet"></div>
-              <span class="workshop-label ml-2">Workshop Stats</span>
-            </div>
-
-            <div class="grid grid-cols-2 gap-8">
-              <div>
-                <span class="font-display text-4xl text-copper">{allProjects.length}</span>
-                <p class="text-smoke text-sm mt-1">Projects</p>
-              </div>
-              <div>
-                <span class="font-display text-4xl text-copper">3</span>
-                <p class="text-smoke text-sm mt-1">Disciplines</p>
-              </div>
-              <div class="col-span-2">
-                <span class="font-display text-2xl text-bone">Estonia</span>
-                <p class="text-smoke text-sm mt-1">Workshop Location</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </Layout>
