@@ -1,7 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '@/assets/logo.png';
-
 const navLinks = [
   { href: '/woodworking', label: 'Woodworking' },
   { href: '/renovation', label: 'Renovation' },
@@ -15,14 +12,15 @@ const currentPath = Astro.url.pathname;
 <header class="fixed top-0 left-0 right-0 z-50 bg-charwood/95 backdrop-blur-sm border-b border-walnut">
   <nav class="max-w-6xl mx-auto px-8 lg:px-12">
     <div class="flex items-center justify-between h-18">
-      <!-- Logo -->
-      <a href="/" class="animate-fade-in">
-        <Image
-          src={logo}
-          alt="Cardo Tisler"
-          height={40}
-          class="h-10 w-auto"
-        />
+      <!-- Logo with forge mark -->
+      <a href="/" class="animate-fade-in group flex items-center gap-4">
+        <div class="forge-mark"></div>
+        <div>
+          <span class="font-display text-xl text-bone tracking-wider">
+            Cardo Tisler
+          </span>
+          <span class="block workshop-label text-[9px] mt-0.5">Craftsman</span>
+        </div>
       </a>
 
       <!-- Desktop navigation -->
