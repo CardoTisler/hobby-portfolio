@@ -25,4 +25,4 @@ images:
   - "../../assets/projects/nightstands/20250629_155527-scaled.jpg"
 ---
 
-Carcass made from European ash, front panels made from American ash, and forged handles by Ferrum Fabrica. Finished with Osmo Topoil (Terra) and Osmo Topoil (Clear).
+Carcass made from European ash, front panels made from American ash, and forged handles by Ferrum Fabrica.

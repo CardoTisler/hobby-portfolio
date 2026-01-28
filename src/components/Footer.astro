@@ -1,70 +1,15 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '@/assets/logo.png';
-
-const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mt-auto bg-timber border-t border-walnut">
-  <div class="max-w-6xl mx-auto px-8 lg:px-12 py-16">
-    <!-- Logo as signature -->
-    <div class="flex justify-center mb-12">
-      <Image
-        src={logo}
-        alt="Cardo Tisler"
-        height={120}
-        class="h-28 sm:h-32 w-auto opacity-90"
-      />
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-12">
-      <!-- Left - About -->
-      <div>
-        <p class="text-smoke leading-relaxed max-w-sm">
-          Woodworking, renovation, and garden projects.
-          Based in Estonia.
-        </p>
-
-        <!-- Rivets decoration -->
-        <div class="flex items-center gap-3 mt-6">
-          <div class="rivet"></div>
-          <div class="rivet"></div>
-          <div class="rivet"></div>
-          <div class="w-16 h-0.5 bg-walnut"></div>
-        </div>
-      </div>
-
-      <!-- Right - Contact -->
-      <div class="md:text-right">
-        <span class="workshop-label block mb-4">Contact</span>
-        <div class="space-y-3">
-          <a
-            href="mailto:cardotisler@live.com"
-            class="block text-ash hover:text-copper transition-colors duration-300"
-          >
-            cardotisler@live.com
-          </a>
-          <a
-            href="https://github.com/CardoTisler"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block text-ash hover:text-copper transition-colors duration-300"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom bar -->
-    <div class="mt-12 pt-8 border-t border-walnut flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-smoke text-sm">
-        &copy; {currentYear} Cardo Tisler
-      </p>
-      <div class="copper-line w-24"></div>
-      <p class="text-smoke text-sm">
-        Estonia
-      </p>
-    </div>
+  <div class="flex justify-center py-6">
+    <Image
+      src={logo}
+      alt="Cardo Tisler"
+      height={120}
+      class="h-28 sm:h-32 w-auto opacity-90"
+    />
   </div>
 </footer>

@@ -4,8 +4,8 @@ category: "Woodworking"
 thumbnail: "../../assets/projects/office-desk/20260118_194941-1024x768.jpg"
 featured: true
 date: 2026-01-19
-material: "European ash"
-finish: "Osmo Topoil (Terra)"
+material: "European ash & wenge"
+finish: "Osmo Polyx (3062)"
 images:
   - "../../assets/projects/office-desk/20260111_112745-scaled.jpg"
   - "../../assets/projects/office-desk/20260111_113830-scaled.jpg"
@@ -35,4 +35,6 @@ images:
   - "../../assets/projects/office-desk/20260119_195741-scaled.jpg"
 ---
 
-Custom-built office desk project.
+The desk features a straightforward ash tabletop paired with wenge breadboard ends that provide visual contrast. These breadboard elements serve a dual purpose: they create an aesthetic accent while functioning as structural stabilizers to maintain the desk's flatness and accommodate natural wood movement.
+
+A practical slot has been incorporated into the far end of the table surface to route electrical wiring and accommodate a wall socket, allowing the desk to be positioned directly against a wall. The base components were sourced from Seisuk.

@@ -1,0 +1,70 @@
+---
+interface Props {
+  costs: { item: string; cost: number }[];
+}
+
+const { costs } = Astro.props;
+const total = costs.reduce((sum, c) => sum + c.cost, 0);
+---
+
+<div class="hammered-border bg-timber/50 overflow-hidden">
+  <!-- Header -->
+  <div class="flex items-center justify-between p-6 pb-4">
+    <div class="flex items-center gap-3">
+      <div class="rivet"></div>
+      <span class="workshop-label">Material Costs</span>
+    </div>
+    <button
+      class="cost-toggle text-smoke hover:text-bone transition-colors text-xs tracking-wider uppercase"
+      data-cost-toggle
+      aria-expanded="false"
+    >
+      Show
+    </button>
+  </div>
+
+  <!-- Total (always visible) -->
+  <div class="px-6 pb-5">
+    <div class="flex justify-between items-baseline border-t border-copper/40 pt-4">
+      <span class="text-bone text-sm font-medium tracking-wide">Total</span>
+      <span class="font-display text-xl text-copper tracking-wide">
+        &euro;{total.toFixed(2)}
+      </span>
+    </div>
+  </div>
+
+  <!-- Line items (collapsible) -->
+  <div class="cost-items" data-cost-items hidden>
+    <div class="border-t border-walnut">
+      <table class="w-full">
+        <tbody>
+          {costs.map((entry, i) => (
+            <tr class:list={[
+              'border-b border-walnut/50 last:border-b-0',
+              i % 2 === 0 ? 'bg-charwood/30' : '',
+            ]}>
+              <td class="py-2.5 px-6 text-smoke text-sm">{entry.item}</td>
+              <td class="py-2.5 px-6 text-bone text-sm text-right tabular-nums whitespace-nowrap">
+                {entry.cost.toFixed(2)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-cost-toggle]').forEach((btn) => {
+    const items = btn.closest('.hammered-border')?.querySelector('[data-cost-items]') as HTMLElement;
+    if (!items) return;
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'Show' : 'Hide';
+      items.hidden = expanded;
+    });
+  });
+</script>

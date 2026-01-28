@@ -3,8 +3,8 @@ title: "Dining Table Mk1"
 category: "Woodworking"
 thumbnail: "../../assets/projects/dining-table-mk1/20250322_200515-scaled.jpg"
 featured: false
-date: 2025-03-22
-material: "European ash, black metal square legs"
+date: 2025-02-20
+material: "European ash"
 finish: "Osmo Topoil (Terra)"
 images:
   - "../../assets/projects/dining-table-mk1/20250124_181830-scaled.jpg"
@@ -16,4 +16,4 @@ images:
   - "../../assets/projects/dining-table-mk1/20250322_200522-scaled.jpg"
 ---
 
-A simple live edge dining table with black metal square legs. European ash with Osmo Topoil (Terra) finish.
+Simple live edge dining table, with black metal square legs.

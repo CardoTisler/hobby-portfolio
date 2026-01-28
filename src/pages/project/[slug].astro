@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '@/layouts/Layout.astro';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider.astro';
 import ImageGallery from '@/components/ImageGallery.astro';
+import CostSummary from '@/components/CostSummary.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -28,14 +29,14 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
         <!-- Back link -->
         <a
           href="/"
-          class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 pt-4 animate-fade-in group"
+          class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 pt-4 group"
         >
           <span class="w-6 h-0.5 bg-copper group-hover:w-10 transition-all duration-300"></span>
           <span class="text-sm tracking-wide">Back</span>
         </a>
 
         <!-- Title block -->
-        <div class="hammered-border p-8 bg-charwood animate-fade-up">
+        <div class="hammered-border p-8 bg-charwood">
           <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
               <div class="flex items-center gap-3 mb-4">
@@ -72,7 +73,7 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
     <div class="px-8 lg:px-12 mb-16">
       <div class="max-w-6xl mx-auto">
         {hasBeforeAfter ? (
-          <div class="animate-fade-up delay-200">
+          <div>
             <BeforeAfterSlider
               beforeImage={project.data.beforeImage!}
               afterImage={project.data.afterImage!}
@@ -80,7 +81,7 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
             />
           </div>
         ) : (
-          <div class="animate-fade-up delay-200 timber-card p-4">
+          <div class="timber-card p-4">
             <Image
               src={project.data.thumbnail}
               alt={project.data.title}
@@ -148,6 +149,13 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
                       </div>
                     )}
                   </dl>
+                </div>
+              )}
+
+              <!-- Cost Summary -->
+              {project.data.costs && project.data.costs.length > 0 && (
+                <div class="mt-6">
+                  <CostSummary costs={project.data.costs} />
                 </div>
               )}
             </div>

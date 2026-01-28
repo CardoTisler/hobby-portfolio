@@ -3,7 +3,7 @@ title: "Bookshelf"
 category: "Woodworking"
 thumbnail: "../../assets/projects/bookshelf/20250220_210119-1-scaled.jpg"
 featured: false
-date: 2025-02-20
+date: 2025-03-22
 material: "European ash"
 finish: "Osmo Topoil (Terra)"
 images:
@@ -20,4 +20,4 @@ images:
   - "../../assets/projects/bookshelf/20250220_210709-scaled.jpg"
 ---
 
-Simple bookshelf with natural edge shelves. European ash with Osmo Topoil (Terra) finish.
+A simple bookshelf with live edge shelves.

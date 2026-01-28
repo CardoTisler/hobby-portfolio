@@ -6,6 +6,23 @@ beforeImage: "../../assets/projects/bedroom/20241015_122045-scaled.jpg"
 afterImage: "../../assets/projects/bedroom/20240822_174921-scaled.jpg"
 featured: false
 date: 2024-10-15
+costs:
+  - { item: "Parquet", cost: 532.38 }
+  - { item: "Fiber concrete", cost: 359.80 }
+  - { item: "Wall & ceiling paint", cost: 167.43 }
+  - { item: "Primer paint", cost: 45.00 }
+  - { item: "Skirting boards", cost: 43.90 }
+  - { item: "Parquet underlayment", cost: 20.20 }
+  - { item: "Paint stripper", cost: 14.07 }
+  - { item: "Radiator paint", cost: 12.90 }
+  - { item: "Curtain rail", cost: 11.99 }
+  - { item: "Wood stain", cost: 10.78 }
+  - { item: "Wall outlets", cost: 9.66 }
+  - { item: "Outlet boxes", cost: 8.46 }
+  - { item: "Light switch", cost: 5.54 }
+  - { item: "Light switch frame", cost: 5.04 }
+  - { item: "Double light switch", cost: 4.83 }
+  - { item: "Curtain rail hooks", cost: 3.21 }
 images:
   - "../../assets/projects/bedroom/20240822_174913-scaled.jpg"
   - "../../assets/projects/bedroom/20240822_174931-scaled.jpg"
@@ -38,4 +55,6 @@ images:
   - "../../assets/projects/bedroom/20241011_130600-scaled.jpg"
 ---
 
-Bedroom renovation project.
+Continued the black-and-white theme with a horizontal-layer approach. Black and white walls, dark oak parquet and black ceiling.
+
+Due to a very uneven floor, the parquet became very noisy when walking over it, so a year later the decision was made to pull everything up and pour a new floor with fiber concrete. I'd say this reduced the noises made by the parquet by 90%.

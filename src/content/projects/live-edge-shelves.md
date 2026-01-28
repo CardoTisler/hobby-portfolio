@@ -8,4 +8,4 @@ material: "European ash"
 finish: "Osmo Topoil (Terra)"
 ---
 
-The simplest live edge shelves one can make. European ash with Osmo TopOil (Terra) finish.
+The simplest live edge shelves one can make.

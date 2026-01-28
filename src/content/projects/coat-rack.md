@@ -20,4 +20,4 @@ images:
   - "../../assets/projects/coat-rack/20250504_114713-scaled.jpg"
 ---
 
-Coat rack with removable shelf dividers. European ash with Osmo Topoil (Terra) finish. Mounted using a French cleat system.
+Coat rack with removable shelf dividers. Attached with the french cleat system.

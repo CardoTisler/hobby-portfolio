@@ -4,8 +4,8 @@ category: "Woodworking"
 thumbnail: "../../assets/projects/coffee-table/20251224_145042-1024x768.jpg"
 featured: true
 date: 2025-12-24
-material: "European ash with American maple and purpleheart bowties"
-finish: "Osmo Topoil (Terra) & Osmo Topoil (Clear)"
+material: "European ash, American maple, purpleheart"
+finish: "Osmo Topoil (Terra) on tabletops, Osmo Topoil (Clear) on frame"
 images:
   - "../../assets/projects/coffee-table/20251216_203325-scaled.jpg"
   - "../../assets/projects/coffee-table/20251217_192915-scaled.jpg"
@@ -40,4 +40,4 @@ images:
   - "../../assets/projects/coffee-table/20251224_145117-scaled.jpg"
 ---
 
-Custom coffee table build.
+A light-framed coffee table featuring dark tabletops with decorative elements. Bowtie and square inlays address natural cracks and holes in the wood, extending the piece's lifespan. The tabletops utilize threaded inserts connected to the frame via bolts and washers, enabling seasonal wood movement accommodation.

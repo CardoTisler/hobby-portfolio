@@ -15,4 +15,4 @@ images:
   - "../../assets/projects/shoe-rack/20250612_215151-scaled.jpg"
 ---
 
-The simplest shoe rack ever made. European ash with Osmo Topoil (Terra) finish.
+The simplest shoe rack ever made.

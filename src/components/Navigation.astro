@@ -15,15 +15,15 @@ const currentPath = Astro.url.pathname;
       <!-- Logo with forge mark -->
       <a href="/" class="group flex items-center gap-4">
         <div class="forge-mark"></div>
-        <span class="font-display text-xl text-bone tracking-wider">
-          Cardo Tisler
+        <span class="font-display text-xl tracking-wider">
+          <span class="text-bone">Cardo</span> <span class="text-copper">Tisler</span>
         </span>
       </a>
 
       <!-- Desktop navigation -->
       <ul class="hidden md:flex items-center gap-8">
         {navLinks.map((link, index) => (
-          <li class="animate-fade-in" style={`animation-delay: ${(index + 1) * 80}ms`}>
+          <li>
             <a
               href={link.href}
               class:list={[

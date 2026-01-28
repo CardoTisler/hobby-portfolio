@@ -15,6 +15,10 @@ const projects = defineCollection({
       date: z.coerce.date().optional(),
       material: z.string().optional(),
       finish: z.string().optional(),
+      costs: z.array(z.object({
+        item: z.string(),
+        cost: z.number(),
+      })).optional(),
     }),
 });
 
