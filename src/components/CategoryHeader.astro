@@ -13,14 +13,14 @@ const { title, description, projectCount } = Astro.props;
     <!-- Back link -->
     <a
       href="/"
-      class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 animate-fade-in group"
+      class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 group"
     >
       <span class="w-6 h-0.5 bg-copper group-hover:w-10 transition-all duration-300"></span>
       <span class="text-sm tracking-wide">Back</span>
     </a>
 
     <!-- Title block -->
-    <div class="hammered-border p-8 bg-charwood animate-fade-up">
+    <div class="hammered-border p-8 bg-charwood">
       <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
         <div>
           <div class="flex items-center gap-3 mb-4">
@@ -30,9 +30,11 @@ const { title, description, projectCount } = Astro.props;
           <h1 class="font-display text-4xl sm:text-5xl text-bone tracking-wider">
             {title}
           </h1>
-          <p class="mt-4 text-smoke max-w-lg leading-relaxed">
-            {description}
-          </p>
+          {description && (
+            <p class="mt-4 text-smoke max-w-lg leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
 
         <!-- Decorative rivets -->

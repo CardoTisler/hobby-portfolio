@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '@/layouts/Layout.astro';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider.astro';
+import ImageGallery from '@/components/ImageGallery.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -14,10 +16,8 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-const allProjects = await getCollection('projects');
-const relatedProjects = allProjects
-  .filter((p) => p.data.category === project.data.category && p.id !== project.id)
-  .slice(0, 2);
+const hasBeforeAfter = project.data.beforeImage && project.data.afterImage;
+const hasDetails = project.data.date || project.data.material || project.data.finish;
 ---
 
 <Layout title={`${project.data.title} — Cardo Tisler`}>
@@ -68,18 +68,28 @@ const relatedProjects = allProjects
       </div>
     </div>
 
-    <!-- Main image -->
+    <!-- Before/After Slider or Main image -->
     <div class="px-8 lg:px-12 mb-16">
       <div class="max-w-6xl mx-auto">
-        <div class="animate-fade-up delay-200 timber-card p-4">
-          <Image
-            src={project.data.thumbnail}
-            alt={project.data.title}
-            width={1400}
-            height={900}
-            class="w-full aspect-[16/10] object-cover"
-          />
-        </div>
+        {hasBeforeAfter ? (
+          <div class="animate-fade-up delay-200">
+            <BeforeAfterSlider
+              beforeImage={project.data.beforeImage!}
+              afterImage={project.data.afterImage!}
+              title={project.data.title}
+            />
+          </div>
+        ) : (
+          <div class="animate-fade-up delay-200 timber-card p-4">
+            <Image
+              src={project.data.thumbnail}
+              alt={project.data.title}
+              width={1400}
+              height={900}
+              class="w-full aspect-[16/10] object-cover"
+            />
+          </div>
+        )}
       </div>
     </div>
 
@@ -97,76 +107,47 @@ const relatedProjects = allProjects
               <Content />
             </div>
 
-            <!-- Additional images -->
+            <!-- Image Gallery -->
             {project.data.images && project.data.images.length > 0 && (
-              <div class="mt-16 space-y-6">
-                <div class="flex items-center gap-3 mb-6">
-                  <div class="rivet"></div>
-                  <span class="workshop-label">Additional Views</span>
-                </div>
-                {project.data.images.map((image, index) => (
-                  <div class="timber-card p-4 animate-fade-up" style={`animation-delay: ${(index + 1) * 100}ms`}>
-                    <Image
-                      src={image}
-                      alt={`${project.data.title} — ${index + 1}`}
-                      width={800}
-                      height={600}
-                      class="w-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
+              <ImageGallery
+                images={project.data.images}
+                title={project.data.title}
+              />
             )}
           </div>
 
           <!-- Sidebar -->
           <aside class="lg:col-span-4 lg:col-start-9">
-            <div class="sticky top-32 space-y-8">
+            <div class="sticky top-32">
               <!-- Details -->
-              <div class="hammered-border p-6 bg-timber/50">
-                <div class="flex items-center gap-3 mb-6">
-                  <div class="rivet"></div>
-                  <span class="workshop-label">Details</span>
-                </div>
-                <dl class="space-y-4">
-                  <div class="flex justify-between py-3 border-b border-walnut">
-                    <dt class="text-smoke">Category</dt>
-                    <dd class="text-bone">{project.data.category}</dd>
-                  </div>
-                  {project.data.date && (
-                    <div class="flex justify-between py-3 border-b border-walnut">
-                      <dt class="text-smoke">Year</dt>
-                      <dd class="text-bone">
-                        {project.data.date.toLocaleDateString('en-US', { year: 'numeric' })}
-                      </dd>
-                    </div>
-                  )}
-                  <div class="flex justify-between py-3">
-                    <dt class="text-smoke">Status</dt>
-                    <dd class="text-copper font-medium">Complete</dd>
-                  </div>
-                </dl>
-              </div>
-
-              <!-- Related -->
-              {relatedProjects.length > 0 && (
-                <div class="hammered-border p-6 bg-charwood">
+              {hasDetails && (
+                <div class="hammered-border p-6 bg-timber/50">
                   <div class="flex items-center gap-3 mb-6">
                     <div class="rivet"></div>
-                    <span class="workshop-label">Related Work</span>
+                    <span class="workshop-label">Details</span>
                   </div>
-                  <div class="space-y-4">
-                    {relatedProjects.map((related) => (
-                      <a
-                        href={`/project/${related.id}`}
-                        class="group block py-3 border-b border-walnut last:border-0"
-                      >
-                        <span class="font-display text-lg text-bone group-hover:text-copper transition-colors duration-300 tracking-wide">
-                          {related.data.title}
-                        </span>
-                      </a>
-                    ))}
-                  </div>
+                  <dl class="space-y-4">
+                    {project.data.date && (
+                      <div class="flex justify-between py-3 border-b border-walnut">
+                        <dt class="text-smoke">Year</dt>
+                        <dd class="text-bone">
+                          {project.data.date.toLocaleDateString('en-US', { year: 'numeric' })}
+                        </dd>
+                      </div>
+                    )}
+                    {project.data.material && (
+                      <div class="py-3 border-b border-walnut">
+                        <dt class="text-smoke mb-1">Material</dt>
+                        <dd class="text-bone">{project.data.material}</dd>
+                      </div>
+                    )}
+                    {project.data.finish && (
+                      <div class="py-3">
+                        <dt class="text-smoke mb-1">Finish</dt>
+                        <dd class="text-copper font-medium">{project.data.finish}</dd>
+                      </div>
+                    )}
+                  </dl>
                 </div>
               )}
             </div>
