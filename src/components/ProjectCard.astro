@@ -14,7 +14,7 @@ const { title, category, thumbnail, slug, index = 0 } = Astro.props;
 ---
 
 <a
-  href={`/project/${slug}`}
+  href={`/${category.toLowerCase()}/${slug}`}
   class="group block"
 >
   <article class="timber-card forge-glow overflow-hidden">

@@ -34,7 +34,7 @@ const total = costs.reduce((sum, c) => sum + c.cost, 0);
   </div>
 
   <!-- Line items (collapsible) -->
-  <div class="cost-items" data-cost-items hidden>
+  <div class="cost-items" data-cost-items>
     <div class="border-t border-walnut">
       <table class="w-full">
         <tbody>
@@ -55,6 +55,24 @@ const total = costs.reduce((sum, c) => sum + c.cost, 0);
   </div>
 </div>
 
+<style>
+  .cost-items {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 150ms ease, opacity 150ms ease;
+  }
+
+  .cost-items.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .cost-items > div {
+    overflow: hidden;
+  }
+</style>
+
 <script>
   document.querySelectorAll('[data-cost-toggle]').forEach((btn) => {
     const items = btn.closest('.hammered-border')?.querySelector('[data-cost-items]') as HTMLElement;
@@ -64,7 +82,7 @@ const total = costs.reduce((sum, c) => sum + c.cost, 0);
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
       btn.textContent = expanded ? 'Show' : 'Hide';
-      items.hidden = expanded;
+      items.classList.toggle('is-open');
     });
   });
 </script>

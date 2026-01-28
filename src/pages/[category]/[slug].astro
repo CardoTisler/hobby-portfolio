@@ -9,12 +9,16 @@ import CostSummary from '@/components/CostSummary.astro';
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   return projects.map((project) => ({
-    params: { slug: project.id },
+    params: {
+      category: project.data.category.toLowerCase(),
+      slug: project.id,
+    },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
+const { category } = Astro.params;
 const { Content } = await render(project);
 
 const hasBeforeAfter = project.data.beforeImage && project.data.afterImage;
@@ -28,7 +32,7 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
       <div class="max-w-6xl mx-auto">
         <!-- Back link -->
         <a
-          href="/"
+          href={`/${category}`}
           class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 pt-4 group"
         >
           <span class="w-6 h-0.5 bg-copper group-hover:w-10 transition-all duration-300"></span>
