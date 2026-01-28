@@ -18,8 +18,8 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { category } = Astro.params;
 const { Content } = await render(project);
+const category = project.data.category.toLowerCase();
 
 const hasBeforeAfter = project.data.beforeImage && project.data.afterImage;
 const hasDetails = project.data.date || project.data.material || project.data.finish;
@@ -27,10 +27,8 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
 
 <Layout title={`${project.data.title} — Cardo Tisler`}>
   <article class="pt-32 pb-24">
-    <!-- Header -->
     <div class="px-8 lg:px-12 mb-12 pb-12">
       <div class="max-w-6xl mx-auto">
-        <!-- Back link -->
         <a
           href={`/${category}`}
           class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 pt-4 group"
@@ -39,7 +37,6 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
           <span class="text-sm tracking-wide">Back</span>
         </a>
 
-        <!-- Title block -->
         <div class="hammered-border p-8 bg-charwood">
           <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
@@ -62,7 +59,6 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
               )}
             </div>
 
-            <!-- Rivets -->
             <div class="flex items-center gap-3">
               <div class="rivet"></div>
               <div class="rivet"></div>
@@ -77,13 +73,11 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
     <div class="px-8 lg:px-12 mb-16">
       <div class="max-w-6xl mx-auto">
         {hasBeforeAfter ? (
-          <div>
-            <BeforeAfterSlider
-              beforeImage={project.data.beforeImage!}
-              afterImage={project.data.afterImage!}
-              title={project.data.title}
-            />
-          </div>
+          <BeforeAfterSlider
+            beforeImage={project.data.beforeImage!}
+            afterImage={project.data.afterImage!}
+            title={project.data.title}
+          />
         ) : (
           <div class="timber-card p-4">
             <Image
@@ -98,11 +92,9 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
       </div>
     </div>
 
-    <!-- Content -->
     <div class="px-8 lg:px-12">
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-12 gap-12">
-          <!-- Main content -->
           <div class="lg:col-span-7">
             <div class="prose prose-lg max-w-none prose-invert
               prose-p:text-ash prose-p:leading-relaxed
@@ -112,7 +104,6 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
               <Content />
             </div>
 
-            <!-- Image Gallery -->
             {project.data.images && project.data.images.length > 0 && (
               <ImageGallery
                 images={project.data.images}
