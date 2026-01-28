@@ -20,14 +20,14 @@ const { title, description, projectCount } = Astro.props;
     </a>
 
     <!-- Title block -->
-    <div class="hammered-border p-8 bg-charwood">
+    <div class="hammered-border p-5 sm:p-8 bg-charwood">
       <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
         <div>
           <div class="flex items-center gap-3 mb-4">
             <div class="forge-mark"></div>
             <span class="workshop-label">{projectCount} {projectCount === 1 ? 'Project' : 'Projects'}</span>
           </div>
-          <h1 class="font-display text-4xl sm:text-5xl text-bone tracking-wider">
+          <h1 class="font-display text-3xl sm:text-5xl text-bone tracking-wider">
             {title}
           </h1>
           {description && (
