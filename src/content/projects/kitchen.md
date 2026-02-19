@@ -2,8 +2,8 @@
 title: "Kitchen"
 category: "Renovation"
 thumbnail: "../../assets/projects/kitchen/thumbnail.jpg"
-beforeImage: "../../assets/projects/kitchen/20251004_160157-scaled.jpg"
-afterImage: "../../assets/projects/kitchen/20251102_124521-scaled.jpg"
+beforeImage: "../../assets/projects/kitchen/20240831_130858-scaled.jpg"
+afterImage: "../../assets/projects/kitchen/received_917031311264419.jpeg"
 featured: true
 date: 2025-11-02
 costs:
@@ -58,6 +58,19 @@ images:
   - "../../assets/projects/kitchen/20251030_144118-scaled.jpg"
   - "../../assets/projects/kitchen/20251030_144152-scaled.jpg"
   - "../../assets/projects/kitchen/20251102_124535-scaled.jpg"
+  - "../../assets/projects/kitchen/20260126_163344.jpg"
+  - "../../assets/projects/kitchen/20260126_165805.jpg"
+  - "../../assets/projects/kitchen/20260126_181225.jpg"
+  - "../../assets/projects/kitchen/20260215_170347.jpg"
+  - "../../assets/projects/kitchen/20260217_101453.jpg"
+  - "../../assets/projects/kitchen/20260217_174051.jpg"
+  - "../../assets/projects/kitchen/20260217_184506.jpg"
+  - "../../assets/projects/kitchen/20260217_193626.jpg"
+  - "../../assets/projects/kitchen/20260218_165818.jpg"
+  - "../../assets/projects/kitchen/20260218_173226.jpg"
+  - "../../assets/projects/kitchen/received_917031311264419.jpeg"
+  - "../../assets/projects/kitchen/received_2483967488689111.jpeg"
+  - "../../assets/projects/kitchen/received_2625158281187603.jpeg"
 ---
 
 All white kitchen with vinyl dark wood flooring.
