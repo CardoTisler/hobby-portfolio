@@ -179,8 +179,11 @@ const { steps, projectTitle } = Astro.props;
     z-index: 2;
   }
 
-  /* Numbered circle */
+  /* Numbered circle — positioned on the vertical line */
   .step-circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     width: 36px;
     height: 36px;
     min-width: 36px;
@@ -198,8 +201,14 @@ const { steps, projectTitle } = Astro.props;
     line-height: 1;
   }
 
+  /* Push title below the circle on desktop */
+  .step-title {
+    margin-top: 48px;
+  }
+
   .step-title {
     margin: 0;
+    text-align: center;
   }
 
   /* Step content — two-column grid on desktop */
@@ -312,16 +321,20 @@ const { steps, projectTitle } = Astro.props;
       transform: none;
     }
 
-    /* Step header: align left with circle on the line */
     .step-header {
       justify-content: flex-start;
-      padding-left: 0;
+      min-height: 36px;
     }
 
     .step-circle {
-      position: relative;
-      left: -2px; /* center the 36px circle on the 16px line */
-      margin-left: 0;
+      left: 16px;
+      transform: translateX(-50%);
+    }
+
+    .step-title {
+      text-align: left;
+      margin-top: 0;
+      margin-left: 46px;
     }
 
     /* Stack content vertically */
@@ -338,6 +351,18 @@ const { steps, projectTitle } = Astro.props;
 
     .step-content .step-text {
       order: 2 !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress-step {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .step-slide.is-active {
+      animation: none;
     }
   }
 </style>
