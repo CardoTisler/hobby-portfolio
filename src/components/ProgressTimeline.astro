@@ -56,8 +56,8 @@ const { steps, projectTitle } = Astro.props;
           <div class:list={['step-content', { 'step-content--reversed': isEven }]}>
             {/* Text column */}
             <div class="step-text">
-              <p class="text-ash leading-relaxed text-sm">
-                {step.description}
+              <p class="text-ash leading-relaxed text-sm" style="white-space: pre-line;">
+                {step.description.trim()}
               </p>
             </div>
 
