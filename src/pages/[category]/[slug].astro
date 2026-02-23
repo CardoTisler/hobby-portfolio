@@ -5,6 +5,7 @@ import Layout from '@/layouts/Layout.astro';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider.astro';
 import ImageCarousel from '@/components/ImageCarousel.astro';
 import CostSummary from '@/components/CostSummary.astro';
+import ProgressTimeline from '@/components/ProgressTimeline.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -158,5 +159,17 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
         </div>
       </div>
     </div>
+
+    {/* Progress Timeline — full-width, below main grid */}
+    {project.data.progress && project.data.progress.length > 0 && (
+      <div class="px-8 lg:px-12 mt-24">
+        <div class="max-w-6xl mx-auto">
+          <ProgressTimeline
+            steps={project.data.progress}
+            projectTitle={project.data.title}
+          />
+        </div>
+      </div>
+    )}
   </article>
 </Layout>
