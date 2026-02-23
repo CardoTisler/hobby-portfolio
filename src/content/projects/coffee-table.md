@@ -39,7 +39,8 @@ images:
   - "../../assets/projects/coffee-table/20251224_145112-scaled.jpg"
   - "../../assets/projects/coffee-table/20251224_145117-scaled.jpg"
 progress:
-  - title: "Milling & Layout"
+  - leftTitle: "Milling"
+    rightTitle: "Layout"
     description: >
       Rough-milled the ash and maple stock, then laid out the tabletop
       slabs to find the best grain match. Marked locations for the
@@ -48,7 +49,8 @@ progress:
       - "../../assets/projects/coffee-table/20251216_203325-scaled.jpg"
       - "../../assets/projects/coffee-table/20251217_192915-scaled.jpg"
       - "../../assets/projects/coffee-table/20251217_194616-scaled.jpg"
-  - title: "Joinery & Frame"
+  - leftTitle: "Joinery"
+    rightTitle: "Frame"
     description: >
       Cut the mortise-and-tenon joints for the frame assembly. Routed
       inlay cavities for the bowtie and square details using a template.
@@ -57,7 +59,8 @@ progress:
       - "../../assets/projects/coffee-table/20251219_200332-scaled.jpg"
       - "../../assets/projects/coffee-table/20251219_200943-scaled.jpg"
       - "../../assets/projects/coffee-table/20251220_091310-scaled.jpg"
-  - title: "Finishing & Assembly"
+  - leftTitle: "Finishing"
+    rightTitle: "Assembly"
     description: >
       Applied Osmo Topoil — Terra finish on the tabletops for warmth,
       clear coat on the ash frame. Installed threaded inserts for the

@@ -18,7 +18,8 @@ Add optional `progress` array to the project content schema:
 
 ```typescript
 progress: z.array(z.object({
-  title: z.string(),
+  leftTitle: z.string(),
+  rightTitle: z.string(),
   description: z.string(),
   images: z.array(image()),
 })).optional(),

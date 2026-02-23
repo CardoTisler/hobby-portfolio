@@ -20,7 +20,8 @@ const projects = defineCollection({
         cost: z.number(),
       })).optional(),
       progress: z.array(z.object({
-        title: z.string(),
+        leftTitle: z.string(),
+        rightTitle: z.string(),
         description: z.string(),
         images: z.array(image()),
       })).optional(),

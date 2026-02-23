@@ -4,7 +4,8 @@ import type { ImageMetadata } from 'astro';
 
 interface Props {
   steps: {
-    title: string;
+    leftTitle: string;
+    rightTitle: string;
     description: string;
     images: ImageMetadata[];
   }[];
@@ -38,14 +39,17 @@ const { steps, projectTitle } = Astro.props;
           data-step-index={index}
           style={`transition-delay: ${delay}ms;`}
         >
-          {/* Step title row with numbered circle */}
+          {/* Step title row: leftTitle — circle — rightTitle */}
           <div class="step-header">
+            <span class="step-title-left font-display text-xl text-bone tracking-wide">
+              {step.leftTitle}
+            </span>
             <div class="step-circle" aria-hidden="true">
               <span>{stepNumber}</span>
             </div>
-            <h3 class="step-title font-display text-xl text-bone tracking-wide">
-              {step.title}
-            </h3>
+            <span class="step-title-right font-display text-xl text-bone tracking-wide">
+              {step.rightTitle}
+            </span>
           </div>
 
           {/* Step content: two columns on desktop, stacked on mobile */}
@@ -76,7 +80,7 @@ const { steps, projectTitle } = Astro.props;
                   >
                     <Image
                       src={image}
-                      alt={`${projectTitle} — ${step.title} (${imgIndex + 1})`}
+                      alt={`${projectTitle} — ${step.leftTitle} ${step.rightTitle} (${imgIndex + 1})`}
                       width={800}
                       height={500}
                       class="step-slide-image"
@@ -179,11 +183,8 @@ const { steps, projectTitle } = Astro.props;
     z-index: 2;
   }
 
-  /* Numbered circle — positioned on the vertical line */
+  /* Numbered circle — stays in flow between the two title halves */
   .step-circle {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     width: 36px;
     height: 36px;
     min-width: 36px;
@@ -199,16 +200,19 @@ const { steps, projectTitle } = Astro.props;
     font-size: 14px;
     color: var(--color-charwood);
     line-height: 1;
+    z-index: 2;
   }
 
-  /* Push title below the circle on desktop */
-  .step-title {
-    margin-top: 48px;
+  /* Left title: right-aligned so it sits flush against the circle */
+  .step-title-left {
+    flex: 1;
+    text-align: right;
   }
 
-  .step-title {
-    margin: 0;
-    text-align: center;
+  /* Right title: left-aligned so it sits flush against the circle */
+  .step-title-right {
+    flex: 1;
+    text-align: left;
   }
 
   /* Step content — two-column grid on desktop */
@@ -324,17 +328,15 @@ const { steps, projectTitle } = Astro.props;
     .step-header {
       justify-content: flex-start;
       min-height: 36px;
+      gap: 0.5rem;
+      padding-left: 0;
     }
 
-    .step-circle {
-      left: 16px;
-      transform: translateX(-50%);
-    }
-
-    .step-title {
+    /* On mobile, both title parts flow naturally after the circle */
+    .step-title-left,
+    .step-title-right {
+      flex: none;
       text-align: left;
-      margin-top: 0;
-      margin-left: 46px;
     }
 
     /* Stack content vertically */
