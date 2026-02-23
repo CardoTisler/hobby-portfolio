@@ -56,9 +56,11 @@ const { steps, projectTitle } = Astro.props;
           <div class:list={['step-content', { 'step-content--reversed': isEven }]}>
             {/* Text column */}
             <div class="step-text">
-              <p class="text-ash leading-relaxed text-sm" style="white-space: pre-line;">
-                {step.description.trim()}
-              </p>
+              {step.description.trim().split(/\n\n+/).map((paragraph) => (
+                <p class="text-ash leading-relaxed text-sm mb-3 last:mb-0">
+                  {paragraph.replace(/\n/g, ' ').trim()}
+                </p>
+              ))}
             </div>
 
             {/* Image column */}
