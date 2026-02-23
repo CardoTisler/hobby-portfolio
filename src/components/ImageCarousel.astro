@@ -367,19 +367,13 @@ const { images, title } = Astro.props;
     lightboxPrev?.addEventListener('click', () => showLightboxSlide(lightboxIndex - 1));
     lightboxNext?.addEventListener('click', () => showLightboxSlide(lightboxIndex + 1));
 
-    // --- Keyboard navigation ---
+    // --- Keyboard navigation (lightbox only) ---
     document.addEventListener('keydown', (e) => {
-      // Lightbox takes priority when open
-      if (!lightbox.hidden) {
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') showLightboxSlide(lightboxIndex - 1);
-        if (e.key === 'ArrowRight') showLightboxSlide(lightboxIndex + 1);
-        return;
-      }
+      if (lightbox.hidden) return;
 
-      // Carousel keyboard nav (when lightbox is closed)
-      if (e.key === 'ArrowLeft') showCarouselSlide(carouselIndex - 1);
-      if (e.key === 'ArrowRight') showCarouselSlide(carouselIndex + 1);
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showLightboxSlide(lightboxIndex - 1);
+      if (e.key === 'ArrowRight') showLightboxSlide(lightboxIndex + 1);
     });
   });
 </script>
