@@ -19,6 +19,11 @@ const projects = defineCollection({
         item: z.string(),
         cost: z.number(),
       })).optional(),
+      progress: z.array(z.object({
+        title: z.string(),
+        description: z.string(),
+        images: z.array(image()),
+      })).optional(),
     }),
 });
 
