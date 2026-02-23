@@ -38,6 +38,34 @@ images:
   - "../../assets/projects/coffee-table/20251224_145059-scaled.jpg"
   - "../../assets/projects/coffee-table/20251224_145112-scaled.jpg"
   - "../../assets/projects/coffee-table/20251224_145117-scaled.jpg"
+progress:
+  - title: "Milling & Layout"
+    description: >
+      Rough-milled the ash and maple stock, then laid out the tabletop
+      slabs to find the best grain match. Marked locations for the
+      bowtie inlays where natural cracks needed reinforcement.
+    images:
+      - "../../assets/projects/coffee-table/20251216_203325-scaled.jpg"
+      - "../../assets/projects/coffee-table/20251217_192915-scaled.jpg"
+      - "../../assets/projects/coffee-table/20251217_194616-scaled.jpg"
+  - title: "Joinery & Frame"
+    description: >
+      Cut the mortise-and-tenon joints for the frame assembly. Routed
+      inlay cavities for the bowtie and square details using a template.
+      Dry-fitted the entire frame to check for square before glue-up.
+    images:
+      - "../../assets/projects/coffee-table/20251219_200332-scaled.jpg"
+      - "../../assets/projects/coffee-table/20251219_200943-scaled.jpg"
+      - "../../assets/projects/coffee-table/20251220_091310-scaled.jpg"
+  - title: "Finishing & Assembly"
+    description: >
+      Applied Osmo Topoil — Terra finish on the tabletops for warmth,
+      clear coat on the ash frame. Installed threaded inserts for the
+      tabletop attachment, allowing seasonal wood movement.
+    images:
+      - "../../assets/projects/coffee-table/20251223_094552-scaled.jpg"
+      - "../../assets/projects/coffee-table/20251223_124939-scaled.jpg"
+      - "../../assets/projects/coffee-table/20251223_133404-scaled.jpg"
 ---
 
 A light-framed coffee table featuring dark tabletops with decorative elements. Bowtie and square inlays address natural cracks and holes in the wood, extending the piece's lifespan. The tabletops utilize threaded inserts connected to the frame via bolts and washers, enabling seasonal wood movement accommodation.
