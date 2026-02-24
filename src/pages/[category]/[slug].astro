@@ -106,10 +106,12 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
             </div>
 
             {project.data.images && project.data.images.length > 0 && (
-              <ImageCarousel
-                images={project.data.images}
-                title={project.data.title}
-              />
+              <div class="mt-6">
+                <ImageCarousel
+                  images={project.data.images}
+                  title={project.data.title}
+                />
+              </div>
             )}
           </div>
 
