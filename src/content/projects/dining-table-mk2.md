@@ -55,26 +55,49 @@ progress:
   - leftTitle: "Frame"
     rightTitle: "Legs & Aprons"
     description: |
-      Placeholder description for tabletop glue-up.
-
-      Replace this with actual build notes when ready.
+      For attaching aprons (the horizontal pieces connecting the legs), I kept going with the traditional
+      joinery and made cross lap (I think that's what they're called) joints to hold the aprons. Apron height matches
+      the leg width, 75mm, and apron width is a modest 40mm, which I think looks beefy enough to hold the table together.
+      
+      The only technical complexity here was that the cut had to be made in a 5 degree angle so that the apron
+      would sit flat on the leg, parallel to the floor. Removed 1/4 in height from both the horizontal piece of the table leg and the 
+      apron.
+      
+      If the cuts were perfect then this joint would suffice without any glue nor screws, but obviously I did not reach perfection and
+      decided to lock in the joints on the top two aprons with some wood glue which also helps keep the table legs steady and reduce wobble.
+      The bottom apron is attached with bolts and threaded inserts so the table could be easily transported once it's time to get it home.
     images:
       - "../../assets/projects/dining-table-mk1/20250124_181830-scaled.jpg"
       - "../../assets/projects/dining-table-mk1/20250125_120736-scaled.jpg"
-  - leftTitle: "Edge"
-    rightTitle: "Treatment"
+  - leftTitle: "Tabletop"
+    rightTitle: "Milling & Assembly"
     description: |
-      Placeholder description for edge treatment.
-
-      Replace this with actual build notes when ready.
+      After a month long wait, finally got my hands on some american walnut and did the usual process - flattened one side,
+      reduced some material on the other side and let the planks sit in the workshop for 3 days to release inner tensions and acclimate to the moisture
+      level in the workshop.
+      
+      Since the plan was to attach sliding dovetail battens at the bottom of the tabletop, it was critical to get the material as stable as possible before moving on to the next steps
+      because any kind of bend in the tabletop would turn the sliding of the battens into a massive headache. In this scenario it could mean that doing nothing for 3 days would save
+      a lot of time down the line so it's better to practice some patience.
     images:
       - "../../assets/projects/dining-table-mk1/20250125_121940-scaled.jpg"
-  - leftTitle: "Surface"
-    rightTitle: "Planing"
+  - leftTitle: "Tabletop"
+    rightTitle: "Attaching battens"
     description: |
-      Placeholder description for surface planing.
-
-      Replace this with actual build notes when ready.
+      By far the most stressful part of the project that was sitting in the back of my mind for the whole build
+      leading up to this. With almost everything else, in case of a catastrophic blunder, replacing the element is quite
+      straightforward and doable, with just some minor time waste. With the tabletop however, it is obviously not as simple
+      to replace the top. Luckily everything went quite smooth and I'm extremely happy with the result.
+      
+      Started off by cutting the dovetail grooves in the tabletop with a router. After ensuring the groove was perfectly straight,
+      started cutting matching dovetail joints on the battens on a router table. Nothing complicated, just need to make sure not to
+      cut too much at once. As with everything in woodworking, it's better to slowly creep up on the correct dimensions instead of relying
+      on measurements and attempting to cut it perfect immediately.
+      
+      Cut the angles on the battens and hammered them in. The first batten was a bit tighter than needed, took about 150
+      hammer hits to get it in place, while the second one took around 30 hits. So pro tip here is to cut it in a way that
+      half the batten goes in with no resistance and then start tapping it in, if it shows resistance
+      from the beginning then it's a bit too tight.
     images:
       - "../../assets/projects/dining-table-mk1/20250126_210645-scaled.jpg"
       - "../../assets/projects/dining-table-mk1/20250322_184208-scaled.jpg"
