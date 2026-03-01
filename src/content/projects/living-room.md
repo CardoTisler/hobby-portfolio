@@ -4,7 +4,6 @@ category: "Renovation"
 thumbnail: "../../assets/projects/living-room/thumbnail.jpg"
 beforeImage: "../../assets/projects/living-room/20241126_180204-scaled.jpg"
 afterImage: "../../assets/projects/living-room/20241016_155007-scaled.jpg"
-featured: false
 date: 2024-11-27
 costs:
   - { item: "Parquet", cost: 443.65 }

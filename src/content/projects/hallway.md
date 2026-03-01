@@ -4,7 +4,6 @@ category: "Renovation"
 thumbnail: "../../assets/projects/hallway/thumbnail.jpg"
 beforeImage: "../../assets/projects/hallway/20240831_130908-scaled.jpg"
 afterImage: "../../assets/projects/hallway/20241221_140357-scaled.jpg"
-featured: false
 date: 2025-06-19
 costs:
   - { item: "Parquet", cost: 88.73 }

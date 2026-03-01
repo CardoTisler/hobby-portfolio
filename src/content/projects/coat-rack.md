@@ -2,7 +2,6 @@
 title: "Coat Rack"
 category: "Woodworking"
 thumbnail: "../../assets/projects/coat-rack/20250504_114654-scaled.jpg"
-featured: false
 date: 2025-05-04
 material: "European ash"
 finish: "Osmo Topoil (Terra)"

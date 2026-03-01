@@ -2,7 +2,6 @@
 title: "Nightstands"
 category: "Woodworking"
 thumbnail: "../../assets/projects/nightstands/20250627_140844-scaled.jpg"
-featured: false
 date: 2025-06-29
 material: "European ash, American ash, forged handles by Ferrum Fabrica"
 finish: "Osmo Topoil (Terra) & Osmo Topoil (Clear)"

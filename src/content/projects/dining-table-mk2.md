@@ -2,10 +2,9 @@
 title: "Dining Table Mk2"
 category: "Woodworking"
 thumbnail: "../../assets/projects/dining-table-mk1/20250322_200515-scaled.jpg"
-featured: false
 date: 2026-02-28
 material: "Ash & Walnut"
-finish: "Osmo polyx (3062)"
+finish: "Osmo Polyx (3062)"
 dimensions: "Length: 1800, Width: 870, Height: 780"
 images:
   - "../../assets/projects/dining-table-mk1/20250124_181830-scaled.jpg"

@@ -4,7 +4,6 @@ category: "Renovation"
 thumbnail: "../../assets/projects/office-room/thumbnail.jpg"
 beforeImage: "../../assets/projects/office-room/20240909_211032-scaled.jpg"
 afterImage: "../../assets/projects/office-room/20240721_101733-scaled.jpg"
-featured: false
 date: 2024-09-09
 costs:
   - { item: "Parquet", cost: 379.00 }

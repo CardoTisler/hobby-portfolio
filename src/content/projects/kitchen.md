@@ -4,7 +4,6 @@ category: "Renovation"
 thumbnail: "../../assets/projects/kitchen/thumbnail.jpg"
 beforeImage: "../../assets/projects/kitchen/20240831_130858-scaled.jpg"
 afterImage: "../../assets/projects/kitchen/received_917031311264419.jpeg"
-featured: true
 date: 2026-02-18
 costs:
   - { item: "Fiber concrete", cost: 215.88 }

@@ -2,7 +2,6 @@
 title: "Shoe Rack"
 category: "Woodworking"
 thumbnail: "../../assets/projects/shoe-rack/20250612_215159-scaled.jpg"
-featured: false
 date: 2025-06-12
 material: "European ash"
 finish: "Osmo Topoil (Terra)"

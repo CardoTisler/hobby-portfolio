@@ -2,7 +2,6 @@
 title: "Office Desk"
 category: "Woodworking"
 thumbnail: "../../assets/projects/office-desk/20260118_194941-1024x768.jpg"
-featured: true
 date: 2026-01-19
 material: "European ash & wenge"
 finish: "Osmo Polyx (3062)"

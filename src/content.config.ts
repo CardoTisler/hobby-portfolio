@@ -11,7 +11,6 @@ const projects = defineCollection({
       images: z.array(image()).optional(),
       beforeImage: image().optional(),
       afterImage: image().optional(),
-      featured: z.boolean().default(false),
       date: z.coerce.date().optional(),
       material: z.string().optional(),
       dimensions: z.string().optional(),
