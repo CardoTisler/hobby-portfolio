@@ -3,7 +3,7 @@ title: "Bookshelf"
 category: "Woodworking"
 thumbnail: "../../assets/projects/bookshelf/20250220_210119-1-scaled.jpg"
 featured: false
-date: 2025-03-22
+date: 2025-02-20
 material: "European ash"
 finish: "Osmo Topoil (Terra)"
 images:

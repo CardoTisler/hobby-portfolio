@@ -14,6 +14,7 @@ const projects = defineCollection({
       featured: z.boolean().default(false),
       date: z.coerce.date().optional(),
       material: z.string().optional(),
+      dimensions: z.string().optional(),
       finish: z.string().optional(),
       costs: z.array(z.object({
         item: z.string(),
@@ -23,8 +24,12 @@ const projects = defineCollection({
         leftTitle: z.string(),
         rightTitle: z.string(),
         description: z.string(),
-        images: z.array(image()),
-      })).optional(),
+        images: z.array(image()).optional(),
+        imagesDir: z.string().optional(),
+      }).refine(
+        (step) => (step.images && step.images.length > 0) || step.imagesDir,
+        { message: 'Each progress step must have either "images" or "imagesDir"' }
+      )).optional(),
     }),
 });
 

@@ -23,7 +23,32 @@ const { Content } = await render(project);
 const category = project.data.category.toLowerCase();
 
 const hasBeforeAfter = project.data.beforeImage && project.data.afterImage;
-const hasDetails = project.data.date || project.data.material || project.data.finish;
+const hasDetails = project.data.date || project.data.material || project.data.dimensions || project.data.finish;
+
+// Glob all project images at build time for directory-based progress steps
+const allProjectImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/projects/**/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+// Resolve progress steps: use explicit `images` if provided, otherwise
+// discover images from `imagesDir` by filtering the glob results
+const resolvedProgress = project.data.progress?.map((step) => {
+  if (step.images && step.images.length > 0) {
+    return { ...step, images: step.images };
+  }
+
+  if (step.imagesDir) {
+    const dirPrefix = `/src/assets/projects/${project.id}/${step.imagesDir}/`;
+    const images = Object.entries(allProjectImages)
+      .filter(([path]) => path.startsWith(dirPrefix))
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([, mod]) => mod.default);
+    return { ...step, images };
+  }
+
+  return { ...step, images: [] as ImageMetadata[] };
+});
 ---
 
 <Layout title={`${project.data.title} — Cardo Tisler`}>
@@ -52,8 +77,9 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
 
               {project.data.date && (
                 <p class="mt-4 text-smoke">
-                  {project.data.date.toLocaleDateString('en-US', {
-                    month: 'long',
+                  {project.data.date.toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
                     year: 'numeric',
                   })}
                 </p>
@@ -127,10 +153,10 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
                   </div>
                   <dl class="space-y-4">
                     {project.data.date && (
-                      <div class="flex justify-between py-3 border-b border-walnut">
-                        <dt class="text-smoke">Year</dt>
+                      <div class=" py-3 border-b border-walnut">
+                        <dt class="text-smoke">Date</dt>
                         <dd class="text-bone">
-                          {project.data.date.toLocaleDateString('en-US', { year: 'numeric' })}
+                          {project.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                         </dd>
                       </div>
                     )}
@@ -138,6 +164,12 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
                       <div class="py-3 border-b border-walnut">
                         <dt class="text-smoke mb-1">Material</dt>
                         <dd class="text-bone">{project.data.material}</dd>
+                      </div>
+                    )}
+                    {project.data.dimensions && (
+                      <div class="py-3 border-b border-walnut">
+                        <dt class="text-smoke mb-1">Dimensions (mm)</dt>
+                        <dd class="text-bone">{project.data.dimensions}</dd>
                       </div>
                     )}
                     {project.data.finish && (
@@ -163,11 +195,11 @@ const hasDetails = project.data.date || project.data.material || project.data.fi
     </div>
 
     {/* Progress Timeline — full-width, below main grid */}
-    {project.data.progress && project.data.progress.length > 0 && (
+    {resolvedProgress && resolvedProgress.length > 0 && (
       <div class="px-8 lg:px-12 mt-24">
         <div class="max-w-6xl mx-auto">
           <ProgressTimeline
-            steps={project.data.progress}
+            steps={resolvedProgress}
             projectTitle={project.data.title}
           />
         </div>

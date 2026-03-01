@@ -5,7 +5,7 @@ thumbnail: "../../assets/projects/kitchen/thumbnail.jpg"
 beforeImage: "../../assets/projects/kitchen/20240831_130858-scaled.jpg"
 afterImage: "../../assets/projects/kitchen/received_917031311264419.jpeg"
 featured: true
-date: 2025-11-02
+date: 2026-02-18
 costs:
   - { item: "Fiber concrete", cost: 215.88 }
   - { item: "Vinyl parquet", cost: 127.00 }

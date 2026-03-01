@@ -3,7 +3,7 @@ title: "Dining Table Mk1"
 category: "Woodworking"
 thumbnail: "../../assets/projects/dining-table-mk1/20250322_200515-scaled.jpg"
 featured: false
-date: 2025-02-20
+date: 2025-03-22
 material: "European ash"
 finish: "Osmo Topoil (Terra)"
 images:
