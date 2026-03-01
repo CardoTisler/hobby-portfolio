@@ -39,14 +39,16 @@ const { steps, projectTitle } = Astro.props;
           data-step-index={index}
           style={`transition-delay: ${delay}ms;`}
         >
-          {/* Step title row: leftTitle — circle — rightTitle */}
+          {/* Step title row: leftTitle — line — circle — line — rightTitle */}
           <div class="step-header">
             <span class="step-title-left font-display text-xl text-bone tracking-wide">
               {step.leftTitle}
             </span>
+            <span class="step-header-line" aria-hidden="true"></span>
             <div class="step-circle" aria-hidden="true">
               <span>{stepNumber}</span>
             </div>
+            <span class="step-header-line" aria-hidden="true"></span>
             <span class="step-title-right font-display text-xl text-bone tracking-wide">
               {step.rightTitle}
             </span>
@@ -217,6 +219,11 @@ const { steps, projectTitle } = Astro.props;
     text-align: left;
   }
 
+  /* Short copper lines between title and circle — hidden on desktop, shown on mobile */
+  .step-header-line {
+    display: none;
+  }
+
   /* Step content — two-column grid on desktop */
   .step-content {
     display: grid;
@@ -323,30 +330,41 @@ const { steps, projectTitle } = Astro.props;
 
   /* ---- Mobile layout (< 768px) ---- */
   @media (max-width: 767px) {
-    /* Move the vertical line to the left */
+    /* Hide the full-length vertical timeline line on mobile */
     .timeline-line {
-      left: 16px;
-      transform: none;
+      display: none;
     }
 
     .step-header {
-      justify-content: flex-start;
+      justify-content: center;
       min-height: 36px;
-      gap: 0.5rem;
+      gap: 0;
       padding-left: 0;
+      flex-wrap: wrap;
     }
 
-    /* On mobile, both title parts flow naturally after the circle */
+    /* Allow titles to wrap on mobile */
     .step-title-left,
     .step-title-right {
-      flex: none;
-      text-align: left;
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Show short copper lines between titles and circle */
+    .step-header-line {
+      display: block;
+      width: 20px;
+      min-width: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-copper), var(--color-brass));
+      opacity: 0.5;
+      margin: 0 8px;
     }
 
     /* Stack content vertically */
     .step-content {
       grid-template-columns: 1fr;
-      margin-left: 46px; /* 16px line + 18px circle half + 12px gap */
+      margin-left: 0;
       max-width: none;
     }
 
