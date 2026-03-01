@@ -1,16 +1,19 @@
 ---
 title: "Dining Table Mk2"
 category: "Woodworking"
-thumbnail: "../../assets/projects/dining-table-mk1/20250322_200515-scaled.jpg"
+thumbnail: "../../assets/projects/dining-table-mk2/IMG_5625.jpg"
 date: 2026-02-28
 material: "Ash & Walnut"
 finish: "Osmo Polyx (3062)"
 dimensions: "Length: 1800, Width: 870, Height: 780"
 images:
-  - "../../assets/projects/dining-table-mk1/20250124_181830-scaled.jpg"
-  - "../../assets/projects/dining-table-mk1/20250125_120736-scaled.jpg"
-  - "../../assets/projects/dining-table-mk1/20250125_121940-scaled.jpg"
-  - "../../assets/projects/dining-table-mk1/20250126_210645-scaled.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5625.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5626.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5634.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5645.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5653.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5659.jpg"
+  - "../../assets/projects/dining-table-mk2/IMG_5660.jpg"
 progress:
   - leftTitle: "Table legs"
     rightTitle: "Vertical & Top pieces"
