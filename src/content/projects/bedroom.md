@@ -2,8 +2,8 @@
 title: "Bedroom"
 category: "Renovation"
 thumbnail: "../../assets/projects/bedroom/thumbnail.jpg"
-beforeImage: "../../assets/projects/bedroom/20241015_122045-scaled.jpg"
-afterImage: "../../assets/projects/bedroom/20240822_174921-scaled.jpg"
+beforeImage: "../../assets/projects/bedroom/20240822_174921-scaled.jpg"
+afterImage: "../../assets/projects/bedroom/20241015_122045-scaled.jpg"
 date: 2024-10-11
 costs:
   - { item: "Parquet", cost: 532.38 }
