@@ -1,7 +1,7 @@
 ---
 title: "Coffee Table"
 category: "Woodworking"
-thumbnail: "../../assets/projects/coffee-table/20251224_145042-1024x768.jpg"
+thumbnail: "../../assets/projects/coffee-table/20260321_230631.jpg"
 date: 2025-12-24
 material: "European ash, American maple, purpleheart"
 finish: "Osmo Topoil (Terra) on tabletops, Osmo Topoil (Clear) on frame"
