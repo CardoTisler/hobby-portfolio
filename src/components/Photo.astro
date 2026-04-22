@@ -41,10 +41,9 @@ const resolvedDensities = widths ? undefined : (densities ?? [1, 2]);
 <style>
   .photo-frame {
     position: relative;
-    display: block;
-  }
-
-  .photo-frame--fill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
   }

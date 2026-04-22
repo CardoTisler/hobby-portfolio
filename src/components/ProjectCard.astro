@@ -1,6 +1,7 @@
 ---
 import Photo from './Photo.astro';
 import type { ImageMetadata } from 'astro';
+import { toRoman } from '@/lib/utils';
 
 interface Props {
   title: string;
@@ -8,9 +9,11 @@ interface Props {
   thumbnail: ImageMetadata;
   slug: string;
   index?: number;
+  total?: number;
 }
 
-const { title, category, thumbnail, slug, index = 0 } = Astro.props;
+const { title, category, thumbnail, slug, index = 0, total = 1 } = Astro.props;
+const numeral = toRoman(total - index);
 ---
 
 <a
@@ -35,8 +38,9 @@ const { title, category, thumbnail, slug, index = 0 } = Astro.props;
         <div class="rivet"></div>
         <span class="workshop-label">{category}</span>
       </div>
-      <h3 class="font-display text-lg text-bone group-hover:text-copper transition-colors duration-300 tracking-wide">
-        {title}
+      <h3 class="font-display text-lg text-bone group-hover:text-copper transition-colors duration-300 tracking-wide flex items-baseline justify-between gap-3">
+        <span>{title}</span>
+        <span class="text-copper/80 font-light tracking-[0.25em] shrink-0">{numeral}</span>
       </h3>
     </div>
   </article>

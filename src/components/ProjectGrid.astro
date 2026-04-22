@@ -19,6 +19,7 @@ const { projects, emptyMessage = 'No projects yet.' } = Astro.props;
         thumbnail={project.data.thumbnail}
         slug={project.id}
         index={index}
+        total={projects.length}
       />
     ))}
   </div>

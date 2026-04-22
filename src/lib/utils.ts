@@ -13,3 +13,21 @@ export function sortProjectsByDate(
     return dateB.getTime() - dateA.getTime();
   });
 }
+
+const ROMAN_TABLE: [number, string][] = [
+  [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+  [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+  [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
+];
+
+export function toRoman(n: number): string {
+  if (n <= 0) return '';
+  let result = '';
+  for (const [val, sym] of ROMAN_TABLE) {
+    while (n >= val) {
+      result += sym;
+      n -= val;
+    }
+  }
+  return result;
+}
