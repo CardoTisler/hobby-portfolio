@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
 import Layout from '@/layouts/Layout.astro';
+import Photo from '@/components/Photo.astro';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider.astro';
 import ImageCarousel from '@/components/ImageCarousel.astro';
 import CostSummary from '@/components/CostSummary.astro';
@@ -107,10 +107,10 @@ const resolvedProgress = project.data.progress?.map((step) => {
           />
         ) : (
           <div class="timber-card p-4 bg-charwood">
-            <Image
+            <Photo
               src={project.data.thumbnail}
               alt={project.data.title}
-              width={1400}
+              widths={[1400, 2000, 2800]}
               class="block mx-auto max-w-full max-h-[80vh] w-auto h-auto"
             />
           </div>

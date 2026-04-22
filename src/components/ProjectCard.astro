@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import Photo from './Photo.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -19,7 +19,7 @@ const { title, category, thumbnail, slug, index = 0 } = Astro.props;
 >
   <article class="timber-card forge-glow overflow-hidden">
     <div class="relative overflow-hidden bg-charwood">
-      <Image
+      <Photo
         src={thumbnail}
         alt={title}
         width={900}

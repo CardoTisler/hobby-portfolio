@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  width?: number;
+  height?: number;
+  widths?: number[];
+  densities?: number[];
+  quality?: number;
+  fill?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  densities,
+  widths,
+  quality = 95,
+  fill = false,
+  class: imgClass,
+  ...rest
+} = Astro.props;
+
+const resolvedDensities = widths ? undefined : (densities ?? [1, 2]);
+---
+
+<div class:list={['photo-frame', { 'photo-frame--fill': fill }]}>
+  <span class="photo-spinner" aria-hidden="true"></span>
+  <Image
+    {...rest}
+    widths={widths}
+    densities={resolvedDensities}
+    quality={quality}
+    class:list={['photo-img', imgClass]}
+  />
+</div>
+
+<style>
+  .photo-frame {
+    position: relative;
+    display: block;
+  }
+
+  .photo-frame--fill {
+    width: 100%;
+    height: 100%;
+  }
+
+  .photo-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    pointer-events: none;
+    z-index: 1;
+    border: 3px solid rgba(184, 115, 51, 0.18);
+    border-top-color: var(--color-copper);
+    border-radius: 50%;
+    animation: photo-spin 900ms linear infinite;
+    transition: opacity 400ms ease-out;
+    filter: drop-shadow(0 0 12px rgba(184, 115, 51, 0.3));
+  }
+
+  .photo-frame.is-loaded .photo-spinner {
+    opacity: 0;
+  }
+
+  .photo-img {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+  }
+
+  .photo-frame.is-loaded .photo-img {
+    opacity: 1;
+  }
+
+  @keyframes photo-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo-spinner {
+      animation: none;
+    }
+    .photo-img {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function markLoaded(frame: Element) {
+    frame.classList.add('is-loaded');
+  }
+
+  document.querySelectorAll('.photo-frame').forEach((frame) => {
+    const img = frame.querySelector('img') as HTMLImageElement | null;
+    if (!img) return;
+
+    if (img.complete && img.naturalWidth > 0) {
+      markLoaded(frame);
+    } else {
+      img.addEventListener('load', () => markLoaded(frame), { once: true });
+      img.addEventListener('error', () => markLoaded(frame), { once: true });
+    }
+  });
+</script>

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import Photo from './Photo.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -15,11 +15,12 @@ const { beforeImage, afterImage, title } = Astro.props;
   <div class="slider-container">
     <!-- After image (background) -->
     <div class="after-image">
-      <Image
+      <Photo
         src={afterImage}
         alt={`${title} — After`}
         width={1200}
         height={800}
+        fill
         class="slider-image"
       />
       <span class="image-label after-label">After</span>
@@ -27,11 +28,12 @@ const { beforeImage, afterImage, title } = Astro.props;
 
     <!-- Before image (foreground, clipped) -->
     <div class="before-image" data-before>
-      <Image
+      <Photo
         src={beforeImage}
         alt={`${title} — Before`}
         width={1200}
         height={800}
+        fill
         class="slider-image"
       />
       <span class="image-label before-label">Before</span>

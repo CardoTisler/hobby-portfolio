@@ -9,6 +9,10 @@ finish: "Osmo polyx (3062)"
 images:
   - "../../assets/projects/bookshelf-mk2/thumbnail.jpg"
   - "../../assets/projects/bookshelf-mk2/20260422_165027.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260422_165142.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260422_165209.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260422_171402.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260422_172445.jpg"
 progress:
   - leftTitle: "Milling & Sawing"
     rightTitle: "Legs"
@@ -112,5 +116,4 @@ softened with a 45 degree micro-edge, giving a polished yet soft and refined loo
 
 The frame is assembled via classic mortise-and-tenon joints & walnut wedges. The horizontal elements also support the shelves
 and attach them to the frame via threaded inserts in the shelves. The lack of horizontal support on the backside is compensated
-with 56 bolts going through the horizontal supports into the shelves, resulting in a very sturdy
-end result.
+with 56 bolts going through the horizontal supports into the shelves.

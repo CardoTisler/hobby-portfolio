@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import Photo from './Photo.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -82,11 +82,10 @@ const { steps, projectTitle } = Astro.props;
                     ]}
                     data-step-slide={imgIndex}
                   >
-                    <Image
+                    <Photo
                       src={image}
                       alt={`${projectTitle} — ${step.leftTitle} ${step.rightTitle} (${imgIndex + 1})`}
                       width={800}
-                      height={500}
                       class="step-slide-image"
                     />
                   </div>
