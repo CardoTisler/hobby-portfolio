@@ -15,18 +15,16 @@ const { title, category, thumbnail, slug, index = 0 } = Astro.props;
 
 <a
   href={`/${category.toLowerCase()}/${slug}`}
-  class="group block"
+  class="group block mb-6 lg:mb-8 break-inside-avoid"
 >
   <article class="timber-card forge-glow overflow-hidden">
-    <div class="relative overflow-hidden">
-      <div class="aspect-[4/3] bg-charwood">
-        <Image
-          src={thumbnail}
-          alt={title}
-          width={900}
-          class="w-full h-full object-contain transition-all duration-500 group-hover:scale-[1.03] group-hover:blur-[1px]"
-        />
-      </div>
+    <div class="relative overflow-hidden bg-charwood">
+      <Image
+        src={thumbnail}
+        alt={title}
+        width={900}
+        class="w-full h-auto block transition-all duration-500 group-hover:scale-[1.03] group-hover:blur-[1px]"
+      />
 
       <!-- Warm overlay on hover -->
       <div class="absolute inset-0 bg-gradient-to-t from-charwood/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
