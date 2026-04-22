@@ -71,11 +71,10 @@ const resolvedDensities = widths ? undefined : (densities ?? [1, 2]);
 
   .photo-img {
     opacity: 0;
-    transition: opacity 500ms ease-out;
   }
 
   .photo-frame.is-loaded .photo-img {
-    opacity: 1;
+    animation: photo-fade-in 400ms ease-out forwards;
   }
 
   @keyframes photo-spin {
@@ -84,12 +83,19 @@ const resolvedDensities = widths ? undefined : (densities ?? [1, 2]);
     }
   }
 
+  @keyframes photo-fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .photo-spinner {
       animation: none;
     }
-    .photo-img {
-      transition: none;
+    .photo-frame.is-loaded .photo-img {
+      animation: none;
+      opacity: 1;
     }
   }
 </style>
