@@ -8,6 +8,7 @@ dimensions: "Height: 2000, width: 900, depth: 350 (mm)"
 finish: "Osmo polyx (3062)"
 images:
   - "../../assets/projects/bookshelf-mk2/thumbnail.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260422_165027.jpg"
 progress:
   - leftTitle: "Milling & Sawing"
     rightTitle: "Legs"

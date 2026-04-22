@@ -19,13 +19,12 @@ const { title, category, thumbnail, slug, index = 0 } = Astro.props;
 >
   <article class="timber-card forge-glow overflow-hidden">
     <div class="relative overflow-hidden">
-      <div class="aspect-[4/3]">
+      <div class="aspect-[4/3] bg-charwood">
         <Image
           src={thumbnail}
           alt={title}
-          width={600}
-          height={450}
-          class="w-full h-full object-cover transition-all duration-500 group-hover:scale-[1.03] group-hover:blur-[1px]"
+          width={900}
+          class="w-full h-full object-contain transition-all duration-500 group-hover:scale-[1.03] group-hover:blur-[1px]"
         />
       </div>
 
