@@ -1,5 +1,6 @@
 ---
 import Photo from './Photo.astro';
+import Lightbox from './Lightbox.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -32,6 +33,7 @@ const { steps, projectTitle } = Astro.props;
       const isEven = index % 2 === 1;
       const hasMultipleImages = step.images.length > 1;
       const delay = Math.min(index * 100, 300);
+      const lightboxId = `step-${index}`;
 
       return (
         <div
@@ -87,6 +89,8 @@ const { steps, projectTitle } = Astro.props;
                       alt={`${projectTitle} — ${step.leftTitle} ${step.rightTitle} (${imgIndex + 1})`}
                       width={800}
                       class="step-slide-image"
+                      data-lightbox-open={lightboxId}
+                      data-index={imgIndex}
                     />
                   </div>
                 ))}
@@ -128,6 +132,16 @@ const { steps, projectTitle } = Astro.props;
     })}
   </div>
 </section>
+
+{/* Lightboxes rendered outside the timeline section — the .progress-step ancestor has a transform,
+    which breaks position: fixed for descendants. Hoisted here so fixed positioning is relative to the viewport. */}
+{steps.map((step, index) => (
+  <Lightbox
+    id={`step-${index}`}
+    images={step.images}
+    title={`${projectTitle} — ${step.leftTitle} ${step.rightTitle}`}
+  />
+))}
 
 <style>
   /* Timeline container */
@@ -287,6 +301,7 @@ const { steps, projectTitle } = Astro.props;
     max-height: 100%;
     width: auto;
     height: auto;
+    cursor: pointer;
   }
 
   /* Step nav arrows (32x32, smaller than carousel) */

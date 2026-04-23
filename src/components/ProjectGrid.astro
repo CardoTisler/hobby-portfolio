@@ -5,9 +5,10 @@ import ProjectCard from './ProjectCard.astro';
 interface Props {
   projects: CollectionEntry<'projects'>[];
   emptyMessage?: string;
+  showNumerals?: boolean;
 }
 
-const { projects, emptyMessage = 'No projects yet.' } = Astro.props;
+const { projects, emptyMessage = 'No projects yet.', showNumerals = true } = Astro.props;
 ---
 
 {projects.length > 0 ? (
@@ -20,6 +21,7 @@ const { projects, emptyMessage = 'No projects yet.' } = Astro.props;
         slug={project.id}
         index={index}
         total={projects.length}
+        showNumeral={showNumerals}
       />
     ))}
   </div>

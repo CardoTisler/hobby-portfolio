@@ -37,6 +37,7 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
       <ProjectGrid
         projects={recentProjects}
         emptyMessage="Projects coming soon."
+        showNumerals={false}
       />
     </div>
   </section>

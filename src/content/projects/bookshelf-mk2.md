@@ -9,9 +9,9 @@ finish: "Osmo polyx (3062)"
 images:
   - "../../assets/projects/bookshelf-mk2/thumbnail.jpg"
   - "../../assets/projects/bookshelf-mk2/20260422_165027.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260422_165142.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260423_073012.jpg"
   - "../../assets/projects/bookshelf-mk2/20260422_165209.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260422_171402.jpg"
+  - "../../assets/projects/bookshelf-mk2/20260423_072936.jpg"
   - "../../assets/projects/bookshelf-mk2/20260422_172445.jpg"
 progress:
   - leftTitle: "Milling & Sawing"
