@@ -1,18 +1,18 @@
 ---
-title: "Bookshelf Mk2"
+title: "Bookshelf MKII"
 category: "Woodworking"
-thumbnail: "../../assets/projects/bookshelf-mk2/thumbnail.jpg"
+thumbnail: "../../assets/projects/bookshelf-mkii/thumbnail.jpg"
 date: 2026-04-22
 material: "Ash & Walnut"
 dimensions: "Height: 2000, width: 900, depth: 350 (mm)"
 finish: "Osmo polyx (3062)"
 images:
-  - "../../assets/projects/bookshelf-mk2/thumbnail.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260422_165027.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260423_073012.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260422_165209.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260423_072936.jpg"
-  - "../../assets/projects/bookshelf-mk2/20260422_172445.jpg"
+  - "../../assets/projects/bookshelf-mkii/thumbnail.jpg"
+  - "../../assets/projects/bookshelf-mkii/20260422_165027.jpg"
+  - "../../assets/projects/bookshelf-mkii/20260423_073012.jpg"
+  - "../../assets/projects/bookshelf-mkii/20260422_165209.jpg"
+  - "../../assets/projects/bookshelf-mkii/20260423_072936.jpg"
+  - "../../assets/projects/bookshelf-mkii/20260422_172445.jpg"
 progress:
   - leftTitle: "Milling & Sawing"
     rightTitle: "Legs"
