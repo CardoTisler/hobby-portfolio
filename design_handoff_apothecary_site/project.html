@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Cardo Tisler</title>
+<meta name="description" content="A catalogue entry from the works of Cardo Tisler.">
+<link rel="stylesheet" href="apothecary.css">
+<style>
+.crumb{
+  padding:22px 0 0; font-family:var(--fell-sc); font-size:0.72rem;
+  letter-spacing:0.16em; text-transform:uppercase; color:var(--brown-mid);
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+}
+.crumb a{ color:var(--brown-mid); text-decoration:none; border-bottom:1px solid transparent; }
+.crumb a:hover{ color:var(--ink); border-color:var(--line); }
+.crumb .sep{ color:var(--brown-soft); }
+
+.entry-head{ padding:18px 0 10px; }
+.entry-head .plateno{
+  font-family:var(--fell-sc); font-size:0.82rem; letter-spacing:0.22em;
+  text-transform:uppercase; color:var(--brown); margin:0 0 12px;
+}
+.entry-head h1{
+  font-family:var(--serif); font-weight:700;
+  font-size:clamp(2.4rem,5.5vw,4.2rem); margin:0; line-height:1.02;
+}
+.entry-head .cat{
+  font-family:var(--fell); font-style:italic; font-size:1.2rem;
+  color:var(--brown); margin:12px 0 0;
+}
+
+/* main two-column body */
+.body{
+  display:grid; grid-template-columns:1.5fr 1fr;
+  gap:clamp(26px,4vw,56px); margin:38px 0 0; align-items:start;
+}
+.hero-plate{ aspect-ratio:4/3; }
+
+/* specifications ledger */
+.spec{
+  border:1px solid var(--line); background:var(--paper-card);
+}
+.spec .cap{
+  font-family:var(--fell-sc); font-size:0.76rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--paper); background:var(--ink);
+  padding:12px 18px; margin:0; text-align:center;
+}
+.spec dl{ margin:0; }
+.spec .pair{
+  display:flex; justify-content:space-between; align-items:baseline; gap:18px;
+  padding:13px 18px; border-bottom:1px solid var(--line-soft);
+}
+.spec .pair:last-child{ border-bottom:none; }
+.spec dt{
+  font-family:var(--fell-sc); font-size:0.72rem; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--brown-mid); flex:0 0 auto; white-space:nowrap;
+}
+.spec dd{ margin:0; font-family:var(--serif); font-weight:700; font-size:1rem; line-height:1.35; text-align:right; flex:1 1 auto; min-width:0; }
+
+.prose{ margin:24px 0 0; }
+.prose p{ margin:0; color:var(--ink); }
+.prose.dropcap p{ font-size:1.06rem; }
+
+/* additional plates */
+.plates-head{ margin:74px 0 0; }
+.plates-head .label{ text-align:center; }
+.plates-head .ornament{ max-width:280px; margin:14px auto 30px; }
+.plate-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(16px,2.4vw,26px); }
+.plate-grid .plate{ aspect-ratio:16/10; }
+
+/* prev / next */
+.pager{
+  display:flex; justify-content:space-between; gap:20px;
+  margin:70px 0 0; border-top:1px solid var(--line); padding-top:26px;
+}
+.pager a{
+  text-decoration:none; color:inherit; max-width:46%;
+  display:flex; flex-direction:column; gap:4px;
+}
+.pager a.next{ text-align:right; align-items:flex-end; }
+.pager .dir{
+  font-family:var(--fell-sc); font-size:0.72rem; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--brown-mid);
+}
+.pager .ttl{ font-family:var(--serif); font-weight:700; font-size:1.25rem; border-bottom:1px solid transparent; transition:border-color .2s; }
+.pager a:hover .ttl{ border-color:var(--brown); }
+
+@media(max-width:960px){
+  .body{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead" data-screen-label="Masthead">
+  <div class="wrap">
+    <div class="estd">
+      <span>Tartu · Estonia</span>
+    </div>
+    <div class="bar">
+      <a class="brand" href="index.html">Cardo Tisler</a>
+      <nav class="nav">
+        <a href="gallery.html">Woodworking</a>
+        <a href="gallery.html">Renovation</a>
+        <a href="gallery.html">Garden</a>
+        <a href="gallery.html">All Work</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="entry" data-screen-label="Project Entry"></main>
+
+<footer class="foot" data-screen-label="Footer">
+  <div class="wrap">
+    <div class="logo-wrap">
+      <image-slot id="footer-logo" placeholder="" fit="contain"></image-slot>
+      <p class="logo-hint">Drop your logo here</p>
+    </div>
+  </div>
+</footer>
+
+<script src="projects.js"></script>
+<script>
+const slug = new URLSearchParams(location.search).get('p') || PROJECTS[0].slug;
+const idx = Math.max(0, PROJECTS.findIndex(p => p.slug === slug));
+const p = PROJECTS[idx];
+const prev = PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length];
+const next = PROJECTS[(idx + 1) % PROJECTS.length];
+document.title = `${p.title} — Cardo Tisler`;
+
+const platesHtml = p.plates.map((c,i) => `
+  <div class="plate">
+    <span class="no">Fig. ${i+1}</span>
+    <span class="cap">[ ${c} ]</span>
+  </div>`).join('');
+
+document.getElementById('entry').innerHTML = `
+  <nav class="crumb">
+    <a href="index.html">Home</a><span class="sep">/</span>
+    <a href="gallery.html?cat=${p.cat}">${p.cat}</a><span class="sep">/</span>
+    <span>${p.title}</span>
+  </nav>
+
+  <header class="entry-head">
+    <p class="plateno">${p.no} &middot; Anno ${p.year}</p>
+    <h1>${p.title}</h1>
+    <p class="cat">${p.cat}</p>
+  </header>
+
+  <div class="body">
+    <div>
+      <div class="plate hero-plate">
+        <span class="no">${p.no}</span>
+        <span class="cap">[ ${p.cap} ]</span>
+      </div>
+      <div class="prose dropcap">
+        <p>${p.blurb}</p>
+      </div>
+    </div>
+    <aside class="spec">
+      <p class="cap">Specifications</p>
+      <dl>
+        <div class="pair"><dt>Material</dt><dd>${p.wood}</dd></div>
+        <div class="pair"><dt>Finish</dt><dd>${p.finish}</dd></div>
+        <div class="pair"><dt>Joinery</dt><dd>${p.joinery}</dd></div>
+        <div class="pair"><dt>Dimensions</dt><dd>${p.dims}</dd></div>
+        <div class="pair"><dt>Completed</dt><dd>${p.year}</dd></div>
+        <div class="pair"><dt>Discipline</dt><dd>${p.cat}</dd></div>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="plates-head">
+    <p class="label">Further Plates</p>
+    <div class="ornament"><span class="mark">&#10087;</span></div>
+  </div>
+  <div class="plate-grid">${platesHtml}</div>
+
+  <nav class="pager">
+    <a class="prev" href="project.html?p=${prev.slug}">
+      <span class="dir">&larr; Previous Plate</span>
+      <span class="ttl">${prev.title}</span>
+    </a>
+    <a class="next" href="project.html?p=${next.slug}">
+      <span class="dir">Next Plate &rarr;</span>
+      <span class="ttl">${next.title}</span>
+    </a>
+  </nav>
+`;
+</script>
+<script src="image-slot.js"></script>
+</body>
+</html>

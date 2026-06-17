@@ -1,0 +1,51 @@
+/* Shared catalogue of works — Cardo Tisler */
+window.PROJECTS = [
+  {
+    slug:'bookshelf-mkii', title:'Bookshelf MKII', cat:'Woodworking',
+    no:'XII', year:'MMXXVI', wood:'European Oak', finish:'Hard-wax Oil',
+    joinery:'Through Dovetail', dims:'1840 × 920 × 320 mm',
+    cap:'bookshelf — front elevation',
+    blurb:'A second iteration on a free-standing case, refined for a lower ceiling and a heavier load of folios. Sides are dovetailed to the top; shelves sit in stopped dados so no joinery shows from the front.',
+    plates:['front elevation','dovetail detail — top corner','shelf dado — section','in situ — reading room'],
+  },
+  {
+    slug:'dining-table', title:'Dining Table MKII', cat:'Woodworking',
+    no:'XI', year:'MMXXVI', wood:'Ash & Oak', finish:'Soap Finish',
+    joinery:'Drawbored Mortise', dims:'2200 × 980 × 740 mm',
+    cap:'dining table — full view',
+    blurb:'Seats eight without a stretcher underfoot. The trestle base is drawbored and pegged; the top is a single glued slab planed flat by hand and left a touch under-square at the ends.',
+    plates:['full view','trestle joint — drawbore','breadboard end','grain detail'],
+  },
+  {
+    slug:'kitchen', title:'Kitchen', cat:'Renovation',
+    no:'X', year:'MMXXV', wood:'Birch Ply & Oak', finish:'Lacquer & Oil',
+    joinery:'Frame & Panel', dims:'Full room — 14 m²',
+    cap:'kitchen — after restoration',
+    blurb:'A full renovation of a 1930s kitchen: rotten floor replaced, cabinetry built to fit the irregular walls, and an oak worktop fitted around a reclaimed cast sink.',
+    plates:['after — wide','cabinet run','worktop joint','before — record'],
+  },
+  {
+    slug:'office-desk', title:'Office Desk', cat:'Woodworking',
+    no:'IX', year:'MMXXV', wood:'Walnut', finish:'Hard-wax Oil',
+    joinery:'Floating Tenon', dims:'1500 × 720 × 740 mm',
+    cap:'office desk — three-quarter',
+    blurb:'A writing desk with a shallow drawer and a cable race hidden in the rear apron. Tapered legs are joined with floating tenons; the top overhangs just enough to clamp work to.',
+    plates:['three-quarter','drawer — open','leg taper','cable race'],
+  },
+  {
+    slug:'coffee-table', title:'Coffee Table', cat:'Woodworking',
+    no:'VIII', year:'MMXXV', wood:'Cherry', finish:'Wax',
+    joinery:'Wedged Tenon', dims:'1100 × 600 × 380 mm',
+    cap:'coffee table — top detail',
+    blurb:'A low table with wedged through-tenons left proud and chamfered. Cherry chosen so it will darken with light over the years into a deep russet.',
+    plates:['top detail','wedged tenon','underside','full view'],
+  },
+  {
+    slug:'shelter', title:'Garden Shelter', cat:'Garden',
+    no:'VII', year:'MMXXIV', wood:'Larch', finish:'Left to Weather',
+    joinery:'Timber Frame', dims:'3000 × 2400 × 2600 mm',
+    cap:'garden shelter — elevation',
+    blurb:'A small open shelter framed in larch and roofed in board-and-batten. Left unfinished to silver naturally; the frame is pegged so it can be taken apart and moved.',
+    plates:['elevation','roof structure','peg detail','sited in garden'],
+  },
+];

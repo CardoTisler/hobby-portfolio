@@ -42,7 +42,7 @@ const { steps, projectTitle } = Astro.props;
         >
           {/* Step title row: leftTitle — line — circle — line — rightTitle */}
           <div class="step-header">
-            <span class="step-title-left font-display text-xl text-ink tracking-wide">
+            <span class="step-title-left font-display font-bold text-xl text-ink tracking-wide">
               {step.leftTitle}
             </span>
             <span class="step-header-line" aria-hidden="true"></span>
@@ -50,7 +50,7 @@ const { steps, projectTitle } = Astro.props;
               <span>{stepNumber}</span>
             </div>
             <span class="step-header-line" aria-hidden="true"></span>
-            <span class="step-title-right font-display text-xl text-ink tracking-wide">
+            <span class="step-title-right font-display font-bold text-xl text-ink tracking-wide">
               {step.rightTitle}
             </span>
           </div>

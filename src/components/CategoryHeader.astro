@@ -10,19 +10,18 @@ const { title, description, projectCount } = Astro.props;
 
 <div class="pt-36 sm:pt-44 pb-10 px-8 lg:px-12">
   <div class="max-w-6xl mx-auto">
-    <!-- Back link -->
-    <a
-      href="/"
-      class="inline-flex items-center gap-2 font-display uppercase text-[0.85rem] tracking-[0.16em] text-brown-mid hover:text-ink transition-colors duration-300 mb-10"
-    >
-      <span aria-hidden="true">←</span><span>Home</span>
-    </a>
+    <!-- Breadcrumb (mirrors the project detail view) -->
+    <nav class="font-display font-bold uppercase text-[0.85rem] tracking-[0.16em] text-brown-mid flex gap-2.5 items-center flex-wrap mb-10">
+      <a href="/" class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200">Home</a>
+      <span class="text-brown-soft" aria-hidden="true">/</span>
+      <span class="text-brown">{title}</span>
+    </nav>
 
     <!-- Centered title block -->
     <div class="text-center">
       <p class="label mb-4">Catalogue of Works</p>
 
-      <h1 class="font-display font-bold text-ink leading-[1.05] tracking-[0.005em] text-[clamp(2.4rem,5.5vw,4rem)]">
+      <h1 class="font-display font-bold text-ink leading-[1.05] tracking-[0.005em] text-[28px]">
         {title}
       </h1>
 

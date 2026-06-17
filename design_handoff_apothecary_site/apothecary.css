@@ -1,0 +1,222 @@
+/* ============================================================
+   Cardo Tisler — Victorian Apothecary
+   Shared design system
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&display=swap');
+
+:root{
+  /* paper & ink */
+  --paper:      #e9dcc3;   /* primary cream ground */
+  --paper-deep: #e0d0b2;   /* recessed cream */
+  --paper-card: #f1e8d4;   /* raised label paper */
+  --paper-edge: #d6c4a3;
+
+  --ink:        #2b1d10;   /* near-black sepia */
+  --brown:      #5b3d26;   /* primary brown */
+  --brown-mid:  #8a6a48;   /* secondary */
+  --brown-soft: #a98c66;   /* tertiary / faint */
+  --line:       rgba(43,29,16,0.30);
+  --line-soft:  rgba(43,29,16,0.16);
+
+  /* accent — bottle green, used sparingly */
+  --accent:     #3a5a42;
+  --accent-deep:#28402f;
+  --oxblood:    #6e2f2a;   /* tiny seals only */
+
+  /* type */
+  --serif:   'Cardo', Georgia, 'Times New Roman', serif;
+  --fell:    'Cardo', Georgia, serif;
+  --fell-sc: 'Cardo', Georgia, serif;
+  --mono:    'Cutive Mono', 'Courier New', monospace;
+
+  --measure: 66ch;
+  --gutter: clamp(20px, 5vw, 72px);
+}
+
+*{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:
+    /* faint paper grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.17 0 0 0 0 0.11 0 0 0 0 0.06 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    /* subtle vignette toward edges */
+    radial-gradient(120% 90% at 50% 0%, rgba(255,250,238,0.5), transparent 55%);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.72;
+  letter-spacing:0.005em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+
+/* ---------- shared layout ---------- */
+.wrap{ max-width:1180px; margin:0 auto; padding-inline:var(--gutter); }
+.rule{ border:0; border-top:1px solid var(--line); margin:0; }
+
+/* small-caps eyebrow labels */
+.label{
+  font-family:var(--fell-sc);
+  font-size:0.8rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--brown-mid);
+  margin:0;
+}
+
+/* ornamental divider:  ── ❧ ── */
+.ornament{
+  display:flex; align-items:center; gap:18px;
+  color:var(--brown-soft);
+  font-family:var(--fell);
+}
+.ornament::before,.ornament::after{
+  content:""; flex:1; height:1px; background:var(--line-soft);
+}
+.ornament .mark{ font-size:1.3rem; color:var(--brown-mid); }
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead{
+  background:var(--ink);
+  color:var(--paper);
+  border-bottom:3px double rgba(233,220,195,0.4);
+}
+.masthead .estd{
+  display:flex; justify-content:flex-end; align-items:center;
+  font-family:var(--fell-sc);
+  font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--brown-soft);
+  padding:8px 0;
+  border-bottom:1px solid rgba(233,220,195,0.16);
+}
+.masthead .bar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:24px; padding:22px 0 24px;
+}
+.brand{
+  font-family:var(--serif); font-weight:700;
+  font-size:clamp(1.9rem,3.4vw,2.7rem);
+  letter-spacing:0.02em; line-height:1; white-space:nowrap;
+  text-decoration:none; color:var(--paper);
+  display:flex; flex-direction:column; align-items:flex-start;
+}
+.brand .sub{
+  font-family:var(--fell-sc); font-weight:400;
+  font-size:0.62rem; letter-spacing:0.34em; text-transform:uppercase;
+  color:var(--brown-soft); margin-top:6px;
+}
+.nav{ display:flex; align-items:flex-end; gap:clamp(16px,2.4vw,38px); }
+.nav a{
+  font-family:var(--fell-sc);
+  font-size:0.82rem; letter-spacing:0.16em; text-transform:uppercase;
+  text-decoration:none; color:var(--paper);
+  padding-bottom:3px; border-bottom:1px solid transparent;
+  transition:border-color .25s ease, color .25s ease;
+}
+.nav a:hover{ border-color:var(--brown-soft); }
+.nav a.active{ border-color:var(--paper); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot{
+  background:var(--ink); color:var(--paper);
+  margin-top:90px; padding:60px 0 56px;
+  border-top:3px double rgba(233,220,195,0.4);
+}
+.foot .logo-wrap{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+.foot image-slot{
+  width:300px; height:116px;
+  border:1px dashed rgba(233,220,195,0.4);
+  background:rgba(233,220,195,0.05);
+}
+.foot .logo-hint{
+  margin:0; font-family:var(--fell-sc); font-size:0.7rem;
+  letter-spacing:0.22em; text-transform:uppercase; color:var(--brown-soft);
+}
+
+/* ============================================================
+   PLATE / PLACEHOLDER IMAGERY
+   diagonal hairline stripes + monospace caption + plate no.
+   ============================================================ */
+.plate{
+  position:relative;
+  background-color:var(--paper-deep);
+  background-image:repeating-linear-gradient(
+    45deg,
+    transparent 0 9px,
+    rgba(91,61,38,0.10) 9px 10px
+  );
+  border:1px solid var(--line);
+  overflow:hidden;
+  aspect-ratio:4/3;
+  display:flex; align-items:center; justify-content:center;
+}
+.plate .cap{
+  font-family:var(--mono); font-size:0.7rem; letter-spacing:0.05em;
+  color:var(--brown-mid); text-align:center; padding:0 14px;
+  background:rgba(233,220,195,0.78);
+  border:1px solid var(--line-soft);
+  padding:7px 12px;
+}
+.plate .no{
+  position:absolute; top:10px; left:12px;
+  font-family:var(--fell-sc); font-size:0.7rem; letter-spacing:0.16em;
+  color:var(--brown); text-transform:uppercase;
+}
+.plate.tall{ aspect-ratio:3/4; }
+.plate.wide{ aspect-ratio:16/9; }
+.plate.sq{ aspect-ratio:1/1; }
+
+/* ============================================================
+   SPECIMEN CARD (project)
+   ============================================================ */
+.specimen{
+  display:block; text-decoration:none; color:inherit;
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  padding:14px 14px 18px;
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.specimen:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px -18px rgba(43,29,16,0.55);
+  border-color:var(--brown);
+}
+.specimen .plate{ aspect-ratio:4/3; }
+.specimen .cat{
+  display:block; margin-top:14px;
+  font-family:var(--fell-sc); font-size:0.68rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--brown-mid);
+}
+.specimen h3{
+  font-family:var(--serif); font-weight:700;
+  font-size:1.32rem; line-height:1.16; margin:5px 0 0;
+  letter-spacing:0.01em;
+}
+.specimen .plate-no-label{
+  font-family:var(--mono); font-size:0.66rem; color:var(--brown-soft);
+  margin-top:8px;
+}
+
+/* drop cap */
+.dropcap::first-letter{
+  font-family:var(--serif); font-weight:700;
+  float:left; font-size:4.1rem; line-height:0.78;
+  padding:6px 12px 0 0; color:var(--brown);
+}
+
+/* utility */
+.center{ text-align:center; }
+.measure{ max-width:var(--measure); }
+.mono{ font-family:var(--mono); }
