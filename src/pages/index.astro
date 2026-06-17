@@ -13,32 +13,33 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
   <Hero />
 
   <!-- Recent Work -->
-  <section class="py-24 px-8 lg:px-12">
+  <section class="pt-2 pb-24 px-8 lg:px-12">
     <div class="max-w-6xl mx-auto">
       <!-- Section header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-        <div>
-          <h2 class="font-display text-3xl text-bone tracking-wide">
-            Recent Work
-          </h2>
-        </div>
+      <div class="flex items-baseline justify-between gap-6 flex-wrap">
+        <h2 class="font-display font-bold text-ink tracking-[0.01em] text-[clamp(1.7rem,3.4vw,2.5rem)] whitespace-nowrap">
+          Recent Work
+        </h2>
 
         {allProjects.length > 6 && (
           <a
             href="/gallery"
-            class="inline-flex items-center gap-4 text-smoke hover:text-copper transition-colors duration-300 group"
+            class="font-display uppercase text-[0.85rem] tracking-[0.16em] text-brown border-b border-line pb-0.5 transition-colors duration-300 hover:text-ink hover:border-ink"
           >
-            <span class="text-sm tracking-wide">View all projects</span>
-            <span class="w-8 h-0.5 bg-copper group-hover:w-12 transition-all duration-300"></span>
+            View all projects →
           </a>
         )}
       </div>
 
-      <ProjectGrid
-        projects={recentProjects}
-        emptyMessage="Projects coming soon."
-        showNumerals={false}
-      />
+      <hr class="rule mt-3" />
+
+      <div class="mt-8">
+        <ProjectGrid
+          projects={recentProjects}
+          emptyMessage="Projects coming soon."
+          showNumerals={false}
+        />
+      </div>
     </div>
   </section>
 </Layout>

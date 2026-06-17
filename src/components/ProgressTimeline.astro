@@ -19,10 +19,9 @@ const { steps, projectTitle } = Astro.props;
 <section class="progress-timeline">
   <!-- Section Header -->
   <div class="flex items-center gap-3 mb-3">
-    <div class="rivet"></div>
-    <span class="workshop-label">Build Progress</span>
+    <span class="label">Build Progress</span>
   </div>
-  <div class="copper-line mb-12"></div>
+  <hr class="rule mb-12" />
 
   <!-- Timeline -->
   <div class="timeline">
@@ -43,7 +42,7 @@ const { steps, projectTitle } = Astro.props;
         >
           {/* Step title row: leftTitle — line — circle — line — rightTitle */}
           <div class="step-header">
-            <span class="step-title-left font-display text-xl text-bone tracking-wide">
+            <span class="step-title-left font-display text-xl text-ink tracking-wide">
               {step.leftTitle}
             </span>
             <span class="step-header-line" aria-hidden="true"></span>
@@ -51,7 +50,7 @@ const { steps, projectTitle } = Astro.props;
               <span>{stepNumber}</span>
             </div>
             <span class="step-header-line" aria-hidden="true"></span>
-            <span class="step-title-right font-display text-xl text-bone tracking-wide">
+            <span class="step-title-right font-display text-xl text-ink tracking-wide">
               {step.rightTitle}
             </span>
           </div>
@@ -61,7 +60,7 @@ const { steps, projectTitle } = Astro.props;
             {/* Text column */}
             <div class="step-text">
               {step.description.trim().split(/\n\n+/).map((paragraph) => (
-                <p class="text-ash leading-relaxed text-sm mb-3 last:mb-0">
+                <p class="text-ink leading-relaxed text-sm mb-3 last:mb-0">
                   {paragraph.replace(/\n/g, ' ').trim()}
                 </p>
               ))}
@@ -121,7 +120,7 @@ const { steps, projectTitle } = Astro.props;
               </div>
 
               {hasMultipleImages && (
-                <p class="step-counter text-smoke text-xs text-center mt-2 tracking-wider">
+                <p class="step-counter font-mono text-brown-mid text-xs text-center mt-2 tracking-wider">
                   <span data-step-current>1</span> / <span>{step.images.length}</span>
                 </p>
               )}
@@ -154,20 +153,15 @@ const { steps, projectTitle } = Astro.props;
     padding-bottom: 2rem;
   }
 
-  /* Vertical copper line — desktop center */
+  /* Vertical hairline — desktop center */
   .timeline-line {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
-    width: 2px;
-    background: linear-gradient(
-      180deg,
-      var(--color-copper) 0%,
-      var(--color-brass) 50%,
-      var(--color-copper) 100%
-    );
-    opacity: 0.5;
+    width: 1px;
+    background: var(--color-line);
+    opacity: 1;
     transform: translateX(-50%);
   }
 
@@ -208,16 +202,30 @@ const { steps, projectTitle } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at 35% 35%, var(--color-brass), var(--color-copper));
-    border: 2px solid var(--color-brass);
+    background: transparent;
+    border: 2px solid var(--color-ink);
     border-radius: 50%;
-    box-shadow: 0 0 12px rgba(184, 115, 51, 0.4);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 14px;
-    color: var(--color-charwood);
+    color: var(--color-ink);
     line-height: 1;
     z-index: 2;
+  }
+
+  /* Mask the center line around the circle: a paper bar painted behind
+     the circle (so the full ring still renders) that hides the line for
+     the circle's height plus 6px above and below */
+  .step-header::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px;
+    height: 48px;
+    transform: translate(-50%, -50%);
+    background: var(--color-paper);
+    z-index: -1;
   }
 
   /* Left title: right-aligned so it sits flush against the circle */
@@ -232,7 +240,7 @@ const { steps, projectTitle } = Astro.props;
     text-align: left;
   }
 
-  /* Short copper lines between title and circle — hidden on desktop, shown on mobile */
+  /* Short hairlines between title and circle — hidden on desktop, shown on mobile */
   .step-header-line {
     display: none;
   }
@@ -257,8 +265,8 @@ const { steps, projectTitle } = Astro.props;
 
   /* Step text */
   .step-text {
-    background: rgba(42, 34, 28, 0.5);
-    border: 1px solid var(--color-walnut);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
@@ -272,15 +280,15 @@ const { steps, projectTitle } = Astro.props;
 
   /* Step images */
   .step-images {
-    background: rgba(42, 34, 28, 0.5);
-    border: 1px solid var(--color-walnut);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
     padding: 1.25rem;
   }
 
   .step-image-viewport {
     position: relative;
     aspect-ratio: 16 / 10;
-    background: var(--color-charwood);
+    background: var(--color-paper-deep);
   }
 
   /* Slides */
@@ -315,18 +323,18 @@ const { steps, projectTitle } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-timber);
-    border: 1px solid var(--color-walnut);
-    color: var(--color-bone);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
     cursor: pointer;
     transition: all 0.3s ease;
     opacity: 0.85;
   }
 
   .step-nav:hover {
-    background: var(--color-copper);
-    border-color: var(--color-copper);
-    color: var(--color-charwood);
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
     opacity: 1;
   }
 
@@ -366,13 +374,13 @@ const { steps, projectTitle } = Astro.props;
         word-break: break-word;
     }
 
-    /* Show short copper lines between titles and circle */
+    /* Show short hairlines between titles and circle */
     .step-header-line {
       display: block;
       width: 20px;
       min-width: 20px;
       height: 2px;
-      background: linear-gradient(90deg, var(--color-copper), var(--color-brass));
+      background: var(--color-brown);
       opacity: 0.5;
       margin: 0 8px;
     }

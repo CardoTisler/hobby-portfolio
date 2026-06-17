@@ -1,65 +1,99 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Forge & Timber palette - dark oiled walnut */
-  --color-charwood: #1f1914;
-  --color-timber: #2a221c;
-  --color-walnut: #3a302a;
-  --color-driftwood: #4a403a;
+  /* ============================================================
+     Victorian Apothecary — sepia & cream
+     ============================================================ */
 
-  /* Warm metallics */
-  --color-copper: #b87333;
-  --color-brass: #d4a84b;
-  --color-ember: #e85d04;
+  /* Paper & ink */
+  --color-paper: #e9dcc3; /* primary cream ground */
+  --color-paper-deep: #e0d0b2; /* recessed cream / plate ground */
+  --color-paper-card: #f1e8d4; /* raised label paper */
+  --color-paper-edge: #d6c4a3; /* edge / faint divider cream */
 
-  /* Organic neutrals */
-  --color-smoke: #9a918a;
-  --color-ash: #c4bbb4;
-  --color-bone: #e8e2dc;
+  --color-ink: #2b1d10; /* near-black sepia */
+  --color-brown: #5b3d26; /* primary brown */
+  --color-brown-mid: #8a6a48; /* secondary brown */
+  --color-brown-soft: #a98c66; /* tertiary / faint brown */
+
+  /* Hairlines (sepia on cream) */
+  --color-line: rgba(43, 29, 16, 0.3);
+  --color-line-soft: rgba(43, 29, 16, 0.16);
+
+  /* Cream lines used on dark masthead / footer */
+  --color-paper-line: rgba(233, 220, 195, 0.4);
+  --color-paper-line-soft: rgba(233, 220, 195, 0.16);
+
+  /* Accents — used sparingly */
+  --color-accent: #3a5a42; /* bottle green */
+  --color-accent-deep: #28402f;
+  --color-oxblood: #6e2f2a; /* tiny seals only */
 
   /* Typography */
-  --font-display: 'Cinzel', Georgia, serif;
-  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-display: 'Cardo', Georgia, 'Times New Roman', serif;
+  --font-body: 'Cardo', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Cutive Mono', 'Courier New', monospace;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: var(--color-charwood);
-  color: var(--color-ash);
+  background-color: var(--color-paper);
+  background-image:
+    /* faint fractal paper grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.17 0 0 0 0 0.11 0 0 0 0 0.06 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    /* faint top highlight */
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 250, 238, 0.5), transparent 55%);
+  background-attachment: fixed, scroll;
+  color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.72;
+  letter-spacing: 0.005em;
   min-width: 320px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Layered so Tailwind text-color utilities can override link color */
+@layer base {
+  a {
+    color: inherit;
+  }
 }
 
 ::selection {
-  background-color: var(--color-copper);
-  color: var(--color-charwood);
+  background-color: var(--color-brown);
+  color: var(--color-paper);
 }
 
-/* Minimal scrollbar */
+/* Sepia scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--color-timber);
+  background: var(--color-paper-deep);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--color-walnut);
-  border: 2px solid var(--color-timber);
+  background: var(--color-brown-soft);
+  border: 2px solid var(--color-paper-deep);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-copper);
+  background: var(--color-brown);
 }
 
-/* Animations */
+/* ============================================================
+   Animations
+   ============================================================ */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -72,127 +106,227 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes emberGlow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+/* Staggered catalogue-plate reveal */
+@keyframes plateReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
+/* ============================================================
+   Shared apothecary vocabulary
+   Wrapped in @layer components so Tailwind utilities (margins, colors,
+   etc.) can override these without needing !important.
+   ============================================================ */
 
-/* Forge glow effect */
-.forge-glow {
-  position: relative;
-}
+@layer components {
 
-.forge-glow::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(
-    135deg,
-    var(--color-ember) 0%,
-    var(--color-copper) 50%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: -1;
-}
-
-.forge-glow:hover::after {
-  opacity: 0.15;
-}
-
-/* Hammered metal border */
-.hammered-border {
-  border: 1px solid var(--color-walnut);
-  position: relative;
-}
-
-.hammered-border::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  right: -4px;
-  bottom: -4px;
-  border: 1px solid var(--color-copper);
-  opacity: 0.3;
-  pointer-events: none;
-}
-
-/* Copper accent line */
-.copper-line {
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--color-copper) 0%,
-    var(--color-brass) 50%,
-    var(--color-copper) 100%
-  );
-}
-
-/* Timber card */
-.timber-card {
-  background: var(--color-timber);
-  border: 1px solid var(--color-walnut);
-  transition: all 0.4s ease;
-}
-
-.timber-card:hover {
-  border-color: var(--color-copper);
-  box-shadow:
-    0 4px 20px rgba(184, 115, 51, 0.15),
-    inset 0 1px 0 rgba(184, 115, 51, 0.1);
-}
-
-/* Forge brand mark */
-.forge-mark {
-  width: 12px;
-  height: 12px;
-  background: var(--color-ember);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  animation: emberGlow 3s ease-in-out infinite;
-}
-
-/* Workshop label */
-.workshop-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+/* Small-caps engraved eyebrow label */
+.label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-smoke);
+  color: var(--color-brown-mid);
+  margin: 0;
 }
 
-/* Copper underline */
-.copper-underline {
-  position: relative;
-  display: inline-block;
+/* Ornamental divider:  ──  ❧  ── */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--color-brown-soft);
+  font-family: var(--font-display);
 }
-
-.copper-underline::after {
+.ornament::before,
+.ornament::after {
   content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-line-soft);
+}
+.ornament .mark {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-brown-mid);
+}
+
+/* Hairline rule */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-paper);
+  background: var(--color-ink);
+  padding: 14px 34px;
+  border: 1px solid var(--color-ink);
+  display: inline-block;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+.btn:hover {
+  background: transparent;
+  color: var(--color-ink);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+}
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Plate — framed container for real photography
+   (hairline border + recessed cream ground while loading) */
+.plate {
+  position: relative;
+  background-color: var(--color-paper-deep);
+  border: 1px solid var(--color-line);
+  overflow: hidden;
+}
+/* Corner plate numeral (small-caps, top-left) */
+.plate .plate-no {
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-copper);
-  transition: width 0.4s ease;
+  top: 10px;
+  left: 12px;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brown);
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-line-soft);
+  padding: 2px 8px;
 }
 
-.copper-underline:hover::after {
-  width: 100%;
+/* Specimen — project / catalogue card */
+.specimen {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-line);
+  padding: 14px 14px 18px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.specimen:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -18px rgba(43, 29, 16, 0.55);
+  border-color: var(--color-brown);
 }
 
-/* Rivet decoration */
-.rivet {
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle at 30% 30%, var(--color-brass), var(--color-copper));
-  border-radius: 50%;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+/* Generic framed panel on label paper */
+.card {
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-line);
+}
+
+/* Specifications ledger (dark header bar + paired rows) */
+.spec {
+  border: 1px solid var(--color-line);
+  background: var(--color-paper-card);
+}
+.spec-cap {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: var(--color-ink);
+  padding: 12px 18px;
+  margin: 0;
+  text-align: center;
+}
+.spec .pair {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+.spec .pair:last-child {
+  border-bottom: none;
+}
+.spec dt {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brown-mid);
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.spec dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-align: right;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Drop cap for catalogue prose */
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  float: left;
+  font-size: 4.1rem;
+  line-height: 0.78;
+  padding: 6px 12px 0 0;
+  color: var(--color-brown);
+}
+
+/* Nav link — underline fills on hover, solid when active */
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+.nav-link:hover {
+  border-bottom-color: var(--color-brown-soft);
+}
+.nav-link.is-active {
+  border-bottom-color: var(--color-paper);
+}
+
 }

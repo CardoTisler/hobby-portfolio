@@ -74,7 +74,7 @@ const { id, images, title } = Astro.props;
   .lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(31, 25, 20, 0.95);
+    background: rgba(43, 29, 16, 0.94);
     backdrop-filter: blur(8px);
   }
 
@@ -88,17 +88,17 @@ const { id, images, title } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-timber);
-    border: 1px solid var(--color-walnut);
-    color: var(--color-bone);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .lightbox-close:hover {
-    background: var(--color-copper);
-    border-color: var(--color-copper);
-    color: var(--color-charwood);
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
   }
 
   .lightbox-nav {
@@ -111,9 +111,9 @@ const { id, images, title } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-timber);
-    border: 1px solid var(--color-walnut);
-    color: var(--color-bone);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -127,9 +127,9 @@ const { id, images, title } = Astro.props;
   }
 
   .lightbox-nav:hover {
-    background: var(--color-copper);
-    border-color: var(--color-copper);
-    color: var(--color-charwood);
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
   }
 
   .lightbox-content {
@@ -161,7 +161,7 @@ const { id, images, title } = Astro.props;
     width: auto;
     height: auto;
     object-fit: contain;
-    border: 1px solid var(--color-walnut);
+    border: 1px solid var(--color-line);
   }
 
   .lightbox-counter {
@@ -171,10 +171,11 @@ const { id, images, title } = Astro.props;
     transform: translateX(-50%);
     z-index: 10;
     padding: 8px 20px;
-    background: var(--color-timber);
-    border: 1px solid var(--color-walnut);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
     font-size: 13px;
-    color: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
     letter-spacing: 0.1em;
   }
 

@@ -5,7 +5,7 @@ thumbnail: "../../assets/projects/dining-table-mkii/IMG_5625.jpg"
 date: 2026-02-28
 material: "Ash & Walnut"
 finish: "Osmo Polyx (3062)"
-dimensions: "Length: 1800, Width: 870, Height: 780"
+dimensions: "Length: 1800, Width: 870, Height: 780 (mm)"
 images:
   - "../../assets/projects/dining-table-mkii/IMG_5625.jpg"
   - "../../assets/projects/dining-table-mkii/IMG_5653.jpg"

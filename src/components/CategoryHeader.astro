@@ -8,45 +8,37 @@ interface Props {
 const { title, description, projectCount } = Astro.props;
 ---
 
-<div class="pt-32 pb-16 px-8 lg:px-12">
+<div class="pt-36 sm:pt-44 pb-10 px-8 lg:px-12">
   <div class="max-w-6xl mx-auto">
     <!-- Back link -->
     <a
       href="/"
-      class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 group"
+      class="inline-flex items-center gap-2 font-display uppercase text-[0.85rem] tracking-[0.16em] text-brown-mid hover:text-ink transition-colors duration-300 mb-10"
     >
-      <span class="w-6 h-0.5 bg-copper group-hover:w-10 transition-all duration-300"></span>
-      <span class="text-sm tracking-wide">Back</span>
+      <span aria-hidden="true">←</span><span>Home</span>
     </a>
 
-    <!-- Title block -->
-    <div class="hammered-border p-5 sm:p-8 bg-charwood">
-      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="forge-mark"></div>
-            <span class="workshop-label">{projectCount} {projectCount === 1 ? 'Project' : 'Projects'}</span>
-          </div>
-          <h1 class="font-display text-3xl sm:text-5xl text-bone tracking-wider">
-            {title}
-          </h1>
-          {description && (
-            <p class="mt-4 text-smoke max-w-lg leading-relaxed">
-              {description}
-            </p>
-          )}
-        </div>
+    <!-- Centered title block -->
+    <div class="text-center">
+      <p class="label mb-4">Catalogue of Works</p>
 
-        <!-- Decorative rivets -->
-        <div class="flex items-center gap-3">
-          <div class="rivet"></div>
-          <div class="rivet"></div>
-          <div class="rivet"></div>
-        </div>
+      <h1 class="font-display font-bold text-ink leading-[1.05] tracking-[0.005em] text-[clamp(2.4rem,5.5vw,4rem)]">
+        {title}
+      </h1>
+
+      {description && (
+        <p class="mt-4 text-brown max-w-[50ch] mx-auto leading-relaxed">
+          {description}
+        </p>
+      )}
+
+      <p class="font-mono text-[0.85rem] tracking-[0.05em] text-brown-soft mt-5">
+        {projectCount} {projectCount === 1 ? 'project' : 'projects'} recorded
+      </p>
+
+      <div class="ornament max-w-[300px] mx-auto mt-6">
+        <span class="mark">&#10048;</span>
       </div>
     </div>
-
-    <!-- Copper line -->
-    <div class="mt-8 copper-line max-w-xs"></div>
   </div>
 </div>

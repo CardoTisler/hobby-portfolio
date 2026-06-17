@@ -58,8 +58,8 @@ const { beforeImage, afterImage, title } = Astro.props;
   .before-after-slider {
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--color-walnut);
-    background: var(--color-timber);
+    border: 1px solid var(--color-line);
+    background: var(--color-paper-deep);
   }
 
   .slider-container {
@@ -90,13 +90,14 @@ const { beforeImage, afterImage, title } = Astro.props;
     position: absolute;
     bottom: 16px;
     padding: 6px 16px;
-    background: var(--color-charwood);
-    border: 1px solid var(--color-walnut);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-line);
+    font-family: var(--font-display);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-bone);
+    color: var(--color-ink);
   }
 
   .before-label {
@@ -126,13 +127,7 @@ const { beforeImage, afterImage, title } = Astro.props;
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(
-      180deg,
-      var(--color-copper) 0%,
-      var(--color-brass) 50%,
-      var(--color-copper) 100%
-    );
-    box-shadow: 0 0 8px rgba(184, 115, 51, 0.5);
+    background: var(--color-brown);
   }
 
   .handle-grip {
@@ -142,13 +137,10 @@ const { beforeImage, afterImage, title } = Astro.props;
     gap: 0;
     width: 48px;
     height: 48px;
-    background: var(--color-charwood);
-    border: 2px solid var(--color-copper);
-    border-radius: 50%;
-    color: var(--color-copper);
-    box-shadow:
-      0 2px 8px rgba(0, 0, 0, 0.4),
-      0 0 12px rgba(184, 115, 51, 0.3);
+    background: var(--color-paper-card);
+    border: 2px solid var(--color-brown);
+    color: var(--color-brown);
+    box-shadow: 0 2px 6px rgba(43, 29, 16, 0.3);
     pointer-events: auto;
   }
 
@@ -160,8 +152,8 @@ const { beforeImage, afterImage, title } = Astro.props;
 
   /* Active state */
   .before-after-slider.is-dragging .handle-grip {
-    background: var(--color-copper);
-    color: var(--color-charwood);
+    background: var(--color-brown);
+    color: var(--color-paper);
     transform: scale(1.1);
   }
 

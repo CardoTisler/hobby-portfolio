@@ -25,6 +25,12 @@ const category = project.data.category.toLowerCase();
 const hasBeforeAfter = project.data.beforeImage && project.data.afterImage;
 const hasDetails = project.data.date || project.data.material || project.data.dimensions || project.data.finish;
 
+const completed = project.data.date?.toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+});
+
 // Glob all project images at build time for directory-based progress steps
 const allProjectImages = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/projects/**/*.{jpg,jpeg,png,webp}',
@@ -52,52 +58,29 @@ const resolvedProgress = project.data.progress?.map((step) => {
 ---
 
 <Layout title={`${project.data.title} — Cardo Tisler`}>
-  <article class="pt-32 pb-24">
-    <div class="px-8 lg:px-12 mb-12 pb-12">
+  <article class="pt-36 sm:pt-44 pb-24">
+    <!-- Entry header -->
+    <div class="px-8 lg:px-12">
       <div class="max-w-6xl mx-auto">
-        <a
-          href={`/${category}`}
-          class="inline-flex items-center gap-3 text-smoke hover:text-copper transition-colors duration-300 mb-10 pt-4 group"
-        >
-          <span class="w-6 h-0.5 bg-copper group-hover:w-10 transition-all duration-300"></span>
-          <span class="text-sm tracking-wide">Back</span>
-        </a>
+        <!-- Breadcrumb -->
+        <nav class="font-display uppercase text-[0.85rem] tracking-[0.16em] text-brown-mid flex gap-2.5 items-center flex-wrap">
+          <a href="/" class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200">Home</a>
+          <span class="text-brown-soft" aria-hidden="true">/</span>
+          <a href={`/${category}`} class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200">{project.data.category}</a>
+          <span class="text-brown-soft" aria-hidden="true">/</span>
+          <span class="text-brown">{project.data.title}</span>
+        </nav>
 
-        <div class="hammered-border p-5 sm:p-8 bg-charwood">
-          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="forge-mark"></div>
-                <span class="workshop-label">{project.data.category}</span>
-              </div>
-
-              <h1 class="font-display text-3xl sm:text-5xl text-bone tracking-wider">
-                {project.data.title}
-              </h1>
-
-              {project.data.date && (
-                <p class="mt-4 text-smoke">
-                  {project.data.date.toLocaleDateString('en-GB', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                  })}
-                </p>
-              )}
-            </div>
-
-            <div class="flex items-center gap-3">
-              <div class="rivet"></div>
-              <div class="rivet"></div>
-              <div class="rivet"></div>
-            </div>
-          </div>
-        </div>
+        <header class="mt-6">
+          <h1 class="font-display font-bold text-ink leading-[1.02] tracking-[0.005em] text-[clamp(2.4rem,5.5vw,4.2rem)]">
+            {project.data.title}
+          </h1>
+        </header>
       </div>
     </div>
 
-    <!-- Before/After Slider or Main image -->
-    <div class="px-8 lg:px-12 mb-16">
+    <!-- Hero plate / before-after -->
+    <div class="px-8 lg:px-12 mt-10 mb-14">
       <div class="max-w-6xl mx-auto">
         {hasBeforeAfter ? (
           <BeforeAfterSlider
@@ -106,32 +89,29 @@ const resolvedProgress = project.data.progress?.map((step) => {
             title={project.data.title}
           />
         ) : (
-          <div class="timber-card p-4 bg-charwood sm:aspect-[16/10] lg:aspect-none">
+          <div class="plate">
             <Photo
               src={project.data.thumbnail}
               alt={project.data.title}
               widths={[1400, 2000, 2800]}
-              class="block max-w-full max-h-full w-auto h-auto"
+              class="block w-full h-auto"
             />
           </div>
         )}
       </div>
     </div>
 
+    <!-- Body: prose + specifications ledger -->
     <div class="px-8 lg:px-12">
       <div class="max-w-6xl mx-auto">
-        <div class="grid lg:grid-cols-12 gap-12">
+        <div class="grid lg:grid-cols-12 gap-x-12 gap-y-12">
           <div class="lg:col-span-7">
-            <div class="prose prose-lg max-w-none prose-invert
-              prose-p:text-ash prose-p:leading-relaxed
-              prose-headings:font-display prose-headings:text-bone prose-headings:font-normal prose-headings:tracking-wide
-              prose-a:text-copper prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-bone prose-strong:font-medium">
+            <div class="entry-prose dropcap text-ink text-[1.06rem]">
               <Content />
             </div>
 
             {project.data.images && project.data.images.length > 0 && (
-              <div class="mt-6">
+              <div class="mt-10">
                 <ImageCarousel
                   images={project.data.images}
                   title={project.data.title}
@@ -142,50 +122,29 @@ const resolvedProgress = project.data.progress?.map((step) => {
 
           <!-- Sidebar -->
           <aside class="lg:col-span-4 lg:col-start-9">
-            <div class="sticky top-32">
-              <!-- Details -->
+            <div class="sticky top-36 space-y-6">
               {hasDetails && (
-                <div class="hammered-border p-6 bg-timber/50">
-                  <div class="flex items-center gap-3 mb-6">
-                    <div class="rivet"></div>
-                    <span class="workshop-label">Details</span>
-                  </div>
-                  <dl class="space-y-4">
-                    {project.data.date && (
-                      <div class=" py-3 border-b border-walnut">
-                        <dt class="text-smoke">Date</dt>
-                        <dd class="text-bone">
-                          {project.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
-                        </dd>
-                      </div>
-                    )}
+                <div class="spec">
+                  <p class="spec-cap">Specifications</p>
+                  <dl>
                     {project.data.material && (
-                      <div class="py-3 border-b border-walnut">
-                        <dt class="text-smoke mb-1">Material</dt>
-                        <dd class="text-bone">{project.data.material}</dd>
-                      </div>
-                    )}
-                    {project.data.dimensions && (
-                      <div class="py-3 border-b border-walnut">
-                        <dt class="text-smoke mb-1">Dimensions (mm)</dt>
-                        <dd class="text-bone">{project.data.dimensions}</dd>
-                      </div>
+                      <div class="pair"><dt>Material</dt><dd>{project.data.material}</dd></div>
                     )}
                     {project.data.finish && (
-                      <div class="py-3">
-                        <dt class="text-smoke mb-1">Finish</dt>
-                        <dd class="text-copper font-medium">{project.data.finish}</dd>
-                      </div>
+                      <div class="pair"><dt>Finish</dt><dd>{project.data.finish}</dd></div>
+                    )}
+                    {project.data.dimensions && (
+                      <div class="pair"><dt>Dimensions</dt><dd>{project.data.dimensions}</dd></div>
+                    )}
+                    {completed && (
+                      <div class="pair"><dt>Completed</dt><dd>{completed}</dd></div>
                     )}
                   </dl>
                 </div>
               )}
 
-              <!-- Cost Summary -->
               {project.data.costs && project.data.costs.length > 0 && (
-                <div class="mt-6">
-                  <CostSummary costs={project.data.costs} />
-                </div>
+                <CostSummary costs={project.data.costs} />
               )}
             </div>
           </aside>
@@ -206,3 +165,31 @@ const resolvedProgress = project.data.progress?.map((step) => {
     )}
   </article>
 </Layout>
+
+<style>
+  .entry-prose :global(p) {
+    margin: 0 0 1.1em;
+  }
+  .entry-prose :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .entry-prose :global(a) {
+    color: var(--color-brown);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .entry-prose :global(a:hover) {
+    color: var(--color-ink);
+  }
+  .entry-prose :global(strong) {
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .entry-prose :global(h2),
+  .entry-prose :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 1.6em 0 0.4em;
+  }
+</style>

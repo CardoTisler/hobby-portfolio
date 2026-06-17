@@ -21,30 +21,22 @@ const numeral = showNumeral ? toRoman(total - index) : '';
   href={`/${category.toLowerCase()}/${slug}`}
   class="group block mb-6 lg:mb-8 break-inside-avoid"
 >
-  <article class="timber-card forge-glow overflow-hidden">
-    <div class="relative overflow-hidden bg-charwood">
+  <article class="specimen">
+    <div class="plate">
+      {showNumeral && numeral && (
+        <span class="plate-no">{numeral}</span>
+      )}
       <Photo
         src={thumbnail}
         alt={title}
         width={900}
-        class="w-full h-auto block transition-all duration-300 group-hover:scale-[1.03] group-hover:blur-[1px]"
+        class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.02]"
       />
-
-      <!-- Warm overlay on hover -->
-      <div class="absolute inset-0 bg-gradient-to-t from-charwood/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     </div>
 
-    <div class="p-5">
-      <div class="flex items-center gap-3 mb-3">
-        <div class="rivet"></div>
-        <span class="workshop-label">{category}</span>
-      </div>
-      <h3 class="font-display text-lg text-bone group-hover:text-copper transition-colors duration-300 tracking-wide flex items-baseline justify-between gap-3">
-        <span>{title}</span>
-        {showNumeral && (
-          <span class="text-copper/80 font-light tracking-[0.25em] shrink-0">{numeral}</span>
-        )}
-      </h3>
-    </div>
+    <span class="label block mt-3.5">{category}</span>
+    <h3 class="font-display font-bold text-ink text-[1.3rem] leading-[1.16] mt-1.5 tracking-[0.01em] transition-colors duration-300 group-hover:text-brown">
+      {title}
+    </h3>
   </article>
 </a>

@@ -9,28 +9,30 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 min-w-[320px] bg-charwood/95 backdrop-blur-sm border-b border-walnut px-8 lg:px-12">
+<header class="fixed top-0 left-0 right-0 z-50 min-w-[320px] bg-ink/95 backdrop-blur-sm border-b-[3px] border-double border-paper-line px-8 lg:px-12">
   <nav class="max-w-6xl mx-auto">
-    <div class="flex items-center justify-between h-18">
-      <!-- Logo with forge mark -->
-      <a href="/" class="group flex items-center gap-4">
-        <div class="forge-mark"></div>
-        <span class="font-display text-xl tracking-wider">
-          <span class="text-bone">Cardo</span> <span class="text-copper">Tisler</span>
+    <!-- Eyebrow row -->
+    <div class="hidden sm:flex justify-end items-center py-2 border-b border-paper-line-soft">
+      <span class="label !text-brown-soft !tracking-[0.28em] !text-[0.78rem]">Tartu · Estonia</span>
+    </div>
+
+    <div class="flex items-center justify-between h-16 sm:h-[4.5rem]">
+      <!-- Wordmark -->
+      <a href="/" class="group flex items-center leading-none">
+        <span class="font-display font-bold text-2xl sm:text-[1.7rem] tracking-[0.02em] whitespace-nowrap">
+          <span class="text-paper">Cardo</span> <span class="text-brown-soft">Tisler</span>
         </span>
       </a>
 
       <!-- Desktop navigation -->
-      <ul class="hidden md:flex items-center gap-8">
-        {navLinks.map((link, index) => (
+      <ul class="hidden md:flex items-end gap-7 lg:gap-9">
+        {navLinks.map((link) => (
           <li>
             <a
               href={link.href}
               class:list={[
-                'copper-underline text-sm transition-colors duration-300',
-                currentPath === link.href
-                  ? 'text-copper'
-                  : 'text-smoke hover:text-bone',
+                'nav-link text-paper',
+                { 'is-active': currentPath === link.href },
               ]}
             >
               {link.label}
@@ -42,30 +44,30 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-bone"
+        class="md:hidden p-2 text-paper"
         aria-label="Toggle menu"
       >
         <div class="w-6 h-5 flex flex-col justify-between" id="hamburger">
-          <span class="w-full h-0.5 bg-current transition-all duration-300 origin-center"></span>
-          <span class="w-4 h-0.5 bg-copper transition-all duration-300 ml-auto"></span>
-          <span class="w-full h-0.5 bg-current transition-all duration-300 origin-center"></span>
+          <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
+          <span class="w-4 h-px bg-brown-soft transition-all duration-300 ml-auto"></span>
+          <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
         </div>
       </button>
     </div>
 
     <!-- Mobile navigation -->
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="py-6 border-t border-walnut">
+      <div class="py-6 border-t border-paper-line-soft">
         <ul class="space-y-4">
           {navLinks.map((link) => (
             <li>
               <a
                 href={link.href}
                 class:list={[
-                  'block py-2 font-display text-lg tracking-wide transition-colors duration-300',
+                  'block py-2 font-display text-lg uppercase tracking-[0.14em] transition-colors duration-300',
                   currentPath === link.href
-                    ? 'text-copper'
-                    : 'text-smoke hover:text-bone',
+                    ? 'text-paper'
+                    : 'text-brown-soft hover:text-paper',
                 ]}
               >
                 {link.label}

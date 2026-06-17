@@ -7,14 +7,13 @@ const { costs } = Astro.props;
 const total = costs.reduce((sum, c) => sum + c.cost, 0);
 ---
 
-<div class="hammered-border bg-timber/50 overflow-hidden">
+<div class="card overflow-hidden">
   <div class="flex items-center justify-between p-6 pb-4">
     <div class="flex items-center gap-3">
-      <div class="rivet"></div>
-      <span class="workshop-label">Material Costs</span>
+      <span class="label">Material Costs</span>
     </div>
     <button
-      class="text-smoke hover:text-bone transition-colors text-xs tracking-wider uppercase"
+      class="text-brown-mid hover:text-ink transition-colors text-xs tracking-wider uppercase"
       data-cost-toggle
       aria-expanded="false"
     >
@@ -24,9 +23,9 @@ const total = costs.reduce((sum, c) => sum + c.cost, 0);
 
   <!-- Total (always visible) -->
   <div class="px-6 pb-5">
-    <div class="flex justify-between items-baseline border-t border-copper/40 pt-4">
-      <span class="text-bone text-sm font-medium tracking-wide">Total</span>
-      <span class="font-display text-xl text-copper tracking-wide">
+    <div class="flex justify-between items-baseline border-t border-line pt-4">
+      <span class="text-ink text-sm font-medium tracking-wide">Total</span>
+      <span class="font-mono text-lg text-ink tracking-wide">
         &euro;{total.toFixed(2)}
       </span>
     </div>
@@ -34,13 +33,13 @@ const total = costs.reduce((sum, c) => sum + c.cost, 0);
 
   <!-- Line items (collapsible) -->
   <div class="cost-items" data-cost-items>
-    <div class="border-t border-walnut">
+    <div class="border-t border-line">
       <table class="w-full">
         <tbody>
           {costs.map((entry) => (
-            <tr class="border-b border-walnut/50 last:border-b-0 odd:bg-charwood/30">
-              <td class="py-2.5 px-6 text-smoke text-sm">{entry.item}</td>
-              <td class="py-2.5 px-6 text-bone text-sm text-right tabular-nums whitespace-nowrap">
+            <tr class="border-b border-line-soft last:border-b-0 odd:bg-paper-deep/50">
+              <td class="py-2.5 px-6 text-brown-mid text-sm">{entry.item}</td>
+              <td class="py-2.5 px-6 text-ink text-sm text-right tabular-nums whitespace-nowrap font-mono">
                 {entry.cost.toFixed(2)}
               </td>
             </tr>
@@ -71,7 +70,7 @@ const total = costs.reduce((sum, c) => sum + c.cost, 0);
 
 <script>
   document.querySelectorAll('[data-cost-toggle]').forEach((btn) => {
-    const items = btn.closest('.hammered-border')?.querySelector('[data-cost-items]') as HTMLElement;
+    const items = btn.closest('.card')?.querySelector('[data-cost-items]') as HTMLElement;
     if (!items) return;
 
     btn.addEventListener('click', () => {
