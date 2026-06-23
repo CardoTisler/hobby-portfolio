@@ -7,9 +7,9 @@ thumbnail: "../../assets/projects/dresser/thumbnail.jpg"
 # TODO: set the completion date
 date: 2026-06-21
 # TODO: fill these in (all optional — delete any you don't want shown)
-material: "TODO"
-finish: "TODO"
-dimensions: "TODO"
+material: "European Ash"
+finish: "Osmo Polyx (3062)"
+dimensions: "W:1300, H: 800, D: 500 (mm)"
 # TODO (optional): the main carousel. Drop photos in src/assets/projects/dresser/
 #       and list them here, e.g.:
 # images:
@@ -26,7 +26,7 @@ progress:
       and cut to proper dimensions on the table saw. This project needed a 1300x500 bottom panel, 2x 690x500 side-panels and 1300x80 stretchers.
     imagesDir: "part-1"
   - leftTitle: "Joinery"
-    rightTitle: "Side-panels"
+    rightTitle: "Side panels"
     description: |
       Decided to try chiseling box joints, which started off rough but eventually turned out quite nice. For me the heureka moment was realizing
       that since I planned the joints to be 20mm in width, I could use my 20mm chisel as a measuring tool. Having a physical object with a fixed
@@ -46,14 +46,14 @@ progress:
     description: |
       Attached stretchers to side panels using the same technique as described above.
     imagesDir: "part-4"
-  - leftTitle: "Bottom"
+  - leftTitle: "Joinery"
     rightTitle: "Legs"
     description: |
       Cut sliding dovetail joints with a router and attached sliding battens which also function as simple legs. To me this is one of the best examples
       of a seemingly simple element, implemented in a complex way, achieving a complex result, yet maintaining simple beauty.
     imagesDir: "part-5"
   - leftTitle: "Joinery"
-    rightTitle: "Center Panel"
+    rightTitle: "Center panel"
     description: |
       Added a sliding dovetail joint in the middle of the bottom panel for the center panel to slide into, which fixes the bottom of the panel. For fixing the
       top side of the panel, I decided to make a rectangular groove in the top stretchers and a matching rectangular joint in the panel. Thanks to an accurate
@@ -65,11 +65,11 @@ progress:
       Used 3.2mm thick ash-veneered plywood for the back panel. This keeps the aesthetic but drastically reduces the dresser weight compared to making the
       back panel myself. Cut 5mm deep grooves in the elements surrounding the back panel, slid the back panel in and let it float there.
     imagesDir: "part-7"
-  - leftTitle: "Joinery"
-    rightTitle: "Center Panel"
+  - leftTitle: "Assembly"
+    rightTitle: "Dresser Carcasse"
     description: |
-      Added a sliding dovetail joint in the middle of the bottom panel for the center panel to slide into.
-    imagesDir: "part-6"
+      Glued everything together to complete the carcasse.
+    imagesDir: "part-8"
 ---
 
-TODO: write the intro / summary paragraph for the dresser here.
+A large dresser made out of solid ash carcasse and ash-veneered plywood. A simple design featuring box joints and live edge tabletop.

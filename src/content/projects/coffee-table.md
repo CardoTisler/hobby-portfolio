@@ -38,7 +38,7 @@ images:
   - "../../assets/projects/coffee-table/20251224_145112-scaled.jpg"
   - "../../assets/projects/coffee-table/20251224_145117-scaled.jpg"
 progress:
-  - leftTitle: "Milling & Experimenting"
+  - leftTitle: "Milling"
     rightTitle: "Table legs"
     description: |
       I was aiming for 50x50mm legs, and due to having 26mm thick material, I could not cut the legs out of one single piece of wood, which meant I had to
@@ -93,8 +93,8 @@ progress:
       - "../../assets/projects/coffee-table/20251221_102525-scaled.jpg"
       - "../../assets/projects/coffee-table/20251221_103027-scaled.jpg"
       - "../../assets/projects/coffee-table/20251221_105551-scaled.jpg"
-  - leftTitle: "Joinery"
-    rightTitle: "Assembly"
+  - leftTitle: "Assembly"
+    rightTitle: "Coffee table"
     description: |
       With the leg-pairs joined, and tabletops patched, stained and sanded, it was time to put it all together. Luckily earlier I had caught the fact that the bottom tabletop would not fit in the frame if
       I were to glue the legs and frame together, so I kept the leg-pairs and frame separate up to this point. After setting the bottom tabletop between the leg-pairs, I glued the legs into a single frame in a wonky
@@ -109,8 +109,8 @@ progress:
       - "../../assets/projects/coffee-table/20251223_094552-scaled.jpg"
       - "../../assets/projects/coffee-table/20251223_124939-scaled.jpg"
       - "../../assets/projects/coffee-table/20251224_145059-scaled.jpg"
-  - leftTitle: "Final"
-    rightTitle: "Thoughts"
+  - leftTitle: "Finishing"
+    rightTitle: "Coffee table"
     description: |
       There were no big blunders, aside from a small router-bit slipping incident about 10 seconds after
       thinking the thought "Okay, this is the last part where I can catastrophically fuck up". However the consequences were not too bad and I am probably the only one who will ever notice that issue, so it shall

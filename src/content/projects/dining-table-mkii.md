@@ -15,8 +15,8 @@ images:
   - "../../assets/projects/dining-table-mkii/IMG_5659.jpg"
   - "../../assets/projects/dining-table-mkii/IMG_5660.jpg"
 progress:
-  - leftTitle: "Table legs"
-    rightTitle: "Vertical & Top pieces"
+  - leftTitle: "Milling"
+    rightTitle: "Table legs"
     description: |
       Inspired by the coffee table build, I decided to keep practicing my chiseling skills and opted to try a mortise-and-tenon (mortise is
       the hole, tenon is the part of the wood going through the hole) joined table legs. Also decided to add a 5 degree angle inwards towards
@@ -30,8 +30,8 @@ progress:
       a guide for the cuts, it wont matter if the triangle is 4.9 degrees, 5.5 degrees or something else, every cut referencing this will be the exact same.
       In the end, this approach worked very very well.
     imagesDir: "part-1"
-  - leftTitle: "Table legs"
-    rightTitle: "Mortise and tenon"
+  - leftTitle: "Joinery"
+    rightTitle: "Table legs"
     description: |
       With the vertical and horizontal pieces done on the table saw, it was time to work on creating a mortise in the vertical elements for the tenon to
       connect into. For this I tested out the chisel-and-drill-bit which unfortunately did not work well, so I went back to the classic approach and simply
@@ -41,16 +41,16 @@ progress:
       tearing out chunks of wood from the edges of the mortise. I will chalk it off to "character" of the piece, but for future reference, the fit should not be
       tight at all due to the actual tightness of the joint coming from the wedges applied in the end, not from kicking the tenon through the mortise.
     imagesDir: "part-2"
-  - leftTitle: "Table legs"
-    rightTitle: "Assembly"
+  - leftTitle: "Assembly"
+    rightTitle: "Table legs"
     description: |
       Used the bandsaw and a drill to create slots for the wedges and tension relief holes in the end of the slot. The core idea being
       that if something breaks then it will break in a controlled spot. Glued the pieces together, hammered in the wedges before the glue dried
       and quickly realised why it's critical to have all the wedges the same size and in the same depth - so that the wedge lines will be 
       equal width. But I realised that after the wedges were hammered in so it will be yet another character-adding-feature to the project.
     imagesDir: "part-3"
-  - leftTitle: "Frame"
-    rightTitle: "Legs & Aprons"
+  - leftTitle: "Joinery"
+    rightTitle: "Frame"
     description: |
       For attaching aprons (the horizontal pieces connecting the legs), I kept going with the traditional
       joinery and made cross lap (I think that's what they're called) joints to hold the aprons. Apron height matches
@@ -64,8 +64,8 @@ progress:
       decided to lock in the joints on the top two aprons with some wood glue which also helps keep the table legs steady and reduce wobble.
       The bottom apron is attached with bolts and threaded inserts so the table could be easily transported once it's time to get it home.
     imagesDir: "part-4"
-  - leftTitle: "Tabletop"
-    rightTitle: "Milling & Assembly"
+  - leftTitle: "Milling"
+    rightTitle: "Tabletop"
     description: |
       After a month long wait, finally got my hands on some walnut and did the usual process - flattened one side,
       reduced some material on the other side and let the planks sit in the workshop for 3 days to release inner tensions and acclimate to the moisture
@@ -78,8 +78,8 @@ progress:
       Once the painful process of being patient was done, flattened the second side. Found an alignment of the boards that I liked and used the in-out method for ripping
       the boards straight.
     imagesDir: "part-5"
-  - leftTitle: "Tabletop"
-    rightTitle: "Attaching battens"
+  - leftTitle: "Joinery"
+    rightTitle: "Battens"
     description: |
       By far the most stressful part of the project that was sitting in the back of my mind for the whole build
       leading up to this. With almost everything else, in case of a catastrophic blunder, replacing the element is quite
@@ -96,8 +96,8 @@ progress:
       allows half the batten to go in with no resistance and then start tapping it in, if it shows resistance
       from the beginning then it's a bit too tight and you risk breaking either the batten or the table.
     imagesDir: "part-6"
-  - leftTitle: "The Last Cuts"
-    rightTitle: "Connecting Top & Frame, Patching"
+  - leftTitle: "Joinery"
+    rightTitle: "Top & frame"
     description: |
       A relatively simple step of removing material for the cross-lap joint between the tabletop battens and frame aprons.
       Since these cuts had no angle-shenanigans then it was a quick and simple process of sawing the guide lines and chiseling
@@ -107,8 +107,8 @@ progress:
       it's much simpler to do this in the previous step when the machines are already configured to this
       exact width, rather than trying to get the measurements right for the second time.
     imagesDir: "part-7"
-  - leftTitle: "Final"
-    rightTitle: "Oiling & Assembly"
+  - leftTitle: "Finishing"
+    rightTitle: "Dining table"
     description: |
       My initial plan was to use threaded inserts for attaching the tabletop to the frame. In fear of having to drill too much of the material
       away, I changed my plan to simply gluing the tabletop to the frame and accepting that transporting the table will be a nightmare but doable. Finally, after

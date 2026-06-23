@@ -14,7 +14,7 @@ images:
   - "../../assets/projects/bookshelf-mkii/20260423_072936.jpg"
   - "../../assets/projects/bookshelf-mkii/20260422_172445.jpg"
 progress:
-  - leftTitle: "Milling & Sawing"
+  - leftTitle: "Milling"
     rightTitle: "Legs"
     description: |
       Began with 32mm thick raw stock, did the usual process of jointing, planing and sawing. Since the boards I chose were
@@ -22,8 +22,8 @@ progress:
       used a veneer triangle cut in a 5 degree angle to cut the bottom of the front-facing elements, making them stand
       at 5 degrees when placed flat on the ground.
     imagesDir: "part-1"
-  - leftTitle: "Milling & Mortises"
-    rightTitle: "Horizontal connectors"
+  - leftTitle: "Joinery"
+    rightTitle: "Connectors"
     description: |
       Used my leftover scrap ash material to glue together 14 elements. In hindsight this was quite a lot of work with small reward
       and high risk. The smart choice would've been to take new boards, glue them together into a very thick board and saw these elements
@@ -31,7 +31,7 @@ progress:
       down the line but I did see the potential for issues had I not been mindful of this. Used the table saw to cut the mortises, which
       allowed me to get the correct width of the mortise so I could mark the tenons on the vertical elements.
     imagesDir: "part-2"
-  - leftTitle: "Tenons"
+  - leftTitle: "Joinery"
     rightTitle: "Legs"
     description: |
       Using the mortises of the connectors, aligned them on the board and used a marking knife and wheel gauge to mark the correct spots.
@@ -40,8 +40,8 @@ progress:
       difficult to chisel without tear-out. The damage can be minimized by taking it extremely slow and careful, but for fast and clean results
       the tools must be very sharp and consistently sharpened throughout the project.
     imagesDir: "part-3"
-  - leftTitle: "Slanted Mortises & Tenons"
-    rightTitle: "Legs & Connectors"
+  - leftTitle: "Joinery"
+    rightTitle: "Legs & connectors"
     description: |
       So far the work has been on the upright legs, meaning the mortises and tenons were all 90deg to each other. After validating the
       joints are adequate, I started working on the other side of the connectors, adding a 5 degree angle to the mortise. Now it was a matter
@@ -51,7 +51,7 @@ progress:
       process with about 15 minutes per mortise and much better results.
     imagesDir: "part-4"
   - leftTitle: "Shaping"
-    rightTitle: "Horizontal Connectors"
+    rightTitle: "Connectors"
     description: |
       Used the template routing technique to cut the gaps into the sides of the connectors. Purely for aesthetic reasons, to reduce the weight
       of the design and make it look less bulky. Then I used the bandsaw to cut slots for wedges into the tenons and drilled pressure relief holes in the 
