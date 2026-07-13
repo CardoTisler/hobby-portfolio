@@ -89,12 +89,12 @@ const resolvedProgress = project.data.progress?.map((step) => {
             title={project.data.title}
           />
         ) : (
-          <div class="plate">
+          <div class="plate w-full sm:aspect-[16/10] sm:max-h-[70svh]">
             <Photo
               src={project.data.thumbnail}
               alt={project.data.title}
               widths={[1400, 2000, 2800]}
-              class="block w-full h-auto"
+              class="block w-full h-auto max-h-[70svh] object-contain sm:h-full"
             />
           </div>
         )}

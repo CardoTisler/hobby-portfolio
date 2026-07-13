@@ -1,0 +1,227 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]: Tartu · Estonia
+      - generic [ref=e6]:
+        - link "Cardo Tisler" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Woodworking" [ref=e11] [cursor=pointer]:
+              - /url: /woodworking
+          - listitem [ref=e12]:
+            - link "Renovation" [ref=e13] [cursor=pointer]:
+              - /url: /renovation
+          - listitem [ref=e14]:
+            - link "Garden" [ref=e15] [cursor=pointer]:
+              - /url: /garden
+          - listitem [ref=e16]:
+            - link "All Work" [ref=e17] [cursor=pointer]:
+              - /url: /gallery
+  - main [ref=e18]:
+    - article [ref=e19]:
+      - generic [ref=e21]:
+        - navigation [ref=e22]:
+          - link "Home" [ref=e23] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e24]: /
+          - link "Woodworking" [ref=e25] [cursor=pointer]:
+            - /url: /woodworking
+          - generic [ref=e26]: /
+          - generic [ref=e27]: Dresser
+        - heading "Dresser" [level=1] [ref=e29]
+      - img "Dresser" [ref=e34]
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - paragraph [ref=e40]: A large dresser made out of solid ash carcass and ash-veneered plywood. A simple design featuring box joints and a live edge tabletop.
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: Gallery
+              - generic [ref=e47]: 1 / 7
+            - generic [ref=e48]:
+              - generic [ref=e50]:
+                - img "Dresser — 1"
+              - button "Previous image" [ref=e51] [cursor=pointer]
+              - button "Next image" [ref=e54] [cursor=pointer]
+        - complementary [ref=e57]:
+          - generic [ref=e59]:
+            - paragraph [ref=e60]: Specifications
+            - generic [ref=e61]:
+              - generic [ref=e62]:
+                - term [ref=e63]: Material
+                - definition [ref=e64]: European & American Ash
+              - generic [ref=e65]:
+                - term [ref=e66]: Finish
+                - definition [ref=e67]: Osmo Polyx (3062)
+              - generic [ref=e68]:
+                - term [ref=e69]: Dimensions
+                - definition [ref=e70]: "W:1300, H: 800, D: 500 (mm)"
+              - generic [ref=e71]:
+                - term [ref=e72]: Completed
+                - definition [ref=e73]: 13/07/2026
+      - generic [ref=e76]:
+        - generic [ref=e77]: Build Progress
+        - separator [ref=e79]
+        - generic [ref=e80]:
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e84]: Milling
+              - generic [ref=e85]: "1"
+              - generic [ref=e87]: Panels
+            - generic [ref=e88]:
+              - paragraph [ref=e90]: The usual process of material selection, milling them flat & square and then joining them into panels. Panels are flattened with a wide-belt sander and cut to proper dimensions on the table saw. This project needed a 1300x500 bottom panel, 2x 690x500 side-panels and 1300x80 stretchers.
+              - generic [ref=e91]:
+                - generic [ref=e92]:
+                  - generic [ref=e94]:
+                    - img "Dresser — Milling Panels (1)"
+                  - button "View larger" [ref=e95]
+                - generic [ref=e99]:
+                  - button "Previous image" [ref=e100] [cursor=pointer]
+                  - paragraph [ref=e103]: 1 / 5
+                  - button "Next image" [ref=e104] [cursor=pointer]
+          - generic [ref=e107]:
+            - generic [ref=e108]:
+              - generic [ref=e109]: Joinery
+              - generic [ref=e110]: "2"
+              - generic [ref=e112]: Side panels
+            - generic [ref=e113]:
+              - paragraph [ref=e115]: Decided to try chiseling box joints, which started off rough but eventually turned out quite nice. For me the heureka moment was realizing that since I planned the joints to be 20mm in width, I could use my 20mm chisel as a measuring tool. Having a physical object with a fixed width is much more reliable than relying on markers made using a ruler or combination square. The quality in the joints increased drastically after trying this out and it's definitely going to be my go-to approach for these things in the future as well, where I will do my best to design joints with the same widths as my chisels.
+              - generic [ref=e116]:
+                - generic [ref=e117]:
+                  - generic [ref=e119]:
+                    - img "Dresser — Joinery Side panels (1)"
+                  - button "View larger" [ref=e120]
+                - generic [ref=e124]:
+                  - button "Previous image" [ref=e125] [cursor=pointer]
+                  - paragraph [ref=e128]: 1 / 5
+                  - button "Next image" [ref=e129] [cursor=pointer]
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: Joinery
+              - generic [ref=e135]: "3"
+              - generic [ref=e137]: Bottom panel
+            - generic [ref=e138]:
+              - paragraph [ref=e140]: Laid the side-panel on the bottom panel in the alignment I wanted the final result to be in and used the existing joints on the side panel to mark cutting lines on the bottom panel. Repeated the same technique as described above. Used a japanese hand saw to cut the 45 degree joint on the front of the panel.
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - generic [ref=e144]:
+                    - img "Dresser — Joinery Bottom panel (1)"
+                  - button "View larger" [ref=e145]
+                - generic [ref=e149]:
+                  - button "Previous image" [ref=e150] [cursor=pointer]
+                  - paragraph [ref=e153]: 1 / 4
+                  - button "Next image" [ref=e154] [cursor=pointer]
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - generic [ref=e159]: Joinery
+              - generic [ref=e160]: "4"
+              - generic [ref=e162]: Stretchers
+            - generic [ref=e163]:
+              - paragraph [ref=e165]: Attached stretchers to side panels using the same technique as described above.
+              - generic [ref=e166]:
+                - generic [ref=e167]:
+                  - generic [ref=e169]:
+                    - img "Dresser — Joinery Stretchers (1)"
+                  - button "View larger" [ref=e170]
+                - generic [ref=e174]:
+                  - button "Previous image" [ref=e175] [cursor=pointer]
+                  - paragraph [ref=e178]: 1 / 9
+                  - button "Next image" [ref=e179] [cursor=pointer]
+          - generic [ref=e182]:
+            - generic [ref=e183]:
+              - generic [ref=e184]: Joinery
+              - generic [ref=e185]: "5"
+              - generic [ref=e187]: Legs
+            - generic [ref=e188]:
+              - paragraph [ref=e190]: Cut sliding dovetail joints with a router and attached sliding battens which also function as simple legs. To me this is one of the best examples of a seemingly simple element, implemented in a complex way, achieving a complex result, yet maintaining simple beauty.
+              - generic [ref=e191]:
+                - generic [ref=e192]:
+                  - generic [ref=e194]:
+                    - img "Dresser — Joinery Legs (1)"
+                  - button "View larger" [ref=e195]
+                - generic [ref=e199]:
+                  - button "Previous image" [ref=e200] [cursor=pointer]
+                  - paragraph [ref=e203]: 1 / 7
+                  - button "Next image" [ref=e204] [cursor=pointer]
+          - generic [ref=e207]:
+            - generic [ref=e208]:
+              - generic [ref=e209]: Joinery
+              - generic [ref=e210]: "6"
+              - generic [ref=e212]: Center panel
+            - generic [ref=e213]:
+              - paragraph [ref=e215]: Added a sliding dovetail joint in the middle of the bottom panel for the center panel to slide into, which fixes the bottom of the panel. For fixing the top side of the panel, I decided to make a rectangular groove in the top stretchers and a matching rectangular joint in the panel. Thanks to an accurate fit these don't need to be glued.
+              - generic [ref=e216]:
+                - generic [ref=e217]:
+                  - generic [ref=e219]:
+                    - img "Dresser — Joinery Center panel (1)"
+                  - button "View larger" [ref=e220]
+                - generic [ref=e224]:
+                  - button "Previous image" [ref=e225] [cursor=pointer]
+                  - paragraph [ref=e228]: 1 / 6
+                  - button "Next image" [ref=e229] [cursor=pointer]
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - generic [ref=e234]: Joinery
+              - generic [ref=e235]: "7"
+              - generic [ref=e237]: Back panel
+            - generic [ref=e238]:
+              - paragraph [ref=e240]: Used 3.2mm thick ash-veneered plywood for the back panel. This keeps the aesthetic consistent but drastically reduces the dresser weight compared to making the back panel myself. Cut 5mm deep grooves in the elements surrounding the back panel, slid the back panel in and let it float there.
+              - generic [ref=e241]:
+                - generic [ref=e242]:
+                  - generic [ref=e244]:
+                    - img "Dresser — Joinery Back panel (1)"
+                  - button "View larger" [ref=e245]
+                - generic [ref=e249]:
+                  - button "Previous image" [ref=e250] [cursor=pointer]
+                  - paragraph [ref=e253]: 1 / 6
+                  - button "Next image" [ref=e254] [cursor=pointer]
+          - generic [ref=e257]:
+            - generic [ref=e258]:
+              - generic [ref=e259]: Assembly
+              - generic [ref=e260]: "8"
+              - generic [ref=e262]: Drawerboxes
+            - generic [ref=e263]:
+              - paragraph [ref=e265]: Drawerboxes are 15mm ash with a 8mm veneer bottom. Used Häfele soft-close hardware which was a dream to work with. For the slider installation a good method is to calculate the height you need the sliders to be at and use that dimension to cut a piece of veneer, which can be used to consistently hold the sliders on a fixed height, allowing for a quick, easy, consistent installation. Once the top ones are installed, the veneer can be cut to the next height and whole process repeated.
+              - generic [ref=e266]:
+                - generic [ref=e267]:
+                  - generic [ref=e269]:
+                    - img "Dresser — Assembly Drawerboxes (1)"
+                  - button "View larger" [ref=e270]
+                - generic [ref=e274]:
+                  - button "Previous image" [ref=e275] [cursor=pointer]
+                  - paragraph [ref=e278]: 1 / 14
+                  - button "Next image" [ref=e279] [cursor=pointer]
+          - generic [ref=e282]:
+            - generic [ref=e283]:
+              - generic [ref=e284]: Milling
+              - generic [ref=e285]: "9"
+              - generic [ref=e287]: Tabletop
+            - generic [ref=e288]:
+              - paragraph [ref=e290]: Glued the tabletop together, cut it to dimension and left one side as a live edge side. Used a widebelt sander to get it flat and an orbital sander to sander to clean up the live edge section. The tabletop overflows the carcass by 2cm on each side except the back, which is flush with the carcass.
+              - generic [ref=e291]:
+                - generic [ref=e292]:
+                  - generic [ref=e294]:
+                    - img "Dresser — Milling Tabletop (1)"
+                  - button "View larger" [ref=e295]
+                - generic [ref=e299]:
+                  - button "Previous image" [ref=e300] [cursor=pointer]
+                  - paragraph [ref=e303]: 1 / 4
+                  - button "Next image" [ref=e304] [cursor=pointer]
+          - generic [ref=e307]:
+            - generic [ref=e308]:
+              - generic [ref=e309]: Shaping
+              - generic [ref=e310]: "10"
+              - generic [ref=e312]: Drawer pulls
+            - generic [ref=e313]:
+              - paragraph [ref=e315]: Made some very simple drawer pulls out of American ash, which is much more consistently lighter colored than european ash, to add some subtle contrast between the carcass and drawer pulls. Cut out 25mm x 20mm x 200mm rectangles, smoothed both sides asymmetrically with a router and glued in threaded inserts. The drawer boxes and pulls attach via a classic threaded insert & bolt-and-washer setup which I like a lot because it means you dont have to be very accurate to get a perfectly level result.
+              - generic [ref=e316]:
+                - generic [ref=e317]:
+                  - generic [ref=e319]:
+                    - img "Dresser — Shaping Drawer pulls (1)"
+                  - button "View larger" [ref=e320]
+                - generic [ref=e324]:
+                  - button "Previous image" [ref=e325] [cursor=pointer]
+                  - paragraph [ref=e328]: 1 / 7
+                  - button "Next image" [ref=e329] [cursor=pointer]
+  - contentinfo [ref=e332]:
+    - img "Cardo Tisler" [ref=e334]
