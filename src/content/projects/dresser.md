@@ -1,16 +1,19 @@
 ---
 title: "Dresser"
 category: "Woodworking"
-thumbnail: "../../assets/projects/dresser/thumbnail.jpg"
+thumbnail: "../../assets/projects/dresser/IMG_7490.jpg"
 date: 2026-07-13
 material: "European & American Ash"
 finish: "Osmo Polyx (3062)"
 dimensions: "W:1300, H: 800, D: 500 (mm)"
-# TODO (optional): the main carousel. Drop photos in src/assets/projects/dresser/
-#       and list them here, e.g.:
-# images:
-#   - "../../assets/projects/dresser/photo-1.jpg"
-#   - "../../assets/projects/dresser/photo-2.jpg"
+images:
+    - "../../assets/projects/dresser/IMG_7490.jpg"
+    - "../../assets/projects/dresser/IMG_7473.jpg"
+    - "../../assets/projects/dresser/IMG_7478.jpg"
+    - "../../assets/projects/dresser/IMG_7486.jpg"
+    - "../../assets/projects/dresser/IMG_7479.jpg"
+    - "../../assets/projects/dresser/IMG_7480.jpg"
+    - "../../assets/projects/dresser/IMG_7482.jpg"
 progress:
   # Each step pulls its photos from src/assets/projects/dresser/<imagesDir>/.
   # Just drop JPG/PNG/WEBP files into the matching part-N folder — they're
