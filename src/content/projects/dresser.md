@@ -1,13 +1,9 @@
 ---
 title: "Dresser"
 category: "Woodworking"
-# TODO: replace with your real thumbnail — drop a file in src/assets/projects/dresser/
-#       and point this at it (e.g. "../../assets/projects/dresser/your-photo.jpg")
 thumbnail: "../../assets/projects/dresser/thumbnail.jpg"
-# TODO: set the completion date
-date: 2026-06-21
-# TODO: fill these in (all optional — delete any you don't want shown)
-material: "European Ash"
+date: 2026-07-13
+material: "European & American Ash"
 finish: "Osmo Polyx (3062)"
 dimensions: "W:1300, H: 800, D: 500 (mm)"
 # TODO (optional): the main carousel. Drop photos in src/assets/projects/dresser/
@@ -62,14 +58,34 @@ progress:
   - leftTitle: "Joinery"
     rightTitle: "Back panel"
     description: |
-      Used 3.2mm thick ash-veneered plywood for the back panel. This keeps the aesthetic but drastically reduces the dresser weight compared to making the
+      Used 3.2mm thick ash-veneered plywood for the back panel. This keeps the aesthetic consistent but drastically reduces the dresser weight compared to making the
       back panel myself. Cut 5mm deep grooves in the elements surrounding the back panel, slid the back panel in and let it float there.
     imagesDir: "part-7"
   - leftTitle: "Assembly"
-    rightTitle: "Dresser Carcasse"
+    rightTitle: "Drawerboxes"
     description: |
-      Glued everything together to complete the carcasse.
+      Drawerboxes are 15mm ash with a 8mm veneer bottom. Used Häfele soft-close hardware which was a 
+      dream to work with. For the slider installation a good method is to calculate the height you need
+      the sliders to be at and use that dimension to cut a piece of veneer, which can be used to consistently
+      hold the sliders on a fixed height, allowing for a quick, easy, consistent installation. Once the 
+      top ones are installed, the veneer can be cut to the next height and whole process repeated.
     imagesDir: "part-8"
+  - leftTitle: "Milling"
+    rightTitle: "Tabletop"
+    description: |
+      Glued the tabletop together, cut it to dimension and left one side as a live edge side. Used a widebelt sander to get it flat and an orbital sander to
+      sander to clean up the live edge section. The tabletop overflows the carcass by 2cm on each side except the back,
+      which is flush with the carcass.
+    imagesDir: "part-9"
+  - leftTitle: "Shaping"
+    rightTitle: "Drawer pulls"
+    description: |
+      Made some very simple drawer pulls out of American ash, which is much more consistently lighter colored than european ash,
+      to add some subtle contrast between the carcass and drawer pulls. Cut out 25mm x 20mm x 200mm rectangles, smoothed
+      both sides asymmetrically with a router and glued in threaded inserts. The drawer boxes and pulls attach via a classic
+      threaded insert & bolt-and-washer setup which I like a lot because it means you dont have to be very accurate to get
+      a perfectly level result.
+    imagesDir: "part-10"
 ---
 
-A large dresser made out of solid ash carcasse and ash-veneered plywood. A simple design featuring box joints and live edge tabletop.
+A large dresser made out of solid ash carcass and ash-veneered plywood. A simple design featuring box joints and a live edge tabletop.
