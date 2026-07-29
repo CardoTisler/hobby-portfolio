@@ -1,9 +1,9 @@
 ---
 title: "Living Room"
 category: "Renovation"
-thumbnail: "../../assets/projects/living-room/thumbnail.jpg"
+thumbnail: "../../assets/projects/living-room/20260729_155155.jpg"
 beforeImage: "../../assets/projects/living-room/20241016_155007-scaled.jpg"
-afterImage: "../../assets/projects/living-room/20241126_180204-scaled.jpg"
+afterImage: "../../assets/projects/living-room/20260729_155203.jpg"
 date: 2024-11-27
 costs:
   - { item: "Parquet", cost: 443.65 }
@@ -36,6 +36,7 @@ images:
   - "../../assets/projects/living-room/20241126_180155-scaled.jpg"
   - "../../assets/projects/living-room/20241127_064102-scaled.jpg"
   - "../../assets/projects/living-room/20241127_064121-scaled.jpg"
+  - "../../assets/projects/living-room/20260729_155155.jpg"
 ---
 
 White walls with an accent black wall to continue the black-and-white theme, dark oak parquet and a white ceiling.
