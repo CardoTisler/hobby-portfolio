@@ -6,6 +6,12 @@ date: 2026-09-12
 material: "Ash, Walnut & Wenge"
 finish: "Osmo Polyx 3062"
 dimensions: "200 x 40 x 40 (mm)"
+images:
+  "../../assets/projects/debate-cups/IMG_7743.HEIC.jpg"
+  "../../assets/projects/debate-cups/IMG_7745.HEIC.jpg"
+  "../../assets/projects/debate-cups/IMG_7749.HEIC.jpg"
+  "../../assets/projects/debate-cups/IMG_7750.HEIC.jpg"
+  "../../assets/projects/debate-cups/IMG_7756.HEIC.jpg"
 progress:
   - leftTitle: "Milling"
     rightTitle: "Elements"
