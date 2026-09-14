@@ -14,19 +14,23 @@ images:
   - "../../assets/projects/debate-trophies/IMG_7756.HEIC.jpg"
 progress:
   - leftTitle: "Milling"
-    rightTitle: "Elements"
+    rightTitle: "Stock"
     description: |
-      Gluing the material together and cutting to size.
+      Did the standard process of gluing material together to get its thickness to around 50mm, then used the jointer, planer and tablesaw to
+      cut it to size. 
     imagesDir: "part-1"
-  - leftTitle: "Milling"
+  - leftTitle: "Joinery"
     rightTitle: "Elements"
     description: |
-      Gluing the shaped and milled elements together. Everything was cut with 30 degree angles, mortise & tenon joints.
+      Used the miter saw to cut the ends of the elements to 30 degrees. After that used the table saw to cut a mortise on one end, tenon on the other, allowing the elements to be 
+      interlocked with the classic mortise & tenon joint. 
     imagesDir: "part-2"
   - leftTitle: "Finishing"
     rightTitle: "Debate trophies"
     description: |
-      Finished products
+      Finished the trophies by sanding with sandpaper ranging from 80 to 180 grit. Although the joints were precise enough to be interlocked without any other methods, I 
+      still opted to add a bit of wood glue between the joints just to ensure this joint will never come apart. Had Gravex (https://gravex.ee) engrave the
+      trophies and then oiled them using Osmo.
     imagesDir: "part-3"
 ---
 
