@@ -1,17 +1,17 @@
 ---
-title: "Debate Cups"
+title: "Debate Trophies"
 category: "Woodworking"
-thumbnail: "../../assets/projects/debate-cups/IMG_7743.HEIC.jpg"
+thumbnail: "../../assets/projects/debate-trophies/IMG_7743.HEIC.jpg"
 date: 2026-09-12
 material: "Ash, Walnut & Wenge"
 finish: "Osmo Polyx 3062"
 dimensions: "200 x 40 x 40 (mm)"
 images:
-  - "../../assets/projects/debate-cups/IMG_7743.HEIC.jpg"
-  - "../../assets/projects/debate-cups/IMG_7745.HEIC.jpg"
-  - "../../assets/projects/debate-cups/IMG_7749.HEIC.jpg"
-  - "../../assets/projects/debate-cups/IMG_7750.HEIC.jpg"
-  - "../../assets/projects/debate-cups/IMG_7756.HEIC.jpg"
+  - "../../assets/projects/debate-trophies/IMG_7743.HEIC.jpg"
+  - "../../assets/projects/debate-trophies/IMG_7745.HEIC.jpg"
+  - "../../assets/projects/debate-trophies/IMG_7749.HEIC.jpg"
+  - "../../assets/projects/debate-trophies/IMG_7750.HEIC.jpg"
+  - "../../assets/projects/debate-trophies/IMG_7756.HEIC.jpg"
 progress:
   - leftTitle: "Milling"
     rightTitle: "Elements"
@@ -24,7 +24,7 @@ progress:
       Gluing the shaped and milled elements together. Everything was cut with 30 degree angles, mortise & tenon joints.
     imagesDir: "part-2"
   - leftTitle: "Finishing"
-    rightTitle: "Debate cups"
+    rightTitle: "Debate trophies"
     description: |
       Finished products
     imagesDir: "part-3"
