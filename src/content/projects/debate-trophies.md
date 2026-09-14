@@ -4,7 +4,7 @@ category: "Woodworking"
 thumbnail: "../../assets/projects/debate-trophies/IMG_7743.HEIC.jpg"
 date: 2026-09-12
 material: "Ash, Walnut & Wenge"
-finish: "Osmo Polyx 3062"
+finish: "Osmo Polyx (3062)"
 dimensions: "200 x 40 x 40 (mm)"
 images:
   - "../../assets/projects/debate-trophies/IMG_7743.HEIC.jpg"
