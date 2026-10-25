@@ -28,8 +28,8 @@ progress:
       Used my leftover scrap ash material to glue together 14 elements. In hindsight this was quite a lot of work with small reward
       and high risk. The smart choice would've been to take new boards, glue them together into a very thick board and saw these elements
       out, giving equal width, length and thickness everywhere with minimal effort. Luckily this scrap-saving choice did not cause issues
-      down the line but I did see the potential for issues had I not been mindful of this. Used the table saw to cut the mortises, which
-      allowed me to get the correct width of the mortise so I could mark the tenons on the vertical elements.
+      down the line but I did see the potential for issues had I not been mindful of this. Used the table saw to cut the tenons, which
+      allowed me to get the correct width of the tenon so I could mark the mortises on the vertical elements.
     imagesDir: "part-2"
   - leftTitle: "Joinery"
     rightTitle: "Legs"

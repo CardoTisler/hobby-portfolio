@@ -2,15 +2,18 @@
 import Photo from './Photo.astro';
 import Lightbox from './Lightbox.astro';
 import type { ImageMetadata } from 'astro';
+import L from './L.astro';
+import { langs } from '@/i18n/ui';
+import { both, i18nAttrs, tt, type Bilingual } from '@/i18n/utils';
 
 interface Props {
   steps: {
-    leftTitle: string;
-    rightTitle: string;
-    description: string;
+    leftTitle: Bilingual;
+    rightTitle: Bilingual;
+    description: Bilingual;
     images: ImageMetadata[];
   }[];
-  projectTitle: string;
+  projectTitle: Bilingual;
 }
 
 const { steps, projectTitle } = Astro.props;
@@ -19,7 +22,7 @@ const { steps, projectTitle } = Astro.props;
 <section class="progress-timeline">
   <!-- Section Header -->
   <div class="flex items-center gap-3 mb-3">
-    <span class="label">Build Progress</span>
+    <span class="label"><L text={tt('project.buildProgress')} /></span>
   </div>
   <hr class="rule mb-12" />
 
@@ -43,7 +46,7 @@ const { steps, projectTitle } = Astro.props;
           {/* Step title row: leftTitle — line — circle — line — rightTitle */}
           <div class="step-header">
             <span class="step-title-left font-display font-bold text-xl text-ink tracking-wide">
-              {step.leftTitle}
+              <L text={step.leftTitle} />
             </span>
             <span class="step-header-line" aria-hidden="true"></span>
             <div class="step-circle" aria-hidden="true">
@@ -51,7 +54,7 @@ const { steps, projectTitle } = Astro.props;
             </div>
             <span class="step-header-line" aria-hidden="true"></span>
             <span class="step-title-right font-display font-bold text-xl text-ink tracking-wide">
-              {step.rightTitle}
+              <L text={step.rightTitle} />
             </span>
           </div>
 
@@ -59,10 +62,14 @@ const { steps, projectTitle } = Astro.props;
           <div class:list={['step-content', { 'step-content--reversed': isEven }]}>
             {/* Text column */}
             <div class="step-text">
-              {step.description.trim().split(/\n\n+/).map((paragraph) => (
-                <p class="text-ink leading-relaxed text-sm mb-3 last:mb-0">
-                  {paragraph.replace(/\n/g, ' ').trim()}
-                </p>
+              {langs.map((lang) => (
+                <div data-l={lang} lang={lang}>
+                  {step.description[lang].trim().split(/\n\n+/).map((paragraph) => (
+                    <p class="text-ink leading-relaxed text-sm mb-3 last:mb-0">
+                      {paragraph.replace(/\n/g, ' ').trim()}
+                    </p>
+                  ))}
+                </div>
               ))}
             </div>
 
@@ -85,7 +92,7 @@ const { steps, projectTitle } = Astro.props;
                   >
                     <Photo
                       src={image}
-                      alt={`${projectTitle} — ${step.leftTitle} ${step.rightTitle} (${imgIndex + 1})`}
+                      {...i18nAttrs({ alt: both((lang) => `${projectTitle[lang]} — ${step.leftTitle[lang]} ${step.rightTitle[lang]} (${imgIndex + 1})`) })}
                       width={800}
                       class="step-slide-image"
                       data-lightbox-open={lightboxId}
@@ -101,7 +108,7 @@ const { steps, projectTitle } = Astro.props;
                   data-lightbox-open={lightboxId}
                   data-index="0"
                   data-step-expand
-                  aria-label="View larger"
+                  {...i18nAttrs({ 'aria-label': tt('controls.viewLarger') })}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="7"></circle>
@@ -118,7 +125,7 @@ const { steps, projectTitle } = Astro.props;
                   <button
                     class="step-nav step-nav--prev"
                     data-step-prev
-                    aria-label="Previous image"
+                    {...i18nAttrs({ 'aria-label': tt('controls.previousImage') })}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <polyline points="15 18 9 12 15 6"></polyline>
@@ -132,7 +139,7 @@ const { steps, projectTitle } = Astro.props;
                   <button
                     class="step-nav step-nav--next"
                     data-step-next
-                    aria-label="Next image"
+                    {...i18nAttrs({ 'aria-label': tt('controls.nextImage') })}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <polyline points="9 18 15 12 9 6"></polyline>
@@ -154,7 +161,7 @@ const { steps, projectTitle } = Astro.props;
   <Lightbox
     id={`step-${index}`}
     images={step.images}
-    title={`${projectTitle} — ${step.leftTitle} ${step.rightTitle}`}
+    title={both((lang) => `${projectTitle[lang]} — ${step.leftTitle[lang]} ${step.rightTitle[lang]}`)}
   />
 ))}
 

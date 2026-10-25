@@ -1,11 +1,12 @@
 ---
 import Photo from './Photo.astro';
 import type { ImageMetadata } from 'astro';
+import { both, i18nAttrs, tt, type Bilingual } from '@/i18n/utils';
 
 interface Props {
   id: string;
   images: ImageMetadata[];
-  title: string;
+  title: Bilingual;
 }
 
 const { id, images, title } = Astro.props;
@@ -14,7 +15,7 @@ const { id, images, title } = Astro.props;
 <div class="lightbox" data-lightbox={id} hidden>
   <div class="lightbox-backdrop" data-lightbox-close></div>
 
-  <button class="lightbox-close" data-lightbox-close aria-label="Close">
+  <button class="lightbox-close" data-lightbox-close {...i18nAttrs({ 'aria-label': tt('controls.close') })}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <line x1="18" y1="6" x2="6" y2="18"></line>
       <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -23,13 +24,13 @@ const { id, images, title } = Astro.props;
 
   {images.length > 1 && (
     <>
-      <button class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous">
+      <button class="lightbox-nav lightbox-prev" data-lightbox-prev {...i18nAttrs({ 'aria-label': tt('controls.previous') })}>
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
 
-      <button class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next">
+      <button class="lightbox-nav lightbox-next" data-lightbox-next {...i18nAttrs({ 'aria-label': tt('controls.next') })}>
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
@@ -42,7 +43,7 @@ const { id, images, title } = Astro.props;
       <div class="lightbox-slide" data-slide={index}>
         <Photo
           src={image}
-          alt={`${title} — ${index + 1}`}
+          {...i18nAttrs({ alt: both((lang) => `${title[lang]} — ${index + 1}`) })}
           widths={[1600, 2400, 3200]}
           class="lightbox-image"
         />

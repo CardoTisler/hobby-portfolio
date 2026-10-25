@@ -1,9 +1,13 @@
 ---
+import L from './L.astro';
+import { defaultLang, languages, langs } from '@/i18n/ui';
+import { i18nAttrs, tt } from '@/i18n/utils';
+
 const navLinks = [
-  { href: '/woodworking', label: 'Woodworking' },
-  { href: '/renovation', label: 'Renovation' },
-  { href: '/garden', label: 'Garden' },
-  { href: '/gallery', label: 'All Work' },
+  { href: '/woodworking', label: tt('category.Woodworking') },
+  { href: '/renovation', label: tt('category.Renovation') },
+  { href: '/garden', label: tt('category.Garden') },
+  { href: '/gallery', label: tt('nav.allWork') },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -12,8 +16,25 @@ const currentPath = Astro.url.pathname;
 <header class="fixed top-0 left-0 right-0 z-50 min-w-[320px] bg-ink/95 backdrop-blur-sm border-b-[3px] border-double border-paper-line px-8 lg:px-12">
   <nav class="max-w-6xl mx-auto">
     <!-- Eyebrow row -->
-    <div class="hidden sm:flex justify-end items-center py-2 border-b border-paper-line-soft">
-      <span class="label !text-brown-soft !tracking-[0.28em] !text-[0.78rem]">Tartu · Estonia</span>
+    <div class="hidden sm:flex justify-end items-center gap-6 py-2 border-b border-paper-line-soft">
+      <span class="label !text-brown-soft !tracking-[0.28em] !text-[0.78rem]"><L text={tt('nav.location')} /></span>
+      <ul class="flex items-center gap-2" {...i18nAttrs({ 'aria-label': tt('nav.switchLanguage') })}>
+        {langs.map((code, i) => (
+          <li class="flex items-center gap-2">
+            {i > 0 && <span class="text-brown-soft text-[0.78rem]" aria-hidden="true">/</span>}
+            <button
+              type="button"
+              data-set-lang={code}
+              lang={code}
+              title={languages[code]}
+              aria-pressed={String(code === defaultLang)}
+              class="label cursor-pointer !tracking-[0.2em] !text-[0.78rem] !text-brown-soft hover:!text-paper aria-pressed:!text-paper transition-colors duration-300"
+            >
+              {code.toUpperCase()}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
 
     <div class="flex items-center justify-between h-16 sm:h-[4.5rem]">
@@ -35,7 +56,7 @@ const currentPath = Astro.url.pathname;
                 { 'is-active': currentPath === link.href },
               ]}
             >
-              {link.label}
+              <L text={link.label} />
             </a>
           </li>
         ))}
@@ -45,7 +66,7 @@ const currentPath = Astro.url.pathname;
       <button
         id="mobile-menu-btn"
         class="md:hidden p-2 text-paper"
-        aria-label="Toggle menu"
+        {...i18nAttrs({ 'aria-label': tt('nav.toggleMenu') })}
       >
         <div class="w-6 h-5 flex flex-col justify-between" id="hamburger">
           <span class="w-full h-px bg-current transition-all duration-300 origin-center"></span>
@@ -70,8 +91,23 @@ const currentPath = Astro.url.pathname;
                     : 'text-brown-soft hover:text-paper',
                 ]}
               >
-                {link.label}
+                <L text={link.label} />
               </a>
+            </li>
+          ))}
+        </ul>
+        <ul class="flex items-center gap-5 mt-6 pt-5 border-t border-paper-line-soft" {...i18nAttrs({ 'aria-label': tt('nav.switchLanguage') })}>
+          {langs.map((code) => (
+            <li>
+              <button
+                type="button"
+                data-set-lang={code}
+                lang={code}
+                aria-pressed={String(code === defaultLang)}
+                class="block py-1 cursor-pointer font-display text-sm uppercase tracking-[0.14em] text-brown-soft hover:text-paper aria-pressed:text-paper transition-colors duration-300"
+              >
+                {languages[code]}
+              </button>
             </li>
           ))}
         </ul>

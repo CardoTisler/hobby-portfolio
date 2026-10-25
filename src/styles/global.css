@@ -336,3 +336,10 @@ img {
 }
 
 }
+
+/* Localization: every page carries all languages; show only the active one.
+   <html data-lang> is set from localStorage before first paint (see Layout). */
+html:not([data-lang='en']) [data-l='en'],
+html[data-lang='en'] [data-l='et'] {
+  display: none !important;
+}

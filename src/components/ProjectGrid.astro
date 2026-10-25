@@ -1,21 +1,23 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
+import type { BilingualProject } from '@/lib/projects';
+import L from './L.astro';
+import { both, tt, type Bilingual } from '@/i18n/utils';
 
 interface Props {
-  projects: CollectionEntry<'projects'>[];
-  emptyMessage?: string;
+  projects: BilingualProject[];
+  emptyMessage?: Bilingual;
   showNumerals?: boolean;
 }
 
-const { projects, emptyMessage = 'No projects yet.', showNumerals = true } = Astro.props;
+const { projects, emptyMessage = tt('listing.emptyDefault'), showNumerals = true } = Astro.props;
 ---
 
 {projects.length > 0 ? (
   <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 lg:gap-8">
     {projects.map((project, index) => (
       <ProjectCard
-        title={project.data.title}
+        title={both((lang) => project.text[lang].title)}
         category={project.data.category}
         thumbnail={project.data.thumbnail}
         slug={project.id}
@@ -28,6 +30,6 @@ const { projects, emptyMessage = 'No projects yet.', showNumerals = true } = Ast
 ) : (
   <div class="card p-12 text-center">
     <div class="ornament max-w-[220px] mx-auto mb-6"><span class="mark">&#10048;</span></div>
-    <p class="text-brown-mid font-display text-xl tracking-wide">{emptyMessage}</p>
+    <p class="text-brown-mid font-display text-xl tracking-wide"><L text={emptyMessage} /></p>
   </div>
 )}

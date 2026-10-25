@@ -2,20 +2,25 @@
 import '@/styles/global.css';
 import Navigation from '@/components/Navigation.astro';
 import Footer from '@/components/Footer.astro';
+import { LANG_STORAGE_KEY, langs } from '@/i18n/ui';
+import { i18nAttrs, tt, type Bilingual } from '@/i18n/utils';
 
 interface Props {
-  title: string;
+  title: string | Bilingual;
 }
 
 const { title } = Astro.props;
+const titles = typeof title === 'string'
+  ? (Object.fromEntries(langs.map((lang) => [lang, title])) as Bilingual)
+  : title;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="et" data-lang="et" data-titles={JSON.stringify(titles)}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Cardo Tisler — Woodworking, renovation, and garden projects." />
+    <meta name="description" {...i18nAttrs({ content: tt('meta.description') })} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -25,7 +30,17 @@ const { title } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&display=swap"
       rel="stylesheet"
     />
-    <title>{title}</title>
+    <title>{titles.et}</title>
+    <!-- Apply the stored language before first paint so the wrong one never flashes. -->
+    <script is:inline define:vars={{ key: LANG_STORAGE_KEY, langs }}>
+      try {
+        const lang = localStorage.getItem(key);
+        if (langs.includes(lang)) {
+          document.documentElement.dataset.lang = lang;
+          document.documentElement.lang = lang;
+        }
+      } catch {}
+    </script>
   </head>
   <body class="min-h-screen flex flex-col overflow-x-hidden">
     <Navigation />
@@ -33,5 +48,8 @@ const { title } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      import '@/i18n/client';
+    </script>
   </body>
 </html>

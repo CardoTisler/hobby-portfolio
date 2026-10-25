@@ -1,12 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/Hero.astro';
+import L from '@/components/L.astro';
 import ProjectGrid from '@/components/ProjectGrid.astro';
-import { sortProjectsByDate } from '@/lib/utils';
+import { getProjects } from '@/lib/projects';
+import { tt } from '@/i18n/utils';
 
-const allProjects = await getCollection('projects');
-const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
+const allProjects = await getProjects();
+const recentProjects = allProjects.slice(0, 6);
 ---
 
 <Layout title="Cardo Tisler">
@@ -18,7 +19,7 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
       <!-- Section header -->
       <div class="flex items-baseline justify-between gap-6 flex-wrap">
         <h2 class="font-display font-bold text-ink tracking-[0.01em] text-[28px] whitespace-nowrap">
-          Recent Work
+          <L text={tt('home.recentWork')} />
         </h2>
 
         {allProjects.length > 6 && (
@@ -26,7 +27,7 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
             href="/gallery"
             class="font-display font-bold uppercase text-[0.85rem] tracking-[0.16em] text-brown border-b border-line pb-0.5 transition-colors duration-300 hover:text-ink hover:border-ink"
           >
-            View all projects →
+            <L text={tt('home.viewAll')} />
           </a>
         )}
       </div>
@@ -36,7 +37,7 @@ const recentProjects = sortProjectsByDate(allProjects).slice(0, 6);
       <div class="mt-8">
         <ProjectGrid
           projects={recentProjects}
-          emptyMessage="Projects coming soon."
+          emptyMessage={tt('home.empty')}
           showNumerals={false}
         />
       </div>

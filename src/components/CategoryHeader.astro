@@ -1,38 +1,42 @@
 ---
+import L from './L.astro';
+import { both, t, tt, type Bilingual } from '@/i18n/utils';
+
 interface Props {
-  title: string;
-  description: string;
+  title: Bilingual;
+  description?: Bilingual;
   projectCount: number;
 }
 
 const { title, description, projectCount } = Astro.props;
+const count = both((lang) => t(lang, projectCount === 1 ? 'listing.countOne' : 'listing.countMany', { count: projectCount }));
 ---
 
 <div class="pt-36 sm:pt-44 pb-10 px-8 lg:px-12">
   <div class="max-w-6xl mx-auto">
     <!-- Breadcrumb (mirrors the project detail view) -->
     <nav class="font-display font-bold uppercase text-[0.85rem] tracking-[0.16em] text-brown-mid flex gap-2.5 items-center flex-wrap mb-10">
-      <a href="/" class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200">Home</a>
+      <a href="/" class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200"><L text={tt('listing.breadcrumbHome')} /></a>
       <span class="text-brown-soft" aria-hidden="true">/</span>
-      <span class="text-brown">{title}</span>
+      <span class="text-brown"><L text={title} /></span>
     </nav>
 
     <!-- Centered title block -->
     <div class="text-center">
-      <p class="label mb-4">Catalogue of Works</p>
+      <p class="label mb-4"><L text={tt('listing.eyebrow')} /></p>
 
       <h1 class="font-display font-bold text-ink leading-[1.05] tracking-[0.005em] text-[28px]">
-        {title}
+        <L text={title} />
       </h1>
 
       {description && (
         <p class="mt-4 text-brown max-w-[50ch] mx-auto leading-relaxed">
-          {description}
+          <L text={description} />
         </p>
       )}
 
       <p class="font-mono text-[0.85rem] tracking-[0.05em] text-brown-soft mt-5">
-        {projectCount} {projectCount === 1 ? 'project' : 'projects'} recorded
+        <L text={count} />
       </p>
 
       <div class="ornament max-w-[300px] mx-auto mt-6">

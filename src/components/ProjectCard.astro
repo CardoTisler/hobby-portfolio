@@ -2,10 +2,13 @@
 import Photo from './Photo.astro';
 import type { ImageMetadata } from 'astro';
 import { toRoman } from '@/lib/utils';
+import type { CollectionEntry } from 'astro:content';
+import L from './L.astro';
+import { i18nAttrs, tt, type Bilingual } from '@/i18n/utils';
 
 interface Props {
-  title: string;
-  category: string;
+  title: Bilingual;
+  category: CollectionEntry<'projects'>['data']['category'];
   thumbnail: ImageMetadata;
   slug: string;
   index?: number;
@@ -28,15 +31,15 @@ const numeral = showNumeral ? toRoman(total - index) : '';
       )}
       <Photo
         src={thumbnail}
-        alt={title}
+        {...i18nAttrs({ alt: title })}
         width={900}
         class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.02]"
       />
     </div>
 
-    <span class="label block mt-3.5 text-[0.7rem] tracking-normal">{category}</span>
+    <span class="label block mt-3.5 text-[0.7rem] tracking-normal"><L text={tt(`category.${category}`)} /></span>
     <h3 class="font-display font-bold text-ink text-[1.3rem] leading-[1.16] mt-1.5 tracking-[0.01em] transition-colors duration-300 group-hover:text-brown">
-      {title}
+      <L text={title} />
     </h3>
   </article>
 </a>

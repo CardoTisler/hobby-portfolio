@@ -1,13 +1,14 @@
 ---
-
+import L from './L.astro';
+import { tt } from '@/i18n/utils';
 ---
 
 <section class="px-8 lg:px-12">
   <div class="max-w-6xl mx-auto text-center pt-36 sm:pt-44 pb-10 sm:pb-14">
-    <p class="label mb-5">Catalogue of Works</p>
+    <p class="label mb-5"><L text={tt('home.eyebrow')} /></p>
 
     <h1 class="font-display font-bold text-ink mx-auto max-w-[26ch] text-balance leading-[1.12] tracking-[0.005em] text-[28px]">
-      Documenting the process of earning my surname
+      <L text={tt('home.headline')} />
     </h1>
 
     <div class="ornament max-w-[340px] mx-auto mt-8">

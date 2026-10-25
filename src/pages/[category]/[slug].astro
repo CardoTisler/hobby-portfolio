@@ -1,14 +1,18 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import Photo from '@/components/Photo.astro';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider.astro';
 import ImageCarousel from '@/components/ImageCarousel.astro';
 import CostSummary from '@/components/CostSummary.astro';
 import ProgressTimeline from '@/components/ProgressTimeline.astro';
+import L from '@/components/L.astro';
+import { getProjects, type BilingualProject } from '@/lib/projects';
+import { dateLocales } from '@/i18n/ui';
+import { both, i18nAttrs, tt } from '@/i18n/utils';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getProjects();
   return projects.map((project) => ({
     params: {
       category: project.data.category.toLowerCase(),
@@ -18,18 +22,27 @@ export async function getStaticPaths() {
   }));
 }
 
+interface Props {
+  project: BilingualProject;
+}
+
 const { project } = Astro.props;
-const { Content } = await render(project);
+const { Content: ContentEt } = await render(project.content.et);
+const { Content: ContentEn } = await render(project.content.en);
 const category = project.data.category.toLowerCase();
+const title = both((lang) => project.text[lang].title);
+const field = (name: 'material' | 'finish' | 'dimensions') => both((lang) => project.text[lang][name] ?? '');
 
 const hasBeforeAfter = project.data.beforeImage && project.data.afterImage;
 const hasDetails = project.data.date || project.data.material || project.data.dimensions || project.data.finish;
 
-const completed = project.data.date?.toLocaleDateString('en-GB', {
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-});
+const completed = project.data.date && both((lang) =>
+  project.data.date!.toLocaleDateString(dateLocales[lang], {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+);
 
 // Glob all project images at build time for directory-based progress steps
 const allProjectImages = import.meta.glob<{ default: ImageMetadata }>(
@@ -39,9 +52,15 @@ const allProjectImages = import.meta.glob<{ default: ImageMetadata }>(
 
 // Resolve progress steps: use explicit `images` if provided, otherwise
 // discover images from `imagesDir` by filtering the glob results
-const resolvedProgress = project.data.progress?.map((step) => {
+const resolvedProgress = project.data.progress?.map((step, i) => {
+  const text = {
+    leftTitle: both((lang) => project.text[lang].progress![i].leftTitle),
+    rightTitle: both((lang) => project.text[lang].progress![i].rightTitle),
+    description: both((lang) => project.text[lang].progress![i].description),
+  };
+
   if (step.images && step.images.length > 0) {
-    return { ...step, images: step.images };
+    return { ...text, images: step.images };
   }
 
   if (step.imagesDir) {
@@ -50,30 +69,30 @@ const resolvedProgress = project.data.progress?.map((step) => {
       .filter(([path]) => path.startsWith(dirPrefix))
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([, mod]) => mod.default);
-    return { ...step, images };
+    return { ...text, images };
   }
 
-  return { ...step, images: [] as ImageMetadata[] };
+  return { ...text, images: [] as ImageMetadata[] };
 });
 ---
 
-<Layout title={`${project.data.title} — Cardo Tisler`}>
+<Layout title={both((lang) => `${title[lang]} — Cardo Tisler`)}>
   <article class="pt-36 sm:pt-44 pb-24">
     <!-- Entry header -->
     <div class="px-8 lg:px-12">
       <div class="max-w-6xl mx-auto">
         <!-- Breadcrumb -->
         <nav class="font-display font-bold uppercase text-[0.85rem] tracking-[0.16em] text-brown-mid flex gap-2.5 items-center flex-wrap">
-          <a href="/" class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200">Home</a>
+          <a href="/" class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200"><L text={tt('listing.breadcrumbHome')} /></a>
           <span class="text-brown-soft" aria-hidden="true">/</span>
-          <a href={`/${category}`} class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200">{project.data.category}</a>
+          <a href={`/${category}`} class="border-b border-transparent hover:text-ink hover:border-line transition-colors duration-200"><L text={tt(`category.${project.data.category}`)} /></a>
           <span class="text-brown-soft" aria-hidden="true">/</span>
-          <span class="text-brown">{project.data.title}</span>
+          <span class="text-brown"><L text={title} /></span>
         </nav>
 
         <header class="mt-6">
           <h1 class="font-display font-bold text-ink leading-[1.02] tracking-[0.005em] text-[28px]">
-            {project.data.title}
+            <L text={title} />
           </h1>
         </header>
       </div>
@@ -86,13 +105,13 @@ const resolvedProgress = project.data.progress?.map((step) => {
           <BeforeAfterSlider
             beforeImage={project.data.beforeImage!}
             afterImage={project.data.afterImage!}
-            title={project.data.title}
+            title={title}
           />
         ) : (
           <div class="plate w-full sm:aspect-[16/10] sm:max-h-[70svh]">
             <Photo
               src={project.data.thumbnail}
-              alt={project.data.title}
+              {...i18nAttrs({ alt: title })}
               widths={[1400, 2000, 2800]}
               class="block w-full h-auto max-h-[70svh] object-contain sm:h-full"
             />
@@ -107,14 +126,17 @@ const resolvedProgress = project.data.progress?.map((step) => {
         <div class="grid lg:grid-cols-12 gap-x-12 gap-y-12">
           <div class="lg:col-span-7">
             <div class="entry-prose dropcap text-ink text-[1.06rem]">
-              <Content />
+              <L as="div">
+                <ContentEt slot="et" />
+                <ContentEn slot="en" />
+              </L>
             </div>
 
             {project.data.images && project.data.images.length > 0 && (
               <div class="mt-10">
                 <ImageCarousel
                   images={project.data.images}
-                  title={project.data.title}
+                  title={title}
                 />
               </div>
             )}
@@ -125,26 +147,31 @@ const resolvedProgress = project.data.progress?.map((step) => {
             <div class="sticky top-36 space-y-6">
               {hasDetails && (
                 <div class="spec">
-                  <p class="spec-cap">Specifications</p>
+                  <p class="spec-cap"><L text={tt('project.specifications')} /></p>
                   <dl>
                     {project.data.material && (
-                      <div class="pair"><dt>Material</dt><dd>{project.data.material}</dd></div>
+                      <div class="pair"><dt><L text={tt('project.material')} /></dt><dd><L text={field('material')} /></dd></div>
                     )}
                     {project.data.finish && (
-                      <div class="pair"><dt>Finish</dt><dd>{project.data.finish}</dd></div>
+                      <div class="pair"><dt><L text={tt('project.finish')} /></dt><dd><L text={field('finish')} /></dd></div>
                     )}
                     {project.data.dimensions && (
-                      <div class="pair"><dt>Dimensions</dt><dd>{project.data.dimensions}</dd></div>
+                      <div class="pair"><dt><L text={tt('project.dimensions')} /></dt><dd><L text={field('dimensions')} /></dd></div>
                     )}
                     {completed && (
-                      <div class="pair"><dt>Completed</dt><dd>{completed}</dd></div>
+                      <div class="pair"><dt><L text={tt('project.completed')} /></dt><dd><L text={completed} /></dd></div>
                     )}
                   </dl>
                 </div>
               )}
 
               {project.data.costs && project.data.costs.length > 0 && (
-                <CostSummary costs={project.data.costs} />
+                <CostSummary
+                  costs={project.data.costs.map((cost, i) => ({
+                    cost: cost.cost,
+                    item: both((lang) => project.text[lang].costs![i].item),
+                  }))}
+                />
               )}
             </div>
           </aside>
@@ -158,7 +185,7 @@ const resolvedProgress = project.data.progress?.map((step) => {
         <div class="max-w-6xl mx-auto">
           <ProgressTimeline
             steps={resolvedProgress}
-            projectTitle={project.data.title}
+            projectTitle={title}
           />
         </div>
       </div>

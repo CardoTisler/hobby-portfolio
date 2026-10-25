@@ -1,0 +1,29 @@
+---
+import { langs } from '@/i18n/ui';
+import type { Bilingual } from '@/i18n/utils';
+
+/**
+ * Renders content once per language; CSS hides all but the active one.
+ * Pass `text` for plain strings, or named slots (`slot="et"`, `slot="en"`) for markup.
+ */
+interface Props {
+  text?: Bilingual;
+  as?: 'span' | 'div';
+  class?: string;
+}
+
+const { text, as: Tag = 'span', class: className } = Astro.props;
+
+const rendered = await Promise.all(
+  langs.map(async (lang) => ({
+    lang,
+    html: text ? undefined : await Astro.slots.render(lang),
+  }))
+);
+---
+
+{rendered.map(({ lang, html }) => (
+  html === undefined
+    ? <Tag data-l={lang} lang={lang} class={className}>{text![lang]}</Tag>
+    : <Tag data-l={lang} lang={lang} class={className} set:html={html} />
+))}

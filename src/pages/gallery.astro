@@ -1,18 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import CategoryHeader from '@/components/CategoryHeader.astro';
 import ProjectGrid from '@/components/ProjectGrid.astro';
-import { sortProjectsByDate } from '@/lib/utils';
+import { getProjects } from '@/lib/projects';
+import { both, tt } from '@/i18n/utils';
 
-const allProjects = await getCollection('projects');
-const sortedProjects = sortProjectsByDate(allProjects);
+const sortedProjects = await getProjects();
+const title = tt('nav.allWork');
 ---
 
-<Layout title="All Work — Cardo Tisler">
+<Layout title={both((lang) => `${title[lang]} — Cardo Tisler`)}>
   <CategoryHeader
-    title="All Work"
-    description=""
+    title={title}
     projectCount={sortedProjects.length}
   />
 
@@ -20,7 +19,7 @@ const sortedProjects = sortProjectsByDate(allProjects);
     <div class="max-w-6xl mx-auto">
       <ProjectGrid
         projects={sortedProjects}
-        emptyMessage="Coming soon."
+        emptyMessage={tt('listing.empty')}
         showNumerals={false}
       />
     </div>
