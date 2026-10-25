@@ -74,7 +74,7 @@ const et: Partial<Record<UIKey, string>> = {
   'nav.toggleMenu': 'Ava menüü',
   'nav.switchLanguage': 'Muuda keelt',
   'category.Other': 'Muu',
-  'home.eyebrow': 'Tööde kataloog',
+  'home.eyebrow': 'Projektide kogum',
   'home.headline': 'Teekond oma perekonnanime väljateenimiseni',
   'home.recentWork': 'Hiljutised tööd',
   'home.viewAll': 'Vaata kõiki projekte →',
