@@ -1,9 +1,7 @@
 ---
 title: "Credenza"
 category: "Woodworking"
-# TODO: replace with your real thumbnail — drop a file in src/assets/projects/credenza/
-#       and point this at it (e.g. "../../assets/projects/credenza/your-photo.jpg")
-thumbnail: "../../assets/projects/credenza/20260727_101228.jpg"
+thumbnail: "../../assets/projects/credenza/R1-07287-019A.jpeg"
 date: 2026-07-26
 material: Ash & Walnut
 finish: Osmo Polyx (3062)
